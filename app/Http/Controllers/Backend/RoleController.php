@@ -11,11 +11,11 @@ class RoleController extends Controller
 {
     public function admin(){
         $admins = Admin::latest()->get();
-        return view('backend.role-admin', compact('admins'));
+        return view('backend.role.role-admin', compact('admins'));
     }
 
     public function users(){
         $users = User::latest()->get();
-        return view('backend.role-users', compact('users'));
+        return view('backend.role.role-users', compact('users'));
     }
 }

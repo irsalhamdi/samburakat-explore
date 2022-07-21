@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\DestinationTypeController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Models\DestinationType;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,4 +35,10 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::post('admin/profile/store', [AdminProfileController::class, 'update'])->name('admin.profile.store');
     Route::get('admin/change-password', [AdminProfileController::class, 'changePassword'])->name('admin.change-password');
     Route::post('admin/update-password', [AdminProfileController::class, 'updatePassword'])->name('admin.update-password');
+    Route::get('destination-type/all', [DestinationTypeController::class, 'index'])->name('destination-type.all');
+    Route::post('destination-type/store', [DestinationTypeController::class, 'store'])->name('destination-type.store');
+    Route::get('destination-type/edit/{id}', [DestinationTypeController::class, 'edit'])->name('destination-type.edit');
+    Route::post('destination-type/update/{id}', [DestinationTypeController::class, 'update'])->name('destination-type.update');
+    Route::get('destination-type/delete/{id}', [DestinationTypeController::class, 'destroy'])->name('destination-type.delete');
 });  
+

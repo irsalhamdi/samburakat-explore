@@ -30,12 +30,24 @@
             <i data-feather="message-circle"></i>
             <span>Role</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="{{ ($route == 'role.admin') ? 'active' : '' }}"><a href="{{ route('role.admin') }}"><i class="ti-more"></i>Admin</a></li>
             <li class="{{ ($route == 'role.users') ? 'active' : '' }}"><a href="{{ route('role.users') }}"><i class="ti-more"></i>Users</a></li>
+          </ul>
+        </li>   
+
+        <li class="treeview {{ ($prefix == '/destination-type') ? 'active' : '' }}">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Destination Type</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'destination-type.all') ? 'active' : '' }}"><a href="{{ route('destination-type.all') }}"><i class="ti-more"></i>All Destination Type</a></li>
           </ul>
         </li>   
 		 
