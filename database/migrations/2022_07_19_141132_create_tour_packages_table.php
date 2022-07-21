@@ -17,6 +17,9 @@ class CreateTourPackagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('destination_id');
             $table->string('name');
+            $table->string('description');
+            $table->string('guide');
+            $table->integer('price');
             $table->timestamps();
 
             $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
