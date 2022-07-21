@@ -20,4 +20,8 @@ class Destination extends Model
     public function village(){
         return $this->belongsTo(Village::class, 'village_id', 'id');
     }
+
+    public function galleries(){
+        return $this->hasMany(Gallery::class, 'destination_id', 'id' );
+    }
 }

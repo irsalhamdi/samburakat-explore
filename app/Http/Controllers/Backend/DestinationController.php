@@ -10,6 +10,7 @@ use App\Models\Destination;
 use Illuminate\Http\Request;
 use App\Models\DestinationType;
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use Intervention\Image\Facades\Image;
 
 class DestinationController extends Controller
@@ -21,27 +22,41 @@ class DestinationController extends Controller
     }
 
     public function create(){
-        $villages = Village::where('district_id', '6405070')->get();
+        $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
         $destinationtypes = DestinationType::latest()->get();
         return view('backend.destination.add', compact('villages', 'destinationtypes'));
     }
 
     public function store(Request $request)
     {
-        $image = $request->file('image');
+        $image = $request->file('thumbnail');
         $name = $request->name . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(870,370)->save('upload/destination/' . $name);
-        $url = 'upload/destination/' . $name;
-
-        Destination::insert([
+        Image::make($image)->resize(917, 1000)->save('upload/destination/image/' . $name);
+        $url = 'upload/destination/image/' . $name;
+        
+        $destination_id = Destination::insertGetId([
             'destination_type_id' => $request->destination_type_id,
             'village_id' => $request->village_id,
-            'name' => $request->name,
-            'image' => $url,
-            'description' => $request->description,
-            'guide' => $request->guide,
-            'price' => $request->description,
+             'name' => $request->name,
+             'image' => $url,
+             'description' => $request->description,
+             'guide' => $request->guide,
+             'price' => $request->price, 
         ]);
+
+        $images = $request->file('image');
+
+        foreach($images  as $image){
+
+            $name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(917, 1000)->save('upload/destination/galleries/' . $name);
+            $url = 'upload/destination/galleries/' . $name;
+
+            Gallery::insert([
+                'destination_id' => $destination_id,
+                'image' => $url,
+            ]);
+        }
 
         $notification = [
             'message' => 'Destination Created Succesfully',
@@ -55,7 +70,7 @@ class DestinationController extends Controller
     {
         $destinationtypes = DestinationType::latest()->get();
         $data = Destination::findOrFail($id);
-        $villages = Village::where('district_id', '6405070')->get();
+        $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
         return view('backend.destination.edit', compact('villages', 'destinationtypes', 'data'));
     }
 
@@ -109,6 +124,24 @@ class DestinationController extends Controller
         }
     }
 
+    public function updateImages(Request $request){
+
+        $images = $request->name;
+
+		foreach ($images as $id => $img) {
+            $imgDel = Gallery::findOrFail($id);
+            unlink($imgDel->name);
+
+            $name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            Image::make($img)->resize(917,1000)->save('upload/destination/image/'.$name);
+            $url = 'upload/destination/image/'.$name;
+
+            Gallery::where('id',$id)->update([
+                'image' => $url,
+            ]);
+        }
+    }
+
     public function destroy($id)
     {
         $data = Destination::findOrFail($id);
@@ -124,4 +157,3 @@ class DestinationController extends Controller
 		return redirect()->back()->with($notification);
     }
 }
-
