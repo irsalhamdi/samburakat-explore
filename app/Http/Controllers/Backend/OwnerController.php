@@ -12,7 +12,7 @@ class OwnerController extends Controller
 {
     public function index(){
         $owners = Owner::with('village')->get();
-        $villages = Village::where('district_id', '6405070')->get();
+        $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
         return view('backend.owner.index', compact('owners', 'villages'));
     }
 
@@ -29,7 +29,7 @@ class OwnerController extends Controller
 
     public function edit($id){
         $owner = Owner::findOrFail($id);
-        $villages = Village::where('district_id', '6405070')->get();
+        $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
 
         return view('backend.owner.edit', compact('owner', 'villages'));
     }
