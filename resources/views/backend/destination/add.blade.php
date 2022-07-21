@@ -1,5 +1,6 @@
 @extends('admin.admin-master')
 @section('admin')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="container-full">
       <section class="content">
         <div class="row"> 
@@ -111,4 +112,64 @@
         </div>
       </section>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="province_id"]').on('change', function(){
+                var province_id = $(this).val();
+                if(province_id) {
+                    $.ajax({
+                        url: "{{  url('/get-regency/ajax') }}/"+province_id,
+                        type:"GET",
+                        dataType:"json",
+                        success:function(data) {
+                            $('select[name="district_id"]').empty(); 
+                            $('select[name="village_id"]').empty(); 
+                        var d =$('select[name="regency_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="regency_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+            $('select[name="regency_id"]').on('change', function(){
+                var regency_id = $(this).val();
+                if(regency_id) {
+                    $.ajax({
+                        url: "{{  url('/get-district/ajax') }}/" + regency_id,
+                        type:"GET",
+                        dataType:"json",
+                        success:function(data) {
+                        var d =$('select[name="district_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+            $('select[name="district_id"]').on('change', function(){
+                var district_id = $(this).val();
+                if(district_id) {
+                    $.ajax({
+                        url: "{{  url('/get-village/ajax') }}/" + district_id,
+                        type:"GET",
+                        dataType:"json",
+                        success:function(data) {
+                        var d =$('select[name="village_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="village_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
 @endsection
