@@ -1,7 +1,6 @@
 @extends('admin.admin-master')
 @section('admin')
     <div class="container-full">
-
       <section class="content">
         <div class="row"> 
           <div class="col-12">
@@ -27,12 +26,11 @@
                       <tbody>
                         @foreach ($destinations as $destination)
                             <tr>
-                                <td>{{ $destination->destination_type_id }}</td>
-                                <td>{{ $destination->village_id }}</td>
+                                <td>{{ $destination->destinationtype->name }}</td>
+                                <td>{{ $destination->village->name }}</td>
                                 <td>{{ $destination->name }}</td>
                                 <td>{{ $destination->price }}</td>
                                 <td>
-                                    <a href="{{ route('destination.show', $destination->id) }}" class="btn btn-success">Detail</a>
                                     <a href="{{ route('destination.edit', $destination->id) }}" class="btn btn-info">Edit</a>
                                     <a href="{{ route('destination.delete', $destination->id) }}" class="btn btn-danger">Delete</a>
                                 </td>
@@ -46,6 +44,5 @@
           </div>
         </div>
       </section>
-    
     </div>
 @endsection

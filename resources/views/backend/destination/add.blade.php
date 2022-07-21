@@ -100,7 +100,7 @@
                         <div class="form-group">
                             <h5>Price<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="price" class="form-control" required>
+                                <input type="number" name="price" class="form-control" required>
                             </div>
                         </div>
                         <div class="text-xs-right">

@@ -1,59 +1,19 @@
 @extends('admin.admin-master')
 @section('admin')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="container-full">
-
       <section class="content">
         <div class="row"> 
-          <div class="col-8">
-            <div class="box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Destination List</h3>
-              </div>
-              <div class="box-body">
-                  <div class="table-responsive">
-                    <table id="example1" class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <th>Type</th>
-                              <th>Village</th>
-                              <th>Name</th>
-                              <th>Image</th>
-                              <th>Description</th>
-                              <th>Guide</th>
-                              <th>Price</th>
-                              <th>Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ($destinations as $destination)
-                            <tr>
-                                <td>{{ $destination->destination_type_id }}</td>
-                                <td>{{ $destination->village_id }}</td>
-                                <td>{{ $destination->name }}</td>
-                                <td>
-                                    <img src="{{ asset($destination->image) }}" style="width: 100px; height: 40px;">
-                                </td>
-                                <td>{{ $destination->price }}</td>
-                                <td>
-                                    <a href="{{ route('destination.edit', $destination->id) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('destination.delete', $destination->id) }}" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
+          <div class="col-12">
             <div class="box">
                 <div class="box-header with-border">
                   <h3 class="box-title">Update Destination</h3>
                 </div>
                 <div class="box-body">
-                    <form method="POST" action="{{ route('destination.update', $destination->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('destination.update', $data->id) }}" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $data->id }}">	
+                        <input type="hidden" name="old_image" value="{{ $data->image }}">	
                         <div class="form-group">
                             <h5>Destination Type</h5>
                             <div class="controls">
@@ -62,7 +22,7 @@
                                         Select Type
                                     </option>
                                     @foreach ($destinationtypes as $destinationtype)
-                                        <option value="{{ $destinationtype->id }}">
+                                        <option value="{{ $destinationtype->id }}" {{ $destinationtype->id == $data->destination_type_id ? 'selected' : '' }}>
                                             {{ $destinationtype->name }}
                                         </option>
                                     @endforeach
@@ -70,19 +30,19 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1">
-                                Province
-                            </label>
-                            <select name="province_id" required class="form-control">
-                                <option value="" selected="" disabled="">
-                                    Select Province
-                                </option>
-                                @foreach ($provinces as $province)
-                                    <option value="{{ $province->id }}">
-                                        {{ $province->name }}
+                            <h5>Select Province</h5>
+                            <div class="controls">
+                                <select name="province_id" required class="form-control">
+                                    <option value="" selected="" disabled="">
+                                        Select Province
                                     </option>
-                                @endforeach
-                            </select>
+                                    @foreach ($provinces as $province)
+                                        <option value="{{ $province->id }}">
+                                            {{ $province->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="info-title" for="exampleInputEmail1">
@@ -117,13 +77,13 @@
                         <div class="form-group">
                             <h5>Name<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="name" class="form-control" value="{{ $destination->name }}" required>
+                                <input type="text" name="name" class="form-control" value="{{ $data->name }}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <h5>Image<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="file" name="image" class="form-control" required> 
+                                <input type="file" name="image" class="form-control"> 
                             </div>
                         </div>
                         <div class="form-group">
@@ -137,13 +97,13 @@
                         <div class="form-group">
                             <h5>Guide<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="guide" class="form-control" value="{{ $destination->guide }}" required>
+                                <input type="text" name="guide" class="form-control" value="{{ $data->guide }}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <h5>Price<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="number" name="price" class="form-control" value="{{ $destination->price }}" required>
+                                <input type="number" name="price" class="form-control" value="{{ $data->price }}" required>
                             </div>
                         </div>
                         <div class="text-xs-right">
@@ -154,6 +114,65 @@
           </div>
         </div>
       </section>
-    
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="province_id"]').on('change', function(){
+                var province_id = $(this).val();
+                if(province_id) {
+                    $.ajax({
+                        url: "{{  url('/get-regency/ajax') }}/"+province_id,
+                        type:"GET",
+                        dataType:"json",
+                        success:function(data) {
+                            $('select[name="district_id"]').empty(); 
+                            $('select[name="village_id"]').empty(); 
+                        var d =$('select[name="regency_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="regency_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+            $('select[name="regency_id"]').on('change', function(){
+                var regency_id = $(this).val();
+                if(regency_id) {
+                    $.ajax({
+                        url: "{{  url('/get-district/ajax') }}/" + regency_id,
+                        type:"GET",
+                        dataType:"json",
+                        success:function(data) {
+                        var d =$('select[name="district_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+            $('select[name="district_id"]').on('change', function(){
+                var district_id = $(this).val();
+                if(district_id) {
+                    $.ajax({
+                        url: "{{  url('/get-village/ajax') }}/" + district_id,
+                        type:"GET",
+                        dataType:"json",
+                        success:function(data) {
+                        var d =$('select[name="village_id"]').empty();
+                            $.each(data, function(key, value){
+                                $('select[name="village_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
 @endsection

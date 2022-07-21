@@ -30,6 +30,7 @@
             <i data-feather="message-circle"></i>
             <span>Role</span>
             <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">

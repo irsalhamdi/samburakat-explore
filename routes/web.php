@@ -45,7 +45,6 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('destination/all', [DestinationController::class, 'index'])->name('destination.all');
     Route::get('desination/create', [DestinationController::class, 'create'])->name('destination.create');
     Route::post('destination/store', [DestinationController::class, 'store'])->name('destination.store');
-    Route::get('destination/show/{id}', [DEstinationController::class, 'show'])->name('destination.show');
     Route::get('destination/edit/{id}', [DestinationController::class, 'edit'])->name('destination.edit');
     Route::post('destination/update/{id}', [DestinationController::class, 'update'])->name('destination.update');
     Route::get('destination/delete/{id}', [DestinationController::class, 'destroy'])->name('destination.delete');
