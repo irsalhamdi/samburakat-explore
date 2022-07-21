@@ -30,49 +30,19 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <h5>Select Province</h5>
+                            <h5>Village</h5>
                             <div class="controls">
-                                <select name="province_id" required class="form-control">
+                                <select name="village_id" required class="form-control">
                                     <option value="" selected="" disabled="">
-                                        Select Province
+                                        Select Village
                                     </option>
-                                    @foreach ($provinces as $province)
-                                        <option value="{{ $province->id }}">
-                                            {{ $province->name }}
+                                    @foreach ($villages as $village)
+                                        <option value="{{ $village->id }}">
+                                            {{ $village->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1">
-                                Regency
-                            </label>
-                            <select name="regency_id" required class="form-control">
-                                <option value="" selected="" disabled="">
-                                    Select Regency
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1">
-                                District
-                            </label>
-                            <select name="district_id" required class="form-control">
-                                <option value="" selected="" disabled="">
-                                    Select District
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="info-title" for="exampleInputEmail1">
-                                Village
-                            </label>
-                            <select name="village_id" required class="form-control">
-                                <option value="" selected="" disabled="">
-                                    Select Village
-                                </option>
-                            </select>
                         </div>
                         <div class="form-group">
                             <h5>Name<span class="text-danger">*</span></h5>

@@ -21,9 +21,9 @@ class DestinationController extends Controller
     }
 
     public function create(){
-        $provinces = Province::all();
+        $villages = Village::where('district_id', '6405070')->get();
         $destinationtypes = DestinationType::latest()->get();
-        return view('backend.destination.add', compact('provinces', 'destinationtypes'));
+        return view('backend.destination.add', compact('villages', 'destinationtypes'));
     }
 
     public function store(Request $request)
@@ -55,8 +55,8 @@ class DestinationController extends Controller
     {
         $destinationtypes = DestinationType::latest()->get();
         $data = Destination::findOrFail($id);
-        $provinces = Province::all();
-        return view('backend.destination.edit', compact('provinces', 'destinationtypes', 'data'));
+        $villages = Village::where('district_id', '6405070')->get();
+        return view('backend.destination.edit', compact('villages', 'destinationtypes', 'data'));
     }
 
     public function update(Request $request, $id)

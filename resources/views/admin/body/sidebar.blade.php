@@ -48,8 +48,22 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'destination-type.all') ? 'active' : '' }}"><a href="{{ route('destination-type.all') }}"><i class="ti-more"></i>All Destination Type</a></li>
-            <li class="{{ ($route == 'destination.all') ? 'active' : '' }}"><a href="{{ route('destination.all') }}"><i class="ti-more"></i>All Destination</a></li>
+            <li class="{{ ($route == 'destination-type.all') ? 'active' : '' }}"><a href="{{ route('destination-type.all') }}"><i class="ti-more"></i>Destination Type</a></li>
+            <li class="{{ ($route == 'destination.all') ? 'active' : '' }}"><a href="{{ route('destination.all') }}"><i class="ti-more"></i>Destination</a></li>
+          </ul>
+        </li>   
+
+        <li class="treeview {{ ($prefix == '/owner' || $prefix == '/transportation') ? 'active' : '' }}">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Transportation</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'owner.all') ? 'active' : '' }}"><a href="{{ route('owner.all') }}"><i class="ti-more"></i>Owner</a></li>
+            <li class="{{ ($route == 'transportation.all') ? 'active' : '' }}"><a href="{{ route('transportation.all') }}"><i class="ti-more"></i>Transportation</a></li>
           </ul>
         </li>   
 		 

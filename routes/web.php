@@ -6,7 +6,9 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\DestinationTypeController;
+use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\TransportationController;
 use App\Models\DestinationType;
 
 Route::get('/', function () {
@@ -48,6 +50,16 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('destination/edit/{id}', [DestinationController::class, 'edit'])->name('destination.edit');
     Route::post('destination/update/{id}', [DestinationController::class, 'update'])->name('destination.update');
     Route::get('destination/delete/{id}', [DestinationController::class, 'destroy'])->name('destination.delete');
+    Route::get('owner/all', [OwnerController::class, 'index'])->name('owner.all');
+    Route::post('owner/store', [OwnerController::class, 'store'])->name('owner.store');
+    Route::get('owner/edit/{id}', [OwnerController::class, 'edit'])->name('owner.edit');
+    Route::post('owner/update/{id}', [OwnerController::class, 'update'])->name('owner.update');
+    Route::get('owner/delete/{id}', [OwnerController::class, 'destroy'])->name('owner.delete');
+    Route::get('transportation/all', [TransportationController::class, 'index'])->name('transportation.all');
+    Route::post('transportation/store', [TransportationController::class, 'store'])->name('transportation.store');
+    Route::get('transportation/edit/{id}', [TransportationController::class, 'edit'])->name('transportation.edit');
+    Route::post('transportation/update/{id}', [TransportationController::class, 'update'])->name('transportation.update');
+    Route::get('transportation/delete/{id}', [TransportationController::class, 'destroy'])->name('transportation.delete');
 });  
 
 Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);
