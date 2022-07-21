@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\DestinationTypeController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Models\DestinationType;
@@ -40,5 +42,15 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('destination-type/edit/{id}', [DestinationTypeController::class, 'edit'])->name('destination-type.edit');
     Route::post('destination-type/update/{id}', [DestinationTypeController::class, 'update'])->name('destination-type.update');
     Route::get('destination-type/delete/{id}', [DestinationTypeController::class, 'destroy'])->name('destination-type.delete');
+    Route::get('destination/all', [DestinationController::class, 'index'])->name('destination.all');
+    Route::get('desination/create', [DestinationController::class, 'create'])->name('destination.create');
+    Route::post('destination/store', [DestinationController::class, 'store'])->name('destination.store');
+    Route::get('destination/show/{id}', [DEstinationController::class, 'show'])->name('destination.show');
+    Route::get('destination/edit/{id}', [DestinationController::class, 'edit'])->name('destination.edit');
+    Route::post('destination/update/{id}', [DestinationController::class, 'update'])->name('destination.update');
+    Route::get('destination/delete/{id}', [DestinationController::class, 'destroy'])->name('destination.delete');
 });  
 
+Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);
+Route::get('/get-district/ajax/{regency_id}', [AjaxController::class, 'GetDisctrict']);
+Route::get('/get-village/ajax/{district_id}', [AjaxController::class, 'GetVillage']);

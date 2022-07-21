@@ -38,16 +38,17 @@
           </ul>
         </li>   
 
-        <li class="treeview {{ ($prefix == '/destination-type') ? 'active' : '' }}">
+        <li class="treeview {{ ($prefix == '/destination-type' || $prefix == '/destination') ? 'active' : '' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>Destination Type</span>
+            <span>Destination</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="{{ ($route == 'destination-type.all') ? 'active' : '' }}"><a href="{{ route('destination-type.all') }}"><i class="ti-more"></i>All Destination Type</a></li>
+            <li class="{{ ($route == 'destination.all') ? 'active' : '' }}"><a href="{{ route('destination.all') }}"><i class="ti-more"></i>All Destination</a></li>
           </ul>
         </li>   
 		 
