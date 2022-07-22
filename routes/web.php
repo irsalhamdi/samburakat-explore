@@ -40,6 +40,7 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('admin/change-password', [AdminProfileController::class, 'changePassword'])->name('admin.change-password');
     Route::post('admin/update-password', [AdminProfileController::class, 'updatePassword'])->name('admin.update-password');
     Route::get('destination-type/all', [DestinationTypeController::class, 'index'])->name('destination-type.all');
+    Route::get('destination-type/create', [DestinationTypeController::class, 'create'])->name('destination-type.create');
     Route::post('destination-type/store', [DestinationTypeController::class, 'store'])->name('destination-type.store');
     Route::get('destination-type/edit/{id}', [DestinationTypeController::class, 'edit'])->name('destination-type.edit');
     Route::post('destination-type/update/{id}', [DestinationTypeController::class, 'update'])->name('destination-type.update');
@@ -51,11 +52,13 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::post('destination/update/{id}', [DestinationController::class, 'update'])->name('destination.update');
     Route::get('destination/delete/{id}', [DestinationController::class, 'destroy'])->name('destination.delete');
     Route::get('owner/all', [OwnerController::class, 'index'])->name('owner.all');
+    Route::get('owner/create', [OwnerController::class, 'create'])->name('owner.create');
     Route::post('owner/store', [OwnerController::class, 'store'])->name('owner.store');
     Route::get('owner/edit/{id}', [OwnerController::class, 'edit'])->name('owner.edit');
     Route::post('owner/update/{id}', [OwnerController::class, 'update'])->name('owner.update');
     Route::get('owner/delete/{id}', [OwnerController::class, 'destroy'])->name('owner.delete');
     Route::get('transportation/all', [TransportationController::class, 'index'])->name('transportation.all');
+    Route::get('transportation/create', [TransportationController::class, 'create'])->name('transportation.create');
     Route::post('transportation/store', [TransportationController::class, 'store'])->name('transportation.store');
     Route::get('transportation/edit/{id}', [TransportationController::class, 'edit'])->name('transportation.edit');
     Route::post('transportation/update/{id}', [TransportationController::class, 'update'])->name('transportation.update');

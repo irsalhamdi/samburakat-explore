@@ -12,8 +12,12 @@ class OwnerController extends Controller
 {
     public function index(){
         $owners = Owner::with('village')->get();
+        return view('backend.owner.index', compact('owners'));
+    }
+
+    public function create(){
         $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
-        return view('backend.owner.index', compact('owners', 'villages'));
+        return view('backend.owner.add', compact('villages'));
     }
 
     public function store(Request $request){

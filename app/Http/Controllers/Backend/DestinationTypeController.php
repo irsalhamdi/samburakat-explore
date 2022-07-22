@@ -15,6 +15,11 @@ class DestinationTypeController extends Controller
         return view('backend.destination-type.index', compact('destinationtypes'));
     }
 
+    public function create()
+    {
+        return view('backend.destination-type.add');
+    }
+
     public function store(Request $request)
     {
         $image = $request->file('image');

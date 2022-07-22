@@ -12,8 +12,12 @@ class TransportationController extends Controller
 {
     public function index(){
         $transportations = Transportation::with('owner')->get();
+        return view('backend.transportation.index', compact('transportations'));
+    }
+
+    public function create(){
         $owners = Owner::all();
-        return view('backend.transportation.index', compact('transportations', 'owners'));
+        return view('backend.transportation.add', compact('owners'));
     }
 
     public function store(Request $request){
