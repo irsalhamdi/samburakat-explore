@@ -1,14 +1,13 @@
 @extends('admin.admin-master')
 @section('admin')
     <div class="container-full">
-
       <section class="content">
         <div class="row"> 
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Owner List</h3>
-                <a href="{{ route('owner.create') }}" class="btn btn-primary">
+                <h4 class="box-title">Owner List</h4>
+                <a href="{{ route('owner.create') }}" class="btn btn-primary btn-sm" style="float: right;">
                   Add New Owner
                 </a>
               </div>
@@ -43,6 +42,5 @@
           </div>
         </div>
       </section>
-    
     </div>
 @endsection

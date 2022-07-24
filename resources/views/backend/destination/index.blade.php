@@ -6,8 +6,8 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Destination List</h3>
-                <a href="{{ route('destination.create') }}" class="btn btn-primary">
+                <h4 class="box-title">Destination List</h4>
+                <a href="{{ route('destination.create') }}" class="btn btn-sm btn-primary" style="float: right;">
                   Add New Destination
                 </a>
               </div>

@@ -6,8 +6,8 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Transportation List</h3>
-                <a href="{{ route('transportation.create') }}" class="btn btn-primary">
+                <h4 class="box-title">Transportation List</h4>
+                <a href="{{ route('transportation.create') }}" class="btn btn-primary btn-sm" style="float: right;">
                   Add New Transportation
                 </a>
               </div>
