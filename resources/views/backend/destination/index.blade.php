@@ -31,8 +31,8 @@
                                 <td>{{ $destination->name }}</td>
                                 <td>{{ $destination->price }}</td>
                                 <td>
-                                    <a href="{{ route('destination.edit', $destination->id) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('destination.delete', $destination->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('destination.edit', $destination->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                    <a href="{{ route('destination.delete', $destination->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -30,8 +30,8 @@
                                     <img src="{{ asset($destinationtype->image) }}" style="width: 120px; height: 40px;">
                                 </td>
                                 <td>
-                                    <a href="{{ route('destination-type.edit', $destinationtype->id) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('destination-type.delete', $destinationtype->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('destination-type.edit', $destinationtype->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                    <a href="{{ route('destination-type.delete', $destinationtype->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -29,8 +29,8 @@
                                 <td>{{ $owner->village->name }}</td>
                                 <td>{{ $owner->phone_number }}</td>
                                 <td>
-                                    <a href="{{ route('owner.edit', $owner->id) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('owner.delete', $owner->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('owner.edit', $owner->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                    <a href="{{ route('owner.delete', $owner->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
