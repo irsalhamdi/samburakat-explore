@@ -16,7 +16,7 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('destinationpackage_id')->nullable();
+            $table->unsignedBigInteger('package_id')->nullable();
             $table->unsignedBigInteger('destination_id')->nullable();
             $table->unsignedBigInteger('transportation_id')->nullable();
             $table->dateTime('date');
@@ -24,7 +24,7 @@ class CreateBookingsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('destinationpackage_id')->references('id')->on('destination_packages')->onDelete('cascade');
+            $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
             $table->foreign('transportation_id')->references('id')->on('transportations')->onDelete('cascade');
         });
