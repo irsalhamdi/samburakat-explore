@@ -52,6 +52,7 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::post('destination/store', [DestinationController::class, 'store'])->name('destination.store');
     Route::get('destination/edit/{id}', [DestinationController::class, 'edit'])->name('destination.edit');
     Route::post('destination/update/{id}', [DestinationController::class, 'update'])->name('destination.update');
+    Route::post('destination/update-gallery', [DestinationController::class, 'updateGallery'])->name('destination-gallery.update');
     Route::get('destination/delete/{id}', [DestinationController::class, 'destroy'])->name('destination.delete');
     Route::get('owner/all', [OwnerController::class, 'index'])->name('owner.all');
     Route::get('owner/create', [OwnerController::class, 'create'])->name('owner.create');

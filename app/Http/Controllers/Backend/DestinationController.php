@@ -71,8 +71,8 @@ class DestinationController extends Controller
         $destinationtypes = DestinationType::latest()->get();
         $data = Destination::findOrFail($id);
         $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
-        $images = Gallery::where('destination_id', $id)->get();
-        return view('backend.destination.edit', compact('villages', 'destinationtypes', 'data', 'images'));
+        $galleries = Gallery::where('destination_id', $id)->get();
+        return view('backend.destination.edit', compact('villages', 'destinationtypes', 'data', 'galleries'));
     }
 
     public function update(Request $request, $id)
@@ -122,6 +122,24 @@ class DestinationController extends Controller
             ];
 
             return redirect()->route('destination.all')->with($notification);
+        }
+    }
+
+    public function updateGallery(Request $request){
+
+        $images = $request->image;
+
+		foreach ($images as $id => $img) {
+            $imgDel = Gallery::findOrFail($id);
+            unlink($imgDel->name);
+
+            $name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            Image::make($img)->resize(917,1000)->save('upload/destination/gallery/'.$name);
+            $url = 'upload/destination/gallery/'.$name;
+
+            Gallery::where('id',$id)->update([
+                'image' => $url,
+            ]);
         }
     }
 
