@@ -37,7 +37,7 @@ class DestinationTypeController extends Controller
             'alert-type' => 'success'
         ];
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('destination-type.all')->with($notification);
     }
 
     public function edit($id)

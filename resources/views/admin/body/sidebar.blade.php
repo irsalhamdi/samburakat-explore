@@ -66,6 +66,20 @@
             <li class="{{ ($route == 'transportation.all') ? 'active' : '' }}"><a href="{{ route('transportation.all') }}"><i class="ti-more"></i>Transportation</a></li>
           </ul>
         </li>   
+
+        <li class="treeview {{ ($prefix == '/packages' || $prefix == '/destination-packages') ? 'active' : '' }}">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Packages</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'packages.all') ? 'active' : '' }}"><a href="{{ route('packages.all') }}"><i class="ti-more"></i>Packages</a></li>
+            <li class="{{ ($route == 'destination-packages.all') ? 'active' : '' }}"><a href="{{ route('destination-packages.all') }}"><i class="ti-more"></i>Destination Packages</a></li>
+          </ul>
+        </li>   
 		 
         <li class="header nav-small-cap">User Interface</li>
 		  
