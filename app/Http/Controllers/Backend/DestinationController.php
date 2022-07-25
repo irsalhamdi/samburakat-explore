@@ -71,7 +71,8 @@ class DestinationController extends Controller
         $destinationtypes = DestinationType::latest()->get();
         $data = Destination::findOrFail($id);
         $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
-        return view('backend.destination.edit', compact('villages', 'destinationtypes', 'data'));
+        $images = Gallery::where('destination_id', $id)->get();
+        return view('backend.destination.edit', compact('villages', 'destinationtypes', 'data', 'images'));
     }
 
     public function update(Request $request, $id)
@@ -124,29 +125,20 @@ class DestinationController extends Controller
         }
     }
 
-    public function updateImages(Request $request){
-
-        $images = $request->name;
-
-		foreach ($images as $id => $img) {
-            $imgDel = Gallery::findOrFail($id);
-            unlink($imgDel->name);
-
-            $name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-            Image::make($img)->resize(917,1000)->save('upload/destination/image/'.$name);
-            $url = 'upload/destination/image/'.$name;
-
-            Gallery::where('id',$id)->update([
-                'image' => $url,
-            ]);
-        }
-    }
-
     public function destroy($id)
     {
-        $data = Destination::findOrFail($id);
-    	$img = $data->image;
-    	unlink($img);
+        $destination = Destination::findOrFail($id);
+    	$destination_image = $destination->image;
+        unlink($destination_image);
+
+        $images = Gallery::where('destination_id', $id);
+
+		foreach ($images as $image) {
+            $imgDel = Gallery::findOrFail($image);
+            unlink($imgDel->name);
+            $imgDel->delete();
+        }
+
     	Destination::findOrFail($id)->delete();
 
     	$notification = array(
@@ -157,3 +149,4 @@ class DestinationController extends Controller
 		return redirect()->back()->with($notification);
     }
 }
+

@@ -1,13 +1,13 @@
 @extends('admin.admin-master')
 @section('admin')
     <div class="container-full">
-
       <section class="content">
         <div class="row"> 
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
                 <h3 class="box-title">Users List</h3>
+                <span class="badge badge-pill badge-danger"> {{ count($users) }} </span>
               </div>
               <div class="box-body">
                   <div class="table-responsive">
@@ -40,6 +40,5 @@
           </div>
         </div>
       </section>
-    
     </div>
 @endsection

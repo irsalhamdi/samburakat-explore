@@ -7,6 +7,7 @@
             <div class="box">
               <div class="box-header with-border">
                 <h4 class="box-title">Destination Packages List</h4>
+                <span class="badge badge-pill badge-danger"> {{ count($destinationpackages) }} </span>
                 <a href="{{ route('destination-packages.create') }}" class="btn btn-primary btn-sm" style="float: right;">
                   Add New Destination Packages
                 </a>

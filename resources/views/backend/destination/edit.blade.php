@@ -1,6 +1,5 @@
 @extends('admin.admin-master')
 @section('admin')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="container-full">
       <section class="content">
         <div class="row"> 
@@ -37,7 +36,7 @@
                                         Select Village
                                     </option>
                                     @foreach ($villages as $village)
-                                        <option value="{{ $village->id }}">
+                                        <option value="{{ $village->id }}" {{ $village->id == $data->village_id ? 'selected' : '' }}>
                                             {{ $village->name }}
                                         </option>
                                     @endforeach
@@ -51,10 +50,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <h5>Image<span class="text-danger">*</span></h5>
-                            <div class="controls">
-                                <input type="file" name="image" class="form-control"> 
-                            </div>
+                            <h5>Thumbnail</h5>
+                            <input type="file" name="thumbnail" class="form-control" required onChange="mainThamUrl(this)">
+                            <img src="" id="mainThmb">
+                        </div>
+                        <div class="form-group">
+                            <h5>Image</h5>
+                            <input type="file" id="multiImg" name="image[]" class="form-control" required multiple>
+                            <div id="preview_img"></div>
                         </div>
                         <div class="form-group">
                             <h5>Description<span class="text-danger">*</span></h5> 
@@ -86,61 +89,41 @@
       </section>
     </div>
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('select[name="province_id"]').on('change', function(){
-                var province_id = $(this).val();
-                if(province_id) {
-                    $.ajax({
-                        url: "{{  url('/get-regency/ajax') }}/"+province_id,
-                        type:"GET",
-                        dataType:"json",
-                        success:function(data) {
-                            $('select[name="district_id"]').empty(); 
-                            $('select[name="village_id"]').empty(); 
-                        var d =$('select[name="regency_id"]').empty();
-                            $.each(data, function(key, value){
-                                $('select[name="regency_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
-                            });
-                        },
+        function mainThamUrl(input){
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e){
+                    $('#mainThmb').attr('src', e.target.result).width(80).height(80);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }    
+    </script>    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#multiImg').on('change', function(){
+                if (window.File && window.FileReader && window.FileList && window.Blob){
+                    var data = $(this)[0].files;
+           
+                    $.each(data, function(index, file){
+                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){
+
+                            var fRead = new FileReader();
+                            fRead.onload = (function(file){
+
+                                return function(e) {
+                                    var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(80).height(80); 
+                                    $('#preview_img').append(img);
+                                };
+
+                            })(file);
+
+                            fRead.readAsDataURL(file);
+                        }
                     });
-                } else {
-                    alert('danger');
-                }
-            });
-            $('select[name="regency_id"]').on('change', function(){
-                var regency_id = $(this).val();
-                if(regency_id) {
-                    $.ajax({
-                        url: "{{  url('/get-district/ajax') }}/" + regency_id,
-                        type:"GET",
-                        dataType:"json",
-                        success:function(data) {
-                        var d =$('select[name="district_id"]').empty();
-                            $.each(data, function(key, value){
-                                $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
-                            });
-                        },
-                    });
-                } else {
-                    alert('danger');
-                }
-            });
-            $('select[name="district_id"]').on('change', function(){
-                var district_id = $(this).val();
-                if(district_id) {
-                    $.ajax({
-                        url: "{{  url('/get-village/ajax') }}/" + district_id,
-                        type:"GET",
-                        dataType:"json",
-                        success:function(data) {
-                        var d =$('select[name="village_id"]').empty();
-                            $.each(data, function(key, value){
-                                $('select[name="village_id"]').append('<option value="'+ value.id +'">' + value.name + '</option>');
-                            });
-                        },
-                    });
-                } else {
-                    alert('danger');
+           
+                }else{
+                    alert("Your browser doesn't support File API!");
                 }
             });
         });
