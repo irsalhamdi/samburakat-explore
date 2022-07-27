@@ -50,16 +50,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <h5>Thumbnail</h5>
-                            <input type="file" name="thumbnail" class="form-control" required onChange="mainThamUrl(this)">
-                            <img src="" id="mainThmb">
-                        </div>
-                        <div class="form-group">
-                            <h5>Image</h5>
-                            <input type="file" id="multiImg" name="image[]" class="form-control" required multiple>
-                            <div id="preview_img"></div>
-                        </div>
-                        <div class="form-group">
                             <h5>Description<span class="text-danger">*</span></h5> 
                             <div class="controls">
                                 <textarea id="editor1" name="description" rows="10" cols="80" required>
@@ -85,6 +75,80 @@
                     </form>
                 </div>
           </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box bt-3 border-info">
+                    <div class="box-header">
+                        <h4 class="box-title">Destination Gallery <strong>Update</strong></h4>
+                    </div>
+                    <form method="POST" action="{{ route('destination-gallery.update') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row row-sm">
+                            @foreach($galleries as $img)
+                                <div class="col-md-3">
+                                    <div class="card mt-3">
+                                        <img src="{{ asset($img->image) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <a href="{{ route('destination-gallery-delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                            </h5>
+                                            <p class="card-text"> 
+                                                <div class="form-group">
+                                                    <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                                    <input class="form-control" type="file" name="multi_img[{{ $img->id }}]">
+                                                </div> 
+                                            </p>
+                                        </div> 
+                                    </div> 		
+                                </div>
+                            @endforeach
+                        </div>			
+                        <div class="text-xs-right">
+                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+                        </div>
+                        <br><br>
+                    </form>		   
+                </div>
+            </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box bt-3 border-info">
+                    <div class="box-header">
+                        <h4 class="box-title">Destination Image <strong>Update</strong></h4>
+                    </div>
+                    <form method="post" action="{{ route('destination-image-update') }}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $data->id }}">
+                        <input type="hidden" name="old_img" value="{{ $data->image }}">
+                        <div class="row row-sm">
+                            <div class="col-md-3">
+                                <div class="card mt-3">
+                                    <img src="{{ asset($data->image) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                    <div class="card-body">
+                                        <p class="card-text"> 
+                                            <div class="form-group">
+                                                <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                                <input type="file" name="image" class="form-control" onChange="mainThamUrl(this)"  >
+                                                <img src="" id="mainThmb">
+                                            </div> 
+                                        </p>
+                                    </div>
+                                </div> 		
+                            </div>
+                        </div>			
+                        <div class="text-xs-right">
+                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+                        </div>
+                        <br><br>
+                    </form>		   
+                </div>
+            </div>
         </div>
       </section>
     </div>

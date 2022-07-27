@@ -100,7 +100,7 @@ class DestinationController extends Controller
 
              $notification = [
                 'message' => 'Destination Updated Succesfully',
-                'alert-type' => 'success'
+                'alert-type' => 'info'
             ];
 
             return redirect()->route('destination.all')->with($notification);            
@@ -118,53 +118,95 @@ class DestinationController extends Controller
 
             $notification = [
                 'message' => 'Destination Updated Succesfully',
-                'alert-type' => 'success'
+                'alert-type' => 'info'
             ];
 
             return redirect()->route('destination.all')->with($notification);
         }
     }
 
+    public function updateImage(Request $request)
+    {
+        $destination_id = $request->id;
+        $oldImage = $request->old_img;
+        unlink($oldImage);
+   
+       $image = $request->file('image');
+           $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+           Image::make($image)->resize(917,1000)->save('upload/destination/image/'.$name_gen);
+           $save_url = 'upload/destination/image/'.$name_gen;
+   
+           Destination::findOrFail($destination_id)->update([
+               'image' => $save_url,
+   
+           ]);
+   
+            $notification = array(
+               'message' => 'Destination Image Updated Successfully',
+               'alert-type' => 'info'
+           );
+   
+           return redirect()->back()->with($notification);
+    }
+
     public function updateGallery(Request $request){
 
-        $images = $request->image;
+        $images = $request->multi_img;
 
 		foreach ($images as $id => $img) {
             $imgDel = Gallery::findOrFail($id);
-            unlink($imgDel->name);
+            unlink($imgDel->image);
 
             $name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-            Image::make($img)->resize(917,1000)->save('upload/destination/gallery/'.$name);
-            $url = 'upload/destination/gallery/'.$name;
+            Image::make($img)->resize(917,1000)->save('upload/destination/galleries/'.$name);
+            $url = 'upload/destination/galleries/'.$name;
 
             Gallery::where('id',$id)->update([
                 'image' => $url,
             ]);
         }
+
+        $notification = [
+            'message' => 'Destination Gallery Updated Succesfully',
+            'alert-type' => 'info'
+        ];
+
+        return redirect()->back()->with($notification);
+
+    }
+
+    public function deleteGallery($id){
+        $oldimg = Gallery::findOrFail($id);
+        unlink($oldimg->image);
+        Gallery::findOrFail($id)->delete();
+
+        $notification = array(
+           'message' => 'Gallery Deleted Successfully',
+           'alert-type' => 'success'
+       );
+
+       return redirect()->back()->with($notification);
+
     }
 
     public function destroy($id)
     {
         $destination = Destination::findOrFail($id);
-    	$destination_image = $destination->image;
-        unlink($destination_image);
+        unlink($destination->image);
+        Destination::findOrFail($id)->delete();
 
-        $images = Gallery::where('destination_id', $id);
-
-		foreach ($images as $image) {
-            $imgDel = Gallery::findOrFail($image);
-            unlink($imgDel->name);
-            $imgDel->delete();
+        $images = Gallery::where('destination_id',$id)->get();
+        foreach ($images as $img) {
+            unlink($img->image);
+            Gallery::where('destination_id',$id)->delete();
         }
 
-    	Destination::findOrFail($id)->delete();
+        $notification = array(
+           'message' => 'Destination Deleted Successfully',
+           'alert-type' => 'success'
+       );
 
-    	$notification = array(
-			'message' => 'Destination Deleted Successfully',
-			'alert-type' => 'info'
-		);
-
-		return redirect()->back()->with($notification);
+       return redirect()->back()->with($notification);
     }
 }
 
