@@ -11,11 +11,14 @@ use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Backend\PackagesController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\TransportationController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Models\DestinationType;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('destination', [HomeController::class, 'destination'])->name('destination');
+Route::get('destination/detail', [HomeController::class, 'destinationDetail'])->name('destination-detail');
+Route::get('destination-packages', [HomeController::class, 'destinationPackages'])->name('destination-packages');
+Route::get('destination-packages/detail', [HomeController::class, 'destinationPackagesDetail'])->name('destination-packages-detail');
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::get('/login', [AdminController::class, 'loginForm']);
