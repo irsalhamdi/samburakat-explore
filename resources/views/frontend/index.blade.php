@@ -2,6 +2,7 @@
 @section('content')
     <div class="intro intro-carousel swiper position-relative">
         <div class="swiper-wrapper">
+        @foreach ($destinations as $item)
         <div class="swiper-slide carousel-item-a intro-item bg-image"
             style="background-image: url(frontend/assets/images/Pantai-Biduk-Biduk.jpg)">
             <div class="overlay overlay-a"></div>
@@ -12,14 +13,14 @@
                     <div class="col-lg-8">
                     <div class="intro-body">
                         <p class="intro-title-top">Kalimantan Timur, Berau
-                        <br> Kecamatan, Desa
+                        <br> Kecamatan, {{ $item->village->name }}</p>
                         </p>
                         <h1 class="intro-title mb-4 ">
-                        <span class="color-b">Pantai</span>
-                        <br> Biduk-Biduk
+                        <span class="color-b">{{ $item->destinationtype->name }}</span>
+                        <br> {{ $item->name }}
                         </h1>
                         <p class="intro-subtitle intro-price">
-                        <a href="#"><span class="price-a">Rp 360.000</span></a>
+                        <a href="#"><span class="price-a">Rp {{ $item->price }}</span></a>
                         </p>
                     </div>
                     </div>
@@ -28,58 +29,8 @@
             </div>
             </div>
         </div>
-        <div class="swiper-slide carousel-item-a intro-item bg-image"
-            style="background-image: url(frontend/assets/images/air-terjun-tembalang.jpg)">
-            <div class="overlay overlay-a"></div>
-            <div class="intro-content display-table">
-            <div class="table-cell">
-                <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                    <div class="intro-body">
-                        <p class="intro-title-top">Kalimantan Timur, Berau
-                        <br> Kecamatan, Desa
-                        </p>
-                        <h1 class="intro-title mb-4 ">
-                        <span class="color-b">Air Terjun</span>
-                        <br> Tembalang
-                        </h1>
-                        <p class="intro-subtitle intro-price">
-                        <a href="#"><span class="price-a">Rp 120.000</span></a>
-                        </p>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="swiper-slide carousel-item-a intro-item bg-image"
-            style="background-image: url(frontend/assets/images/keraton.jpg)">
-            <div class="overlay overlay-a"></div>
-            <div class="intro-content display-table">
-            <div class="table-cell">
-                <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                    <div class="intro-body">
-                        <p class="intro-title-top">Kalimantan Timur, Berau
-                        <br> Kecamatan, Desa
-                        </p>
-                        <h1 class="intro-title mb-4 ">
-                        <span class="color-b">Bangunan</span>
-                        <br> Keraton Sambaliung
-                        </h1>
-                        <p class="intro-subtitle intro-price">
-                        <a href="#"><span class="price-a">Rp 30.000</span></a>
-                        </p>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
+        @endforeach
+
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -376,85 +327,27 @@
             <div id="news-carousel" class="swiper">
                 <div class="swiper-wrapper">
 
-                <div class="carousel-item-c swiper-slide">
-                    <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="frontend/assets/images/danau_labuan_cermin.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                        <div class="card-category-b">
-                            <a href="{{ route('destination-detail') }}" class="category-b">Danau</a>
+                @foreach ($destinations as $item)
+                    <div class="carousel-item-c swiper-slide">
+                        <div class="card-box-b card-shadow news-box">
+                        <div class="img-box-b">
+                            <img src="upload/destination/image/{{ $item->image }}" alt="" class="img-b img-fluid">
                         </div>
-                        <div class="card-title-b">
-                            <h2 class="title-2">
-                            <a href="wisata-single.html">Labuan Cermin</a>
-                            </h2>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item-c swiper-slide">
-                    <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="frontend/assets/images/sangalaki.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                        <div class="card-category-b">
-                            <a href="{{ route('destination-detail') }}" class="category-b">Pantai</a>
-                        </div>
-                        <div class="card-title-b">
-                            <h2 class="title-2">
-                            <a href="wisata-single.html">Pantai sangalaki</a>
-                            </h2>
+                        <div class="card-overlay">
+                            <div class="card-header-b">
+                            <div class="card-category-b">
+                                <a href="/destination/{{ $item->id }}" class="category-b">{{ $item->destinationtype->name }}</a>
+                            </div>
+                            <div class="card-title-b">
+                                <h2 class="title-2">
+                                    <a href="/destination/{{ $item->id }}">{{ $item->name }}</a>
+                                </h2>
+                            </div>
+                            </div>
                         </div>
                         </div>
                     </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item-c swiper-slide">
-                    <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="frontend/assets/images/air-terjun-tembalang.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                        <div class="card-category-b">
-                            <a href="{{ route('destination-detail') }}" class="category-b">Air Terjun</a>
-                        </div>
-                        <div class="card-title-b">
-                            <h2 class="title-2">
-                            <a href="wisata-single.html">Air Terjun Tembalang</a>
-                            </h2>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item-c swiper-slide">
-                    <div class="card-box-b card-shadow news-box">
-                    <div class="img-box-b">
-                        <img src="frontend/assets/images/keraton.jpg" alt="" class="img-b img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-header-b">
-                        <div class="card-category-b">
-                            <a href="{{ route('destination-detail') }}" class="category-b">Bangunan</a>
-                        </div>
-                        <div class="card-title-b">
-                            <h2 class="title-2">
-                            <a href="#">Keraton Sambaliung</a>
-                            </h2>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                @endforeach
 
                 </div>
             </div>
@@ -538,6 +431,6 @@
             </div>
             <div class="testimonial-carousel-pagination carousel-pagination"></div>
             </div>
-        </section>    
+        </section>
     </main>
 @endsection

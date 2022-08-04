@@ -10,4 +10,9 @@ class Packages extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function destinationPackages()
+    {
+        return $this->hasMany(DestinationPackages::class);
+    }
 }

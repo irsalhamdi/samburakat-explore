@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single">Pantai Biduk-Biduk</h1>
+              <h1 class="title-single">{{ $destination->name }}</h1>
               <span class="color-text-a">Kalimantan Timur / Berau / Kecamatan / Desa</span>
             </div>
           </div>
@@ -20,7 +20,7 @@
                   Wisata
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Pantai Biduk-Biduk
+                  {{ $destination->name }}
                 </li>
               </ol>
             </nav>
@@ -34,7 +34,7 @@
 
         <div class="row">
           <div class="col-sm-12">
-            <img src="frontend/assets/images/Pantai-Biduk-Biduk.jpg" alt="" class="img-fluid mb-5 w-100"
+            <img src="/upload/destination/image/{{ $destination->image }}" alt="" class="img-fluid mb-5 w-100"
               style="object-fit: cover !important;">
             <div class="row justify-content-between">
               <div class="col-md-5 col-lg-4">
@@ -44,7 +44,7 @@
                       <span class="bi bi-cash">Rp</span>
                     </div>
                     <div class="card-title-c align-self-center">
-                      <h5 class="title-c">190.000</h5>
+                      <h5 class="title-c">{{ $destination->price }}</h5>
                     </div>
                   </div>
                 </div>
@@ -92,15 +92,7 @@
                   </div>
                 </div>
                 <div class="property-description">
-                  <p class="description color-text-a">
-                    Pantai Biduk Biduk merupakan pantai yang memiliki pasir putih serta air laut jernih yang nampak
-                    berwarna biru. Kemudian, komdisi alamnya pun masih sangat asri dan masih jarang pula orang
-                    berkunjung kesini.
-                  </p>
-                  <p class="description color-text-a no-margin">
-                    Maka dari itu, bila datang pada waktu tertentu pengunjung akan merasa seperti pantai pribadi. Pada
-                    saat berada di pantai Biduk-Biduk, pengunjung dapat menyaksikan pemandangan laut Sulawesi serta
-                    merasakan semilir angin yang menyejukan. </p>
+                  {!! $destination->description !!}
                 </div>
               </div>
             </div>
@@ -119,41 +111,15 @@
           </div>
         </div>
         <div class="row g-0">
+          @foreach ($destination->galleries as $gallery)
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="frontend/assets/images/gallery/gallery-1.jpg" class="gallery-lightbox">
-                <img src="frontend/assets/images/gallery/gallery-1.jpg" alt="" class="img-fluid">
+              <a href="upload/destination/galleries/{{ $gallery->image }}" class="gallery-lightbox">
+                <img src="/upload/destination/galleries/{{ $gallery->image }}" alt="" class="img-fluid">
               </a>
             </div>
           </div>
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item"> <a href="frontend/assets/images/gallery/gallery-2.jpg" class="gallery-lightbox"> <img
-                  src="frontend/assets/images/gallery/gallery-2.jpg" alt="" class="img-fluid"> </a></div>
-          </div>
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item"> <a href="frontend/assets/images/gallery/gallery-3.jpg" class="gallery-lightbox"> <img
-                  src="frontend/assets/images/gallery/gallery-3.jpg" alt="" class="img-fluid"> </a></div>
-          </div>
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item"> <a href="frontend/assets/images/gallery/gallery-4.jpg" class="gallery-lightbox"> <img
-                  src="frontend/assets/images/gallery/gallery-4.jpg" alt="" class="img-fluid"> </a></div>
-          </div>
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item"> <a href="frontend/assets/images/gallery/gallery-5.jpg" class="gallery-lightbox"> <img
-                  src="frontend/assets/images/gallery/gallery-5.jpg" alt="" class="img-fluid"> </a></div>
-          </div>
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item"> <a href="frontend/assets/images/gallery/gallery-6.jpg" class="gallery-lightbox"> <img
-                  src="frontend/assets/images/gallery/gallery-6.jpg" alt="" class="img-fluid"> </a></div>
-          </div>
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item"> <a href="frontend/assets/images/gallery/gallery-7.jpg" class="gallery-lightbox"> <img
-                  src="frontend/assets/images/gallery/gallery-7.jpg" alt="" class="img-fluid"> </a></div>
-          </div>
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item"> <a href="frontend/assets/images/gallery/gallery-8.jpg" class="gallery-lightbox"> <img
-                  src="frontend/assets/images/gallery/gallery-8.jpg" alt="" class="img-fluid"> </a></div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>
