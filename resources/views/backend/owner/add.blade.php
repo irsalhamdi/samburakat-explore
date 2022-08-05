@@ -18,7 +18,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <h5>Village</h5>
+                                    <h5>Village<span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <select name="village_id" required class="form-control">
                                             <option value="" selected="" disabled="">

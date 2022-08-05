@@ -11,17 +11,20 @@ use Illuminate\Support\Facades\Hash;
 class AdminProfileController extends Controller
 {
     public function index(){
-        $admin = Admin::find(1);
+        $id = Auth::user()->id;
+        $admin = Admin::find($id);
         return view('admin.profile', compact('admin'));
     }
 
     public function edit(){
-        $admin = Admin::find(1);
+        $id = Auth::user()->id;
+        $admin = Admin::find($id);
         return view('admin.profile-edit', compact('admin'));
     }
 
     public function update(Request $request){
-        $data = Admin::find(1);
+        $id = Auth::user()->id;
+        $data = Admin::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
 
@@ -43,7 +46,8 @@ class AdminProfileController extends Controller
     }
 
     public function changePassword(){
-        $admin = Admin::find(1);
+        $id = Auth::user()->id;
+        $admin = Admin::find($id);
         return view('admin.change-password', compact('admin'));
     }
 
@@ -53,9 +57,9 @@ class AdminProfileController extends Controller
             'password' => 'required|confirmed',
         ]);
 
-        $hashed = Admin::find(1)->password;
+        $hashed = Auth::user()->password;
         if(Hash::check($request->oldpassword,$hashed)) {
-            $admin = Admin::find(1);
+            $admin = Admin::find(Auth::id());
             $admin->password = Hash::make($request->password);
             $admin->save();
             Auth::logout();

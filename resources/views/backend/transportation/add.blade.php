@@ -12,7 +12,7 @@
                             <form method="POST" action="{{ route('transportation.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <h5>Owner</h5>
+                                    <h5>Owner<span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <select name="owner_id" required class="form-control">
                                             <option value="" selected="" disabled="">

@@ -8,6 +8,9 @@
               <div class="box-header with-border">
                 <h3 class="box-title">Admins List</h3>
                 <span class="badge badge-pill badge-danger"> {{ count($admins) }} </span>
+                <a href="{{ route('role-admin.create') }}" class="btn btn-primary btn-sm" style="float: right;">
+                  Add New Admin
+                </a>
               </div>
               <div class="box-body">
                   <div class="table-responsive">
@@ -16,6 +19,8 @@
                           <tr>
                               <th>Name</th>
                               <th>Email</th>
+                              <th>Phone</th>
+                              <th>Access</th>
                               <th>Profile Image</th>
                               <th>Action</th>
                           </tr>
@@ -25,12 +30,39 @@
                             <tr>
                                 <td>{{ $admin->name }}</td>
                                 <td>{{ $admin->email }}</td>
+                                <td>{{ $admin->phone }}</td>
                                 <td>
-                                    <img src="{{ (!empty($admin->profile_photo_path)) ? url('upload/admin-profile/'.$admin->profile_photo_path) : url('upload/default.jpg') }}" style="width: 70px; height: 40px;">
+                                    @if($admin->role == 1)
+                                      <span class="badge btn-primary">Role</span>
+                                    @else
+                                    @endif
+
+                                    @if($admin->destination == 1)
+                                      <span class="badge btn-secondary">Destination</span>
+                                    @else
+                                    @endif
+
+                                    @if($admin->transportation == 1)
+                                      <span class="badge btn-success">Transportation</span>
+                                    @else
+                                    @endif
+
+                                    @if($admin->packages == 1)
+                                      <span class="badge btn-danger">Packages</span>
+                                    @else
+                                    @endif
+
+                                    @if($admin->booking == 1)
+                                      <span class="badge btn-warning">Booking</span>
+                                    @else
+                                    @endif
+                                </td>
+                                <td> 
+                                    <img src="{{ asset($admin->profile_photo_path) }}" style="width: 50px; height: 50px;">
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-info">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('role.admin.edit',$admin->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                    <a href="{{ route('role.admin.delete',$admin->id) }}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

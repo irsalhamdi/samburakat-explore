@@ -19,6 +19,14 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone')->nullable();
+            $table->char('village_id')->nullable();
+            $table->string('role')->nullable()->default('0');
+            $table->string('destination')->nullable()->default('0');
+            $table->string('transportation')->nullable()->default('0');
+            $table->string('packages')->nullable()->default('0');
+            $table->string('booking')->nullable()->default('0');
+            $table->string('type')->nullable()->default('0');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();

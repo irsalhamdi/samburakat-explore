@@ -29,10 +29,6 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('dashboard');
 })->name('dashboard');
 
-Route::prefix('role')->group(function(){
-    Route::get('all-admin', [RoleController::class, 'admin'])->name('role.admin');
-    Route::get('all-users', [RoleController::class, 'users'])->name('role.users');
-});
 
 Route::middleware(['auth:admin'])->group(function(){
 
@@ -83,6 +79,13 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('destination-packages/edit/{id}', [DestinationPackagesController::class, 'edit'])->name('destination-packages.edit');
     Route::post('destination-packages/update/{id}', [DestinationPackagesController::class, 'update'])->name('destination-packages.update');
     Route::get('destination-packages/delete/{id}', [DestinationPackagesController::class, 'delete'])->name('destination-packages.delete');
+    Route::get('role-admin/all', [RoleController::class, 'admin'])->name('role.admin.all');
+    Route::get('role-admin/create', [RoleController::class, 'create'])->name('role-admin.create');
+    Route::post('role-admin/store', [RoleController::class, 'store'])->name('role-admin.store');
+    Route::get('role-admin/edit/{id}', [RoleController::class, 'edit'])->name('role.admin.edit');
+    Route::post('role-admin/update/{id}', [RoleController::class, 'update'])->name('role.admin.update');
+    Route::get('role-admin/delete/{id}', [RoleController::class, 'destroy'])->name('role.admin.delete');
+    Route::get('role-users/all', [RoleController::class, 'users'])->name('role.users.all');
 });  
 
 Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);
