@@ -7,7 +7,7 @@
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
               <h1 class="title-single">{{ $destination->name }}</h1>
-              <span class="color-text-a">Kalimantan Timur / Berau / Kecamatan / Desa</span>
+              <span class="color-text-a">{{ $desa->district->regency->province->name }} / {{ $desa->district->regency->name }} / {{ $desa->district->name }} / {{ $desa->name }}</span>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Destination;
 use App\Models\DestinationPackages;
-use App\Models\Packages;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class DestinationPackagesController extends Controller
@@ -19,7 +19,7 @@ class DestinationPackagesController extends Controller
     public function create()
     {
         $destinations = Destination::latest()->get();
-        $packages = Packages::latest()->get();
+        $packages = Package::latest()->get();
         return view('backend.destination-packages.add', compact('destinations', 'packages'));
     }
 
@@ -38,7 +38,7 @@ class DestinationPackagesController extends Controller
     public function edit($id)
     {
         $destinations = Destination::latest()->get();
-        $packages = Packages::latest()->get();
+        $packages = Package::latest()->get();
         $data = DestinationPackages::findOrFail($id);
         return view('backend.destination-packages.edit', compact('destinations', 'packages', 'data'));
     }

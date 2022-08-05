@@ -17,6 +17,7 @@ class CreateTransportationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('owner_id');
             $table->string('name');
+            $table->string('image');
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade');

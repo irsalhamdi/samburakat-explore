@@ -93,15 +93,15 @@
         <ul class="navbar-nav">
 
           <li class="nav-item">
-            <a class="nav-link active" href="/">Beranda</a>
+            <a class="nav-link {{ request()->is('/') ? 'active' : ''}}" href="/">Beranda</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{ route('destination-packages') }}">Paket</a>
+            <a class="nav-link {{ request()->is('destination-packages') ? 'active' : ''}}" href="{{ route('destination-packages') }}">Paket</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{ route('destination') }}">Wisata</a>
+            <a class="nav-link {{ request()->is('destination') ? 'active' : ''}}" href="{{ route('destination') }}">Wisata</a>
           </li>
 
         </ul>

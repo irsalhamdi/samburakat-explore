@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Packages;
+use App\Models\Village;
 use App\Models\Destination;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use App\Models\DestinationPackages;
 use App\Http\Controllers\Controller;
@@ -25,18 +26,21 @@ class HomeController extends Controller
     public function destinationDetail($id)
     {
         $destination = Destination::with(['galleries'])->where('id', $id)->first();
-        return view('frontend.destination-detail', compact('destination'));
+        $desa = Village::with('district')->where('id', $destination->village_id)->first();
+        return view('frontend.destination-detail', compact('destination', 'desa'));
     }
 
     public function destinationPackages()
     {
-        $packages = Packages::latest()->get();
+        $packages = Package::with(['destinations', 'transportations'])->latest()->get();
         return view('frontend.destination-packages', compact('packages'));
     }
 
     public function destinationPackagesDetail($id)
     {
-        return view('frontend.destination-packages-detail');
+        $package = Package::with(['destinations', 'transportations'])->where('id', $id)->first();
+        // $name_package = Package::where('id', $id)->first();
+        return view('frontend.destination-packages-detail', compact('package'));
     }
 
 }

@@ -33,21 +33,21 @@
         <div class="col-md-4">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="frontend/assets/images/Pulau-Derawan-Kalimantan-1.jpg" alt="" class="img-a img-fluid">
+              <img src="/upload/package/thumbnail/{{ $item->thumbnail }}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
                     <a href="paket-single.html">{{ $item->name }}
-                      <br />3 Hari 2 Malam</a>
+                      <br />{{ $item->day }} Hari {{ $item->night }} Malam</a>
                   </h2>
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">Rp 499.000</span>
+                    <span class="price-a">Rp {{ $item->price }}</span>
                   </div>
-                  <a href="/destination-packages/detail" class="link-a">Lihat selengkapnya
+                  <a href="/destination-packages/{{ $item->id }}" class="link-a">Lihat selengkapnya
                     <span class="bi bi-chevron-right"></span>
                   </a>
                 </div>
@@ -55,19 +55,15 @@
                   <ul class="card-info d-flex justify-content-around">
                     <li>
                       <h4 class="card-info-title">Wisata</h4>
-                      <span>3</span>
+                      <span>{{ count($item->destinations) }}</span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Penginapan</h4>
                       <span>1</span>
                     </li>
                     <li>
-                      <h4 class="card-info-title">Kuliner</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
                       <h4 class="card-info-title">Transport</h4>
-                      <span>Elf Isuzu</span>
+                      <span>{{ count($item->transportations) }}</span>
                     </li>
                   </ul>
                 </div>

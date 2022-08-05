@@ -15,9 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Admin::factory()->create();
         $this->call(IndoRegionSeeder::class);
+
         $this->call(DestinationTypeSeeder::class);
         $this->call(DestinationSeeder::class);
-        // $this->call(Packages::class);
-        // $this->call(DestinationPackages::class);
+        $this->call(PackageSeeder::class);
+        $this->call(DestinationPackagesSeeder::class);
+
+        $this->call(OwnerSeeder::class);
+        $this->call(TransportationSeeder::class);
+        $this->call(PackageTransportationSeeder::class);
     }
 }
