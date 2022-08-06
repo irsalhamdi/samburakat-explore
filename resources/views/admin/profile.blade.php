@@ -12,26 +12,24 @@
 					  <h6 class="widget-user-desc">{{ $admin->email }}</h6>
 					</div>
 					<div class="widget-user-image">
-					  <img class="rounded-circle" src="{{ (!empty($admin->profile_photo_path)) ? url('upload/admin-profile/'.$admin->profile_photo_path) : url('upload/default.jpg') }}">
+					  <img class="rounded-circle" src="{{ (!empty($admin->profile_photo_path)) ? asset($admin->profile_photo_path) : url('upload/default.jpg') || (!empty($admin->profile_photo_path)) ? url('upload/admin-profile/'.$admin->profile_photo_path) : url('upload/default.jpg') }}">
 					</div>
 					<div class="box-footer">
 					  <div class="row">
 						<div class="col-sm-4">
 						  <div class="description-block">
-							<h5 class="description-header">12K</h5>
-							<span class="description-text">FOLLOWERS</span>
+							<h5 class="description-header">{{ $admin->village_id }}</h5>
+							<span class="description-text">Village</span>
 						  </div>
 						</div>
 						<div class="col-sm-4 br-1 bl-1">
 						  <div class="description-block">
-							<h5 class="description-header">550</h5>
-							<span class="description-text">FOLLOWERS</span>
 						  </div>
 						</div>
 						<div class="col-sm-4">
 						  <div class="description-block">
-							<h5 class="description-header">158</h5>
-							<span class="description-text">TWEETS</span>
+							<h5 class="description-header">{{ $admin->phone }}</h5>
+							<span class="description-text">Phone</span>
 						  </div>
 						</div>
 					  </div>

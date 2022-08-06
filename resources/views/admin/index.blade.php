@@ -1,5 +1,10 @@
 @extends('admin.admin-master')
 @section('admin')
+    @php
+        $destinations = App\Models\Destination::latest()->get();
+        $destinationpackages = App\Models\DestinationPackages::latest()->get();
+        $bookings = App\Models\Booking::latest()->get();
+    @endphp
     <div class="container-full">
         <section class="content">
             <div class="row">
@@ -10,8 +15,12 @@
                                 <i class="text-primary mr-0 font-size-24 mdi mdi-account-multiple"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">New Customers</p>
-                                <h3 class="text-white mb-0 font-weight-500">3400 <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3>
+                                <p class="text-mute mt-20 mb-0 font-size-16">
+                                    Destinations
+                                </p>
+                                <h3 class="text-white mb-0 font-weight-500">
+                                    {{ count($destinations) }}
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -23,8 +32,12 @@
                                 <i class="text-warning mr-0 font-size-24 mdi mdi-car"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">Sold Cars</p>
-                                <h3 class="text-white mb-0 font-weight-500">3400 <small class="text-success"><i class="fa fa-caret-up"></i> +2.5%</small></h3>
+                                <p class="text-mute mt-20 mb-0 font-size-16">
+                                    Destinations Packages
+                                </p>
+                                <h3 class="text-white mb-0 font-weight-500">
+                                    {{ count($destinationpackages) }}
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -36,8 +49,12 @@
                                 <i class="text-info mr-0 font-size-24 mdi mdi-sale"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">Sales Lost</p>
-                                <h3 class="text-white mb-0 font-weight-500">$1,250 <small class="text-danger"><i class="fa fa-caret-down"></i> -0.5%</small></h3>
+                                <p class="text-mute mt-20 mb-0 font-size-16">
+                                    Booking
+                                </p>
+                                <h3 class="text-white mb-0 font-weight-500">
+                                    {{ count($bookings) }}
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -49,8 +66,16 @@
                                 <i class="text-danger mr-0 font-size-24 mdi mdi-phone-incoming"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">Inbound Call</p>
-                                <h3 class="text-white mb-0 font-weight-500">1,460 <small class="text-danger"><i class="fa fa-caret-up"></i> -1.5%</small></h3>
+                                <p class="text-mute mt-20 mb-0 font-size-16">
+                                    Money
+                                </p>
+                                <h3 class="text-white mb-0 font-weight-500">
+                                    1,460 
+                                    <small class="text-danger">
+                                        <i class="fa fa-caret-up"></i> 
+                                        -1.5%
+                                    </small>
+                                </h3>
                             </div>
                         </div>
                     </div>

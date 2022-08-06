@@ -21,12 +21,11 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('transportation_id')->nullable();
             $table->dateTime('date');
             $table->string('payment_proof');
-            $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
             $table->foreign('transportation_id')->references('id')->on('transportations')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

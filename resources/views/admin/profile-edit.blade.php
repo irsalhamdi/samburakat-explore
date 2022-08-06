@@ -36,20 +36,48 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5>Profile Photo<span class="text-danger">*</span></h5>
+                                            <h5>Phone<span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="file" name="profile_photo_path" class="form-control" id="image"> </div>
+                                                <input type="number" name="phone" class="form-control" required value="{{ $admin->phone }}">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <img id="showImage" src="{{ (!empty($admin->profile_photo_path)) ? url('upload/admin-profile/'.$admin->profile_photo_path) : url('upload/default.jpg') }}" style="width: 100px; height: 100px;">
+                                        <div class="form-group">
+                                            <h5>Village</h5>
+                                            <div class="controls">
+                                                <select name="village_id" required class="form-control">
+                                                    <option value="" selected="" disabled="">
+                                                        Select Village
+                                                    </option>
+                                                    @foreach ($villages as $village)
+                                                        <option value="{{ $village->id }}" {{ $village->id == $admin->village_id ? 'selected' : '' }}>
+                                                            {{ $village->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h5>Profile Photo<span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="file" name="profile_photo_path" class="form-control" id="image"> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img id="showImage" src="{{ (!empty($admin->profile_photo_path)) ? asset($admin->profile_photo_path) : url('upload/default.jpg') || (!empty($admin->profile_photo_path)) ? url('upload/admin-profile/'.$admin->profile_photo_path) : url('upload/default.jpg') }}" style="width: 100px; height: 100px;">
                                     </div>
                                 </div>
                            </div>
                          </div>
-                           <div class="text-xs-right">
-                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
-                           </div>
+                         <div class="text-xs-right">
+                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
+                         </div>
                        </form>
                    </div>
                  </div>

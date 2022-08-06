@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Admin;
+use App\Models\Village;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class AdminProfileController extends Controller
     public function edit(){
         $id = Auth::user()->id;
         $admin = Admin::find($id);
-        return view('admin.profile-edit', compact('admin'));
+        $villages = Village::where('district_id', '6405070')->orderBy('name', 'ASC')->get();
+        return view('admin.profile-edit', compact('admin', 'villages'));
     }
 
     public function update(Request $request){
@@ -27,6 +29,8 @@ class AdminProfileController extends Controller
         $data = Admin::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->village_id = $request->village_id;
 
         if($request->file('profile_photo_path')){
             $file = $request->file('profile_photo_path');

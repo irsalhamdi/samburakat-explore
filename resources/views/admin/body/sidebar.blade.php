@@ -13,7 +13,7 @@
   <section class="sidebar">	
       <div class="user-profile">
 			  <div class="ulogo">
-				  <a href="index.html">
+				  <a href="{{ route('dashboard') }}">
 					 <div class="d-flex align-items-center justify-content-center">		
 						  <h3><b>Samburakat Explore</b> Admin</h3>
 					 </div>
@@ -99,26 +99,21 @@
         @endif
         
         @if ($booking == true)
-
+          <li class="treeview {{ ($prefix == '/booking') ? 'active' : '' }}">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Booking</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'booking.pending') ? 'active' : '' }}"><a href="{{ route('booking.pending') }}"><i class="ti-more"></i>Pending</a></li>
+              <li class="{{ ($route == 'booking.success') ? 'active' : '' }}"><a href="{{ route('booking.success') }}"><i class="ti-more"></i>Success</a></li>
+            </ul>
+          </li>   
         @else    
         @endif
-
-        <li class="header nav-small-cap">User Interface</li>
-		  
-        <li class="treeview">
-          <a href="#">
-            <i data-feather="grid"></i>
-            <span>Components</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-            <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-            <li><a href="components_buttons.html"><i class="ti-more"></i>Buttons</a></li>
-          </ul>
-        </li>
 
       </ul>
   </section>
