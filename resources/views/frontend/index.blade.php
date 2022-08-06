@@ -130,7 +130,7 @@
                                     <div class="card-overlay-a-content">
                                         <div class="card-header-a">
                                             <h2 class="card-title-a">
-                                                <a href="{{ route('destination-packages-detail') }}">DERAWAN TRIP
+                                                <a href="">DERAWAN TRIP
                                                     <br/>3 Hari 2 Malam
                                                 </a>
                                             </h2>
@@ -177,7 +177,7 @@
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
                                         <h2 class="card-title-a">
-                                            <a href="{{ route('destination-packages-detail') }}">Wisata Sejarah
+                                            <a href="">Wisata Sejarah
                                                 <br/>1 Hari
                                             </a>
                                         </h2>
@@ -186,7 +186,7 @@
                                         <div class="price-box d-flex">
                                             <span class="price-a">Rp 12.000</span>
                                         </div>
-                                        <a href="{{ route('destination-packages-detail') }}" class="link-a">Lihat selengkapnya
+                                        <a href="" class="link-a">Lihat selengkapnya
                                             <span class="bi bi-chevron-right"></span>
                                         </a>
                                     </div>
@@ -220,7 +220,7 @@
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
                                         <h2 class="card-title-a">
-                                            <a href="{{ route('destination-packages-detail') }}">DERAWAN TRIP
+                                            <a href="">DERAWAN TRIP
                                                 <br />3 Hari 2 Malam
                                             </a>
                                         </h2>
@@ -267,7 +267,7 @@
                                 <div class="card-overlay-a-content">
                                 <div class="card-header-a">
                                     <h2 class="card-title-a">
-                                        <a href="{{ route('destination-packages-detail') }}">Wisata Sejarah
+                                        <a href="">Wisata Sejarah
                                             <br/> 1 Hari
                                         </a>
                                     </h2>
@@ -276,7 +276,7 @@
                                     <div class="price-box d-flex">
                                         <span class="price-a">Rp 12.000</span>
                                     </div>
-                                    <a href="{{ route('destination-packages-detail') }}" class="link-a">Lihat selengkapnya
+                                    <a href="" class="link-a">Lihat selengkapnya
                                         <span class="bi bi-chevron-right"></span>
                                     </a>
                                 </div>

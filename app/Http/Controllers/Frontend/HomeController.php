@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Village;
 use App\Models\Destination;
 use App\Models\Package;
-use Illuminate\Http\Request;
-use App\Models\DestinationPackages;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller

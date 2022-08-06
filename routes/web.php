@@ -13,7 +13,6 @@ use App\Http\Controllers\Backend\PackagesController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\TransportationController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Models\Booking;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('destination', [HomeController::class, 'destination'])->name('destination');
