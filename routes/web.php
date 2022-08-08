@@ -15,8 +15,8 @@ use App\Http\Controllers\Backend\TransportationController;
 use App\Http\Controllers\Frontend\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('destination', [HomeController::class, 'destination'])->name('destination');
-Route::get('destination/{id}', [HomeController::class, 'destinationDetail'])->name('destination-detail');
+Route::get('destinations', [HomeController::class, 'destination'])->name('destinations');
+Route::get('destinations/{id}', [HomeController::class, 'destinationDetail'])->name('destinations-detail');
 Route::get('destination-packages', [HomeController::class, 'destinationPackages'])->name('destination-packages');
 Route::get('destination-packages/{id}', [HomeController::class, 'destinationPackagesDetail'])->name('destination-packages-detail');
 

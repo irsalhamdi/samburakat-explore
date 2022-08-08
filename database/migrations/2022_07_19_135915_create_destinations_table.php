@@ -22,6 +22,7 @@ class CreateDestinationsTable extends Migration
             $table->text('description');
             $table->string('guide');
             $table->string('price');
+            $table->string('location');
             $table->timestamps();
 
             $table->foreign('destination_type_id')->references('id')->on('destination_types')->onDelete('cascade');

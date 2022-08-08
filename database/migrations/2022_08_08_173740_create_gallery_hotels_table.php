@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackagesTable extends Migration
+class CreateGalleryHotelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreatePackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('gallery_hotels', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('thumbnail');
-            $table->text('description');
-            $table->integer('day')->nullable();
-            $table->integer('night')->nullable();
-            $table->integer('price');
-            $table->unsignedBigInteger('hotel_id')->nullable();
+            $table->unsignedBigInteger('hotel_id');
+            $table->string('image');
             $table->timestamps();
 
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
@@ -35,6 +30,6 @@ class CreatePackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('gallery_hotels');
     }
 }

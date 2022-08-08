@@ -101,7 +101,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link {{ request()->is('destination') ? 'active' : ''}}" href="{{ route('destination') }}">Wisata</a>
+            <a class="nav-link {{ request()->is('destinations') ? 'active' : ''}}" href="{{ route('destination') }}">Wisata</a>
           </li>
 
         </ul>

@@ -21,7 +21,7 @@ class PackageSeeder extends Seeder
             'day' => 2,
             'night' => 1,
             'price' => 100000,
-            'lodging' => 'lodging_default.jpg',
+            'hotel' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -32,7 +32,7 @@ class PackageSeeder extends Seeder
             'day' => 3,
             'night' => 2,
             'price' => 150000,
-            'lodging' => 'lodging_default.jpg',
+            'hotel' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
