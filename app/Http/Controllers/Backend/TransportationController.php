@@ -28,7 +28,7 @@ class TransportationController extends Controller
 			'alert-type' => 'info'
 		);
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('transportation.all')->with($notification);
     }
 
     public function edit($id){

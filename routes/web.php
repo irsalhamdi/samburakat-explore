@@ -88,6 +88,7 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('destination-packages/delete/{id}', [DestinationPackagesController::class, 'delete'])->name('destination-packages.delete');
     Route::get('booking/pending', [BookingController::class, 'pending'])->name('booking.pending');
     Route::get('booking/success', [BookingController::class, 'success'])->name('booking.success');
+    Route::get('booking/verify/{id}', [BookingController::class, 'verify'])->name('booking.verify');
 });  
 
 Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);

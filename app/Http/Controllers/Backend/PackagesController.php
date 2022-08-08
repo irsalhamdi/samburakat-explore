@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Packages;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class PackagesController extends Controller
 {
     public function index()
     {
-        $packages = Packages::latest()->get();
+        $packages = Package::latest()->get();
         return view('backend.packages.index', compact('packages'));
     }
 
@@ -21,7 +21,7 @@ class PackagesController extends Controller
 
     public function store(Request $request)
     {   
-        Packages::create($request->all());
+        Package::create($request->all());
 
         $notification = array(
 			'message' => 'Package Created Successfully',
@@ -33,13 +33,13 @@ class PackagesController extends Controller
 
     public function edit($id)
     {
-        $package = Packages::findOrFail($id);
+        $package = Package::findOrFail($id);
         return view('backend.packages.edit', compact('package'));
     }
 
     public function update(Request $request, $id)
     {
-        $package  = Packages::where('id', $id)->first();
+        $package  = Package::where('id', $id)->first();
         $package->update($request->all()); 
 
         $notification = array(
@@ -52,7 +52,7 @@ class PackagesController extends Controller
 
     public function delete($id)
     {
-        Packages::findOrFail($id)->delete();
+        Package::findOrFail($id)->delete();
 
         $notification = [
             'message' => 'Package Deleted Succesfully',

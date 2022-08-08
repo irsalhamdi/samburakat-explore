@@ -28,7 +28,7 @@ class OwnerController extends Controller
             'alert-type' => 'success'
         ];
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('owner.all')->with($notification);
     }
 
     public function edit($id){

@@ -20,7 +20,8 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('destination_id')->nullable();
             $table->unsignedBigInteger('transportation_id')->nullable();
             $table->dateTime('date');
-            $table->string('payment_proof');
+            $table->string('payment_proof')->default('unpaid');
+            $table->string('image')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
