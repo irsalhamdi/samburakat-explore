@@ -10,7 +10,7 @@ class Transportation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'owner_id', 'name',
+        'owner_id', 'name', 'image',
     ];
 
     public function owner(){

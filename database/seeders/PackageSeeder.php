@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Package;
 use Illuminate\Database\Seeder;
 
-class Packageeeder extends Seeder
+class PackageSeeder extends Seeder
 {
     /**
      * Run the database seeds.

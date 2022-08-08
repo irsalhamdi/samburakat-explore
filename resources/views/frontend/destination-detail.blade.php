@@ -7,17 +7,19 @@
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
               <h1 class="title-single">{{ $destination->name }}</h1>
-              <span class="color-text-a">{{ $desa->district->regency->province->name }} / {{ $desa->district->regency->name }} / {{ $desa->district->name }} / {{ $desa->name }}</span>
+              <span class="color-text-a">
+                {{ $province->name }} / {{ $regency->name }} / {{ $district->name }} / {{ $village->name }}
+              </span>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Wisata
+                  <a href="{{ route('destination') }}">Wisata</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   {{ $destination->name }}

@@ -2,8 +2,9 @@
 @section('admin')
     @php
         $destinations = App\Models\Destination::latest()->get();
-        $destinationpackages = App\Models\DestinationPackages::latest()->get();
+        $packages = App\Models\Package::latest()->get();
         $bookings = App\Models\Booking::latest()->get();
+        $money = App\Models\Booking::with('package')->latest()->get();
     @endphp
     <div class="container-full">
         <section class="content">
@@ -33,10 +34,10 @@
                             </div>
                             <div>
                                 <p class="text-mute mt-20 mb-0 font-size-16">
-                                    Destinations Packages
+                                    Packages
                                 </p>
                                 <h3 class="text-white mb-0 font-weight-500">
-                                    {{ count($destinationpackages) }}
+                                    {{ count($packages) }}
                                 </h3>
                             </div>
                         </div>
@@ -70,7 +71,7 @@
                                     Money
                                 </p>
                                 <h3 class="text-white mb-0 font-weight-500">
-                                    1,460 
+                                    {{ count($money) }}
                                     <small class="text-danger">
                                         <i class="fa fa-caret-up"></i> 
                                         -1.5%

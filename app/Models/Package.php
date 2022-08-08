@@ -9,7 +9,7 @@ class Package extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'thumbnail', 'description', 'day', 'night', 'price', 'lodging'];
 
     public function destinations()
     {

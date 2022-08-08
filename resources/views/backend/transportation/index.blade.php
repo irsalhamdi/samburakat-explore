@@ -29,7 +29,7 @@
                                 <td>{{ $transportation->name}}</td>
                                 <td>
                                     <a href="{{ route('transportation.edit', $transportation->id) }}" class="btn btn-sm btn-info">Edit</a>
-                                    <a href="{{ route('transportation.delete', $transportation->id) }}" class="btn  tn-sm btn-danger">Delete</a>
+                                    <a href="{{ route('transportation.delete', $transportation->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
