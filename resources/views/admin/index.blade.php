@@ -4,6 +4,7 @@
         $destinations = App\Models\Destination::latest()->get();
         $packages = App\Models\Package::latest()->get();
         $bookings = App\Models\Booking::latest()->get();
+        $revenue = App\Models\Booking::sum('total_price');
     @endphp
     <div class="container-full">
         <section class="content">
@@ -70,11 +71,7 @@
                                     Money
                                 </p>
                                 <h3 class="text-white mb-0 font-weight-500">
-                                    1,460 
-                                    <small class="text-danger">
-                                        <i class="fa fa-caret-up"></i> 
-                                        -1.5%
-                                    </small>
+                                    {{ $revenue }}
                                 </h3>
                             </div>
                         </div>

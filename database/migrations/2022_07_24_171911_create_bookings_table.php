@@ -22,6 +22,7 @@ class CreateBookingsTable extends Migration
             $table->dateTime('date');
             $table->string('payment_proof')->default('unpaid');
             $table->string('image')->nullable();
+            $table->string('total_price')->default('0');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
