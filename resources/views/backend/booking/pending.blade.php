@@ -19,6 +19,7 @@
                                         <th>Name</th>
                                         <th>Packages</th>
                                         <th>Destination</th>
+                                        <th>Transportation</th>
                                         <th>Date</th>
                                         <th>Payment</th>
                                         <th>Action</th>
@@ -30,6 +31,7 @@
                                         <td>{{ $booking->user->name}}</td>
                                         <td>{{ $booking->package->name }}</td>
                                         <td>{{ $booking->destination->name }}</td>
+                                        <td>{{ $booking->transportation->name }}</td>
                                         <td>{{ $booking->date }}</td>
                                         <td>
                                             @if ($booking->payment_proof === 'unpaid')

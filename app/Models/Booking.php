@@ -24,4 +24,10 @@ class Booking extends Model
     {
         return $this->belongsTo(Package::class, 'package_id', 'id');
     }
+
+    public function transportation()
+    {
+        return $this->belongsTo(transportation::class, 'transportation_id', 'id');
+    }
+
 }

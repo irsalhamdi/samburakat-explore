@@ -4,7 +4,6 @@
         $destinations = App\Models\Destination::latest()->get();
         $packages = App\Models\Package::latest()->get();
         $bookings = App\Models\Booking::latest()->get();
-        $money = App\Models\Booking::with('package')->latest()->get();
     @endphp
     <div class="container-full">
         <section class="content">
@@ -71,7 +70,7 @@
                                     Money
                                 </p>
                                 <h3 class="text-white mb-0 font-weight-500">
-                                    {{ count($money) }}
+                                    1,460 
                                     <small class="text-danger">
                                         <i class="fa fa-caret-up"></i> 
                                         -1.5%
