@@ -1,7 +1,6 @@
 @extends('admin.admin-master')
 @section('admin')
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 	<div class="container-full">
 		<section class="content">
 			<div class="box">
@@ -144,7 +143,6 @@
 			</div>
 		</section>
 	</div>
-
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#image').change(function(e){

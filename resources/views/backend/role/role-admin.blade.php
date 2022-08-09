@@ -42,6 +42,16 @@
                                     @else
                                     @endif
 
+                                    @if($admin->owner == 1)
+                                      <span class="badge btn-secondary">Owner</span>
+                                    @else
+                                    @endif
+
+                                    @if($admin->hotel == 1)
+                                      <span class="badge btn-light">Hotel</span>
+                                    @else
+                                    @endif
+
                                     @if($admin->transportation == 1)
                                       <span class="badge btn-success">Transportation</span>
                                     @else
@@ -53,7 +63,17 @@
                                     @endif
 
                                     @if($admin->booking == 1)
-                                      <span class="badge btn-warning">Booking</span>
+                                      <span class="badge btn-dark">Booking</span>
+                                    @else
+                                    @endif
+
+                                    @if($admin->testimoni == 1)
+                                      <span class="badge btn-outline-primary">Testimoni</span>
+                                    @else
+                                    @endif
+
+                                    @if($admin->setting == 1)
+                                      <span class="badge btn-outline-success">Setting</span>
                                     @else
                                     @endif
                                 </td>

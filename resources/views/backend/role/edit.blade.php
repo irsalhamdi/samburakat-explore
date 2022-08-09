@@ -1,7 +1,6 @@
 @extends('admin.admin-master')
 @section('admin')
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 	<div class="container-full">
 		<section class="content">
 			<div class="box">
@@ -89,8 +88,16 @@
 														<label for="checkbox_2">Destination</label>
 													</fieldset>
 													<fieldset>
-														<input type="checkbox" id="checkbox_3" name="transportation" value="1" {{ $admin->transportation == 1 ? "checked" : ''}}>
+														<input type="checkbox" id="checkbox_3" name="transportation" value="1" {{ $admin->transportation == 1 ? 'checked' : '' }}>
 														<label for="checkbox_3">Transportation</label>
+													</fieldset>
+													<fieldset>
+														<input type="checkbox" id="checkbox_4" name="hotel" value="1" {{ $admin->hotel == 1 ? 'checked' : '' }}>
+														<label for="checkbox_4">Hotel</label>
+													</fieldset>
+													<fieldset>
+														<input type="checkbox" id="checkbox_5" name="setting" value="1" {{ $admin->setting == 1 ? 'checked' : '' }}>
+														<label for="checkbox_5">Setting</label>
 													</fieldset>
 												</div>
 											</div>
@@ -99,14 +106,21 @@
 											<div class="form-group">
 												<div class="controls">
 													<fieldset>
-														<input type="checkbox" id="checkbox_4" name="packages" value="1" {{ $admin->packages == 1 ? 'checked' : '' }}>
-														<label for="checkbox_4">Packages</label>
+														<input type="checkbox" id="checkbox_6" name="packages" value="1" {{ $admin->packages == 1 ? 'checked' : '' }}>
+														<label for="checkbox_6">Packages</label>
 													</fieldset>
 													<fieldset>
-														<input type="checkbox" id="checkbox_5" name="booking" value="1" {{ $admin->booking == 1 ? 'checked' : '1'}}>
-														<label for="checkbox_5">Booking</label>
+														<input type="checkbox" id="checkbox_7" name="booking" value="1" {{ $admin->booking == 1 ? 'checked' : '' }}>
+														<label for="checkbox_7">Booking</label>
 													</fieldset>
-												</div>
+													<fieldset>
+														<input type="checkbox" id="checkbox_8" name="owner" value="1" {{ $admin->owner == 1 ? 'checked' : '' }}>
+														<label for="checkbox_8">Owner</label>
+													</fieldset>
+													<fieldset>
+														<input type="checkbox" id="checkbox_9" name="testimoni" value="1" {{ $admin->testimoni == 1 ? 'checked' : '' }}>
+														<label for="checkbox_9">Testimoni</label>
+													</fieldset>
 											</div>
 										</div>
 									</div>
@@ -122,7 +136,6 @@
 			</div>
 		</section>
 	</div>
-
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#image').change(function(e){
