@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DestinationTypeSeeder::class);
         $this->call(DestinationSeeder::class);
+        $this->call(OwnerSeeder::class);
+        $this->call(HotelSeeder::class);
         $this->call(PackageSeeder::class);
         $this->call(DestinationPackagesSeeder::class);
-
-        $this->call(OwnerSeeder::class);
         $this->call(TransportationSeeder::class);
         $this->call(PackageTransportationSeeder::class);
     }

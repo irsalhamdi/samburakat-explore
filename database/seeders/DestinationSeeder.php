@@ -32,6 +32,7 @@ class DestinationSeeder extends Seeder
                 </p>',
             'guide' => 'Rifky Martha Hadian Firmana',
             'price' => '3000000',
+            'location' => 'https://www.google.com/maps/place/Derawan+Islands/@2.2248478,118.1832271,10z/data=!3m1!4b1!4m5!3m4!1s0x3212abcef5b94afb:0xe4cf7029473436a9!8m2!3d2.2368796!4d118.4278129',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -47,6 +48,7 @@ class DestinationSeeder extends Seeder
                 </p>',
             'guide' => 'Bima Rizky',
             'price' => '6500000',
+            'location' => 'https://www.google.com/maps/place/Derawan+Islands/@2.2248478,118.1832271,10z/data=!3m1!4b1!4m5!3m4!1s0x3212abcef5b94afb:0xe4cf7029473436a9!8m2!3d2.2368796!4d118.4278129',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -62,6 +64,7 @@ class DestinationSeeder extends Seeder
                 </p>',
             'guide' => 'Haidar',
             'price' => '8900000',
+            'location' => 'https://www.google.com/maps/place/Derawan+Islands/@2.2248478,118.1832271,10z/data=!3m1!4b1!4m5!3m4!1s0x3212abcef5b94afb:0xe4cf7029473436a9!8m2!3d2.2368796!4d118.4278129',
             'created_at' => now(),
             'updated_at' => now()
         ]);
