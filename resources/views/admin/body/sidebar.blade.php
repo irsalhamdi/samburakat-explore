@@ -11,6 +11,7 @@
   $packages = (auth()->guard('admin')->user()->packages == 1);
   $booking = (auth()->guard('admin')->user()->booking == 1);
   $testimoni = (auth()->guard('admin')->user()->booking == 1);
+  $setting = (auth()->guard('admin')->user()->setting == 1);
 @endphp
 <aside class="main-sidebar">
   <section class="sidebar">	
@@ -139,14 +140,34 @@
         @endif
         
         @if ($testimoni == true)
-        <li class="{{ ($route == 'testimoni.all') ? 'active' : '' }}">
-          <a href="{{ url('testimoni/all') }}">
-            <i data-feather="message-circle"></i>
-            <span>Testimoni</span>
-          </a>
-        </li>  
+          <li class="{{ ($route == 'testimoni.all') ? 'active' : '' }}">
+            <a href="{{ url('testimoni/all') }}">
+              <i data-feather="message-circle"></i>
+              <span>Testimoni</span>
+            </a>
+          </li>  
         @else 
         @endif
+
+        @if($setting == true)
+        <li class="treeview {{ ($prefix == '/setting') ? 'active' : '' }}">
+          <a href="{{ route('site') }}">
+            <i data-feather="message-circle"></i> <span>Settings</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'site') ? 'active' : '' }}">
+              <a href="{{ route('site') }}"><i class="ti-more"></i>Settings</a>
+            </li>
+            <li class="{{ ($route == 'seo') ? 'active' : '' }}">
+              <a href="{{ route('seo') }}"><i class="ti-more"></i>Seo Settings</a>
+            </li>
+          </ul>
+        </li>
+      @else
+      @endif
 
       </ul>
   </section>

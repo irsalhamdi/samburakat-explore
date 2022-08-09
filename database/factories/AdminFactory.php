@@ -38,6 +38,7 @@ class AdminFactory extends Factory
             'booking' => '1',
             'hotel' => '1',
             'testimoni' => '1',
+            'setting' => '1',
             'type' => '1'
         ];
     }

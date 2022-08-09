@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\HotelOwnerController;
 use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Backend\PackagesController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\TestimoniController;
 use App\Http\Controllers\Backend\TransportationController;
 use App\Http\Controllers\Backend\TransportationPackageController;
@@ -110,6 +111,10 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('testimoni/all',[TestimoniController::class, 'index'])->name('testimoni.all');
     Route::get('testimoni/activate/{id}', [TestimoniController::class, 'activate'])->name('testimoni.update.activate');
     Route::get('testimoni/inactivate/{id}', [TestimoniController::class, 'inactivate'])->name('testimoni.update.inactivate');
+    Route::get('setting/site', [SettingController::class, 'index'])->name('site');
+    Route::post('setting/site/update', [SettingController::class, 'update'])->name('update.site.setting');
+    Route::get('setting/seo', [SettingController::class, 'seo'])->name('seo');
+    Route::post('setting/seo/update', [SettingController::class, 'SeoUpdate'])->name('update.seo.setting');
 });  
 
 Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);

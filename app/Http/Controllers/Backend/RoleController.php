@@ -43,6 +43,7 @@ class RoleController extends Controller
             'packages' => $request->packages,
             'booking' => $request->booking,
             'testimoni' => $request->testimoni,
+            'setting' => $request->setting,
             'type' => 2,
             'profile_photo_path' => $save_url,
             'created_at' => Carbon::now(),
@@ -85,6 +86,7 @@ class RoleController extends Controller
                 'packages' => $request->packages,
                 'booking' => $request->booking,
                 'testimoni' => $request->testimoni,
+                'setting' => $request->setting,
                 'type' => 2,
                 'profile_photo_path' => $save_url,
                 'updated_at' => Carbon::now(),
@@ -107,6 +109,7 @@ class RoleController extends Controller
                 'transportation' => $request->transportation,
                 'packages' => $request->packages,
                 'booking' => $request->booking,
+                'setting' => $request->setting,
                 'type' => 2,
                 'updated_at' => Carbon::now(),
             ]);

@@ -102,6 +102,10 @@
 														<input type="checkbox" id="checkbox_4" name="hotel" value="1">
 														<label for="checkbox_4">Hotel</label>
 													</fieldset>
+													<fieldset>
+														<input type="checkbox" id="checkbox_5" name="setting" value="1">
+														<label for="checkbox_5">Setting</label>
+													</fieldset>
 												</div>
 											</div>
 										</div>
@@ -109,20 +113,20 @@
 											<div class="form-group">
 												<div class="controls">
 													<fieldset>
-														<input type="checkbox" id="checkbox_5" name="packages" value="1">
-														<label for="checkbox_5">Packages</label>
+														<input type="checkbox" id="checkbox_6" name="packages" value="1">
+														<label for="checkbox_6">Packages</label>
 													</fieldset>
 													<fieldset>
-														<input type="checkbox" id="checkbox_6" name="booking" value="1">
-														<label for="checkbox_6">Booking</label>
+														<input type="checkbox" id="checkbox_7" name="booking" value="1">
+														<label for="checkbox_7">Booking</label>
 													</fieldset>
 													<fieldset>
-														<input type="checkbox" id="checkbox_7" name="owner" value="1">
-														<label for="checkbox_7">Owner</label>
+														<input type="checkbox" id="checkbox_8" name="owner" value="1">
+														<label for="checkbox_8">Owner</label>
 													</fieldset>
 													<fieldset>
-														<input type="checkbox" id="checkbox_8" name="testimoni" value="1">
-														<label for="checkbox_8">Testimoni</label>
+														<input type="checkbox" id="checkbox_9" name="testimoni" value="1">
+														<label for="checkbox_9">Testimoni</label>
 													</fieldset>
 												</div>
 											</div>
