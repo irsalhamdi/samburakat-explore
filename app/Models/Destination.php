@@ -10,7 +10,7 @@ class Destination extends Model
     use HasFactory;
 
     protected $fillable = [
-        'destination_type_id', 'village_id', 'name', 'image', 'description', 'guide', 'price', 
+        'destination_type_id', 'village_id', 'name', 'image', 'description', 'guide', 'price', 'location' 
     ];
 
     public function destinationtype(){

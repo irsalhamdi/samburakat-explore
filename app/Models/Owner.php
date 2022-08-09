@@ -9,7 +9,7 @@ class Owner extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['village_id', 'name', 'phone_number'];
+    protected $fillable = ['village_id', 'name', 'phone_number', 'type'];
 
     public function village(){
         return $this->belongsTo(Village::class, 'village_id', 'id');

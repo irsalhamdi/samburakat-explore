@@ -32,9 +32,11 @@ class AdminFactory extends Factory
             'village_id' => '',
             'role' => '1',
             'destination' => '1',
+            'owner' => 1,
             'transportation' => '1',
             'packages' => '1',
             'booking' => '1',
+            'hotel' => '1',
             'type' => '1'
         ];
     }

@@ -19,6 +19,7 @@
                           <tr>
                               <th>Name</th>
                               <th>Village</th>
+                              <th>Ownership</th>
                               <th>Phone Number</th>
                               <th>Action</th>
                           </tr>
@@ -28,6 +29,26 @@
                             <tr>
                                 <td>{{ $owner->name }}</td>
                                 <td>{{ $owner->village->name }}</td>
+                                <td>
+                                  @if ( $owner->type === '1' )
+                                    <button class="btn btn-sm btn-secondary">
+                                      Hotel
+                                    </button>
+                                  @endif
+                                  @if ( $owner->type === '2' )
+                                    <button class="btn btn-sm btn-dark">
+                                      Transportation
+                                    </button>
+                                  @endif
+                                  @if ( $owner->type === '3' )
+                                    <button class="btn btn-sm btn-secondary">
+                                      Hotel
+                                    </button>
+                                    <button class="btn btn-sm btn-dark">
+                                      Transportation
+                                    </button>
+                                  @endif
+                                </td>
                                 <td>{{ $owner->phone_number }}</td>
                                 <td>
                                     <a href="{{ route('owner.edit', $owner->id) }}" class="btn btn-sm btn-info">Edit</a>

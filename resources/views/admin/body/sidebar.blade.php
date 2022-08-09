@@ -5,7 +5,9 @@
 @php
   $role = (auth()->guard('admin')->user()->role == 1);
   $destination = (auth()->guard('admin')->user()->destination == 1);
+  $owner = (auth()->guard('admin')->user()->owner == 1);
   $transportation = (auth()->guard('admin')->user()->transportation == 1);
+  $hotel = (auth()->guard('admin')->user()->hotel == 1);
   $packages = (auth()->guard('admin')->user()->packages == 1);
   $booking = (auth()->guard('admin')->user()->booking == 1);
 @endphp
@@ -64,8 +66,28 @@
         @else
         @endif   
 
+        @if ($owner == true)
+          <li class="{{ ($route == 'owner.all') ? 'active' : '' }}">
+            <a href="{{ url('owner/all') }}">
+              <i data-feather="message-circle"></i>
+              <span>Owner</span>
+            </a>
+          </li>  
+        @else 
+        @endif
+
+        @if ($hotel == true)
+        <li class="{{ ($route == 'hotel.all') ? 'active' : '' }}">
+          <a href="{{ url('hotel/all') }}">
+            <i data-feather="message-circle"></i>
+            <span>Hotel</span>
+          </a>
+        </li>  
+        @else 
+        @endif
+
         @if ($transportation == true)
-          <li class="treeview {{ ($prefix == '/owner' || $prefix == '/transportation') ? 'active' : '' }}">
+          <li class="treeview {{ ($prefix == '/transportation') ? 'active' : '' }}">
             <a href="#">
               <i data-feather="message-circle"></i>
               <span>Transportation</span>
@@ -74,7 +96,6 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ ($route == 'owner.all') ? 'active' : '' }}"><a href="{{ route('owner.all') }}"><i class="ti-more"></i>Owner</a></li>
               <li class="{{ ($route == 'transportation.all') ? 'active' : '' }}"><a href="{{ route('transportation.all') }}"><i class="ti-more"></i>Transportation</a></li>
             </ul>
           </li>  

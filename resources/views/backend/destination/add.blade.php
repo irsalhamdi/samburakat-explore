@@ -76,6 +76,12 @@
                                 <input type="number" name="price" class="form-control" required>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <h5>Location<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="text" name="location" class="form-control" required>
+                            </div>
+                        </div>
                         <div class="text-xs-right">
                             <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Submit">
                         </div>

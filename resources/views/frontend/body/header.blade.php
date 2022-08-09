@@ -81,6 +81,7 @@
 
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
+      
       <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
@@ -101,7 +102,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link {{ request()->is('destinations') ? 'active' : ''}}" href="{{ route('destination') }}">Wisata</a>
+            <a class="nav-link {{ request()->is('destinations') ? 'active' : ''}}" href="{{ route('destinations') }}">Wisata</a>
           </li>
 
         </ul>

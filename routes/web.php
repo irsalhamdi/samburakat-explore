@@ -8,6 +8,8 @@ use App\Http\Controllers\Backend\BookingController;
 use App\Http\Controllers\Backend\DestinationController;
 use App\Http\Controllers\Backend\DestinationPackagesController;
 use App\Http\Controllers\Backend\DestinationTypeController;
+use App\Http\Controllers\Backend\HotelController;
+use App\Http\Controllers\Backend\HotelOwnerController;
 use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Backend\PackagesController;
 use App\Http\Controllers\Backend\RoleController;
@@ -17,8 +19,8 @@ use App\Http\Controllers\Frontend\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('destinations', [HomeController::class, 'destination'])->name('destinations');
 Route::get('destinations/{id}', [HomeController::class, 'destinationDetail'])->name('destinations-detail');
-Route::get('destination-packages', [HomeController::class, 'destinationPackages'])->name('destination-packages');
-Route::get('destination-packages/{id}', [HomeController::class, 'destinationPackagesDetail'])->name('destination-packages-detail');
+Route::get('destinations-packages', [HomeController::class, 'destinationPackages'])->name('destination-packages');
+Route::get('destinations-packages/{id}', [HomeController::class, 'destinationPackagesDetail'])->name('destination-packages-detail');
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::get('/login', [AdminController::class, 'loginForm']);
@@ -74,6 +76,14 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('transportation/edit/{id}', [TransportationController::class, 'edit'])->name('transportation.edit');
     Route::post('transportation/update/{id}', [TransportationController::class, 'update'])->name('transportation.update');
     Route::get('transportation/delete/{id}', [TransportationController::class, 'destroy'])->name('transportation.delete');
+    Route::get('hotel/all', [HotelController::class, 'index'])->name('hotel.all');
+    Route::get('hotel/create', [HotelController::class, 'create'])->name('hotel.create');
+    Route::post('hotel/store', [HotelController::class, 'store'])->name('hotel.store');
+    Route::get('hotel/edit/{id}', [HotelController::class, 'edit'])->name('hotel.edit');
+    Route::post('hotel/update/{id}', [HotelController::class, 'update'])->name('hotel.update');
+    Route::get('hotel/delete/{id}', [HotelController::class, 'destroy'])->name('hotel.delete');
+    Route::post('hotel/update-gallery', [HotelController::class, 'updateGallery'])->name('hotel-gallery.update');
+    Route::get('hotel/delete-gallery/{id}', [HotelController::class, 'deleteGallery'])->name('hotel-gallery.delete');
     Route::get('packages/all', [PackagesController::class, 'index'])->name('packages.all');
     Route::get('packages/create', [PackagesController::class, 'create'])->name('packages.create');
     Route::post('packages/store', [PackagesController::class, 'store'])->name('packages.store');

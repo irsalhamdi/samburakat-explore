@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class OwnerController extends Controller
 {
     public function index(){
-        $owners = Owner::with('village')->get();
+        $owners = Owner::with('village')->orderBy('name', 'ASC')->get();
         return view('backend.owner.index', compact('owners'));
     }
 
@@ -21,7 +21,12 @@ class OwnerController extends Controller
     }
 
     public function store(Request $request){
-        Owner::create($request->all());
+        Owner::create([
+            'village_id' => $request->village_id,
+            'name' => $request->name,
+            'phone_number' => $request->phone_number,
+            'type' => $request->type
+        ]);
 
         $notification = [
             'message' => 'Owner Created Succesfully',

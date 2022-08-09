@@ -23,6 +23,8 @@ class CreateAdminsTable extends Migration
             $table->char('village_id')->nullable();
             $table->string('role')->nullable()->default('0');
             $table->string('destination')->nullable()->default('0');
+            $table->string('owner')->nullable()->default('0');
+            $table->string('hotel')->nullable()->default('0');
             $table->string('transportation')->nullable()->default('0');
             $table->string('packages')->nullable()->default('0');
             $table->string('booking')->nullable()->default('0');

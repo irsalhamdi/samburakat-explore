@@ -18,6 +18,7 @@ class CreateOwnersTable extends Migration
             $table->char('village_id');
             $table->string('name');
             $table->string('phone_number');
+            $table->string('type');
             $table->timestamps();
 
             $table->foreign('village_id')->references('id')->on('villages')->onDelete('cascade');

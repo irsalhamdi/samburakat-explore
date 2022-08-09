@@ -38,6 +38,25 @@
                                         <input type="number" name="phone_number" class="form-control" required> 
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <h5>Ownership<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <select name="type" required class="form-control">
+                                            <option selected disabled>
+                                                Select Ownership
+                                            </option>
+                                            <option value="1" >
+                                                Transportation
+                                            </option>
+                                            <option value="2" >
+                                                Hotels
+                                            </option>
+                                            <option value="3" >
+                                                Transportation & Hotels
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="text-xs-right">
                                     <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Submit">
                                 </div>

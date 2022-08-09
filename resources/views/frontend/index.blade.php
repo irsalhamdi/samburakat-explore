@@ -108,17 +108,16 @@
                     <div class="col-md-12">
                         <div class="title-wrap d-flex justify-content-between">
                             <div class="title-box">
-                            <h2 class="title-a">Paket Wisata</h2>
+                                <h2 class="title-a">Paket Wisata</h2>
                             </div>
                             <div class="title-link">
-                            <a href="{{ route('destination-packages') }}">Semua paket
-                                <span class="bi bi-chevron-right"></span>
-                            </a>
+                                <a href="{{ route('destination-packages') }}">Semua paket
+                                    <span class="bi bi-chevron-right"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div id="property-carousel" class="swiper">
                     <div class="swiper-wrapper">
                         <div class="carousel-item-b swiper-slide">
@@ -170,140 +169,139 @@
 
                         <div class="carousel-item-b swiper-slide">
                             <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                <img src="frontend/assets/images/keraton.jpg" alt="" class="img-a img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="">Wisata Sejarah
-                                                <br/>1 Hari
-                                            </a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-body-a">
-                                        <div class="price-box d-flex">
-                                            <span class="price-a">Rp 12.000</span>
+                                <div class="img-box-a">
+                                    <img src="frontend/assets/images/keraton.jpg" alt="" class="img-a img-fluid">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="card-overlay-a-content">
+                                        <div class="card-header-a">
+                                            <h2 class="card-title-a">
+                                                <a href="">Wisata Sejarah
+                                                    <br/>1 Hari
+                                                </a>
+                                            </h2>
                                         </div>
-                                        <a href="" class="link-a">Lihat selengkapnya
-                                            <span class="bi bi-chevron-right"></span>
-                                        </a>
-                                    </div>
-                                    <div class="card-footer-a">
-                                        <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Wisata</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Kuliner</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Transport</h4>
-                                            <span>Mitsubishi Pajero Sport</span>
-                                        </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item-b swiper-slide">
-                            <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                <img src="frontend/assets/images/Pulau-Derawan-Kalimantan-1.jpg" alt="" class="img-a img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="">DERAWAN TRIP
-                                                <br />3 Hari 2 Malam
+                                        <div class="card-body-a">
+                                            <div class="price-box d-flex">
+                                                <span class="price-a">Rp 12.000</span>
+                                            </div>
+                                            <a href="" class="link-a">Lihat selengkapnya
+                                                <span class="bi bi-chevron-right"></span>
                                             </a>
-                                        </h2>
+                                        </div>
+                                        <div class="card-footer-a">
+                                            <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">Wisata</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Kuliner</h4>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">Transport</h4>
+                                                <span>Mitsubishi Pajero Sport</span>
+                                            </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">Rp 12.000</span>
-                                    </div>
-                                    <a href="#" class="link-a">Lihat selengkapnya
-                                        <span class="bi bi-chevron-right"></span>
-                                    </a>
                                 </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Wisata</h4>
-                                        <span>3</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Penginapan</h4>
-                                        <span>1</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Kuliner</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Transport</h4>
-                                        <span>Elf Isuzu</span>
-                                    </li>
-                                    </ul>
-                                </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
 
                         <div class="carousel-item-b swiper-slide">
                             <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                <img src="frontend/assets/images/keraton.jpg" alt="" class="img-a img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="">Wisata Sejarah
-                                            <br/> 1 Hari
-                                        </a>
-                                    </h2>
+                                <div class="img-box-a">
+                                    <img src="frontend/assets/images/Pulau-Derawan-Kalimantan-1.jpg" alt="" class="img-a img-fluid">
                                 </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">Rp 12.000</span>
+                                <div class="card-overlay">
+                                    <div class="card-overlay-a-content">
+                                        <div class="card-header-a">
+                                            <h2 class="card-title-a">
+                                                <a href="">DERAWAN TRIP
+                                                    <br />3 Hari 2 Malam
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="card-body-a">
+                                            <div class="price-box d-flex">
+                                                <span class="price-a">Rp 12.000</span>
+                                            </div>
+                                            <a href="#" class="link-a">Lihat selengkapnya
+                                                <span class="bi bi-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                        <div class="card-footer-a">
+                                            <ul class="card-info d-flex justify-content-around">
+                                                <li>
+                                                    <h4 class="card-info-title">Wisata</h4>
+                                                    <span>3</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Penginapan</h4>
+                                                    <span>1</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Kuliner</h4>
+                                                    <span>2</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Transport</h4>
+                                                    <span>Elf Isuzu</span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <a href="" class="link-a">Lihat selengkapnya
-                                        <span class="bi bi-chevron-right"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Wisata</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Kuliner</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Transport</h4>
-                                        <span>Mitsubishi Pajero Sport</span>
-                                    </li>
-                                    </ul>
-                                </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="carousel-item-b swiper-slide">
+                            <div class="card-box-a card-shadow">
+                                <div class="img-box-a">
+                                    <img src="frontend/assets/images/keraton.jpg" alt="" class="img-a img-fluid">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="card-overlay-a-content">
+                                        <div class="card-header-a">
+                                            <h2 class="card-title-a">
+                                                <a href="">Wisata Sejarah
+                                                    <br/> 1 Hari
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="card-body-a">
+                                            <div class="price-box d-flex">
+                                                <span class="price-a">Rp 12.000</span>
+                                            </div>
+                                            <a href="" class="link-a">Lihat selengkapnya
+                                                <span class="bi bi-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                        <div class="card-footer-a">
+                                            <ul class="card-info d-flex justify-content-around">
+                                                <li>
+                                                    <h4 class="card-info-title">Wisata</h4>
+                                                    <span>2</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Kuliner</h4>
+                                                    <span>2</span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Transport</h4>
+                                                    <span>Mitsubishi Pajero Sport</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="propery-carousel-pagination carousel-pagination"></div>
-
             </div>
         </section>
 
@@ -316,7 +314,7 @@
                                 <h2 class="title-a">Wisata</h2>
                             </div>
                             <div class="title-link">
-                                <a href="{{ route('destination') }}">Semua wisata
+                                <a href="{{ route('destinations') }}">Semua wisata
                                     <span class="bi bi-chevron-right"></span>
                                 </a>
                             </div>
@@ -326,29 +324,27 @@
 
                 <div id="news-carousel" class="swiper">
                     <div class="swiper-wrapper">
-
-                    @foreach ($destinations as $item)
-                        <div class="carousel-item-c swiper-slide">
-                            <div class="card-box-b card-shadow news-box">
-                            <div class="img-box-b">
-                                <img src="upload/destination/image/{{ $item->image }}" alt="" class="img-b img-fluid">
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-header-b">
-                                <div class="card-category-b">
-                                    <a href="/destination/{{ $item->id }}" class="category-b">{{ $item->destinationtype->name }}</a>
+                        @foreach ($destinations as $item)
+                            <div class="carousel-item-c swiper-slide">
+                                <div class="card-box-b card-shadow news-box">
+                                    <div class="img-box-b">
+                                        <img src="upload/destination/image/{{ $item->image }}" alt="" class="img-b img-fluid">
+                                    </div>
+                                    <div class="card-overlay">
+                                        <div class="card-header-b">
+                                            <div class="card-category-b">
+                                                <a href="/destination/{{ $item->id }}" class="category-b">{{ $item->destinationtype->name }}</a>
+                                            </div>
+                                            <div class="card-title-b">
+                                                <h2 class="title-2">
+                                                    <a href="/destination/{{ $item->id }}">{{ $item->name }}</a>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-title-b">
-                                    <h2 class="title-2">
-                                        <a href="/destination/{{ $item->id }}">{{ $item->name }}</a>
-                                    </h2>
-                                </div>
-                                </div>
                             </div>
-                            </div>
-                        </div>
-                    @endforeach
-
+                        @endforeach
                     </div>
                 </div>
 

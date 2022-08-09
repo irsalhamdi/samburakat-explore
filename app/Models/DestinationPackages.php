@@ -12,11 +12,11 @@ class DestinationPackages extends Model
 
     protected $fillable = ['destination_id', 'package_id'];
 
-    public function destinations(){
+    public function destination(){
         return $this->belongsTo(Destination::class, 'destination_id', 'id');
     }
 
     public function package(){
-        return $this->belongsTo(Packages::class, 'package_id', 'id')->with('transportations');
+        return $this->belongsTo(Package::class, 'package_id', 'id');
     }
 }

@@ -18,7 +18,7 @@ class HotelSeeder extends Seeder
             'owner_id' => 1,
             'name' => 'Bumi segah',
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
     }
 }

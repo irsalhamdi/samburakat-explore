@@ -42,6 +42,7 @@ class DestinationController extends Controller
              'description' => $request->description,
              'guide' => $request->guide,
              'price' => $request->price, 
+             'location' => $request->location
         ]);
 
         $images = $request->file('image');
@@ -96,6 +97,7 @@ class DestinationController extends Controller
                 'description' => $request->description,
                 'guide' => $request->guide,
                 'price' => $request->price,
+                'location' => $request->location,
             ]);
 
              $notification = [
@@ -114,6 +116,7 @@ class DestinationController extends Controller
                 'description' => $request->description,
                 'guide' => $request->guide,
                 'price' => $request->price,
+                'location' => $request->location,
             ]);
 
             $notification = [

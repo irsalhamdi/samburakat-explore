@@ -18,8 +18,9 @@ class OwnerSeeder extends Seeder
             'name' => 'Hendrawan',
             'village_id' => '1101022007',
             'phone_number' => '082140091385',
+            'type' => '1',
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
     }
 }

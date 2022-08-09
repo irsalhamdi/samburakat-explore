@@ -98,6 +98,10 @@
 														<input type="checkbox" id="checkbox_3" name="transportation" value="1">
 														<label for="checkbox_3">Transportation</label>
 													</fieldset>
+													<fieldset>
+														<input type="checkbox" id="checkbox_4" name="hotel" value="1">
+														<label for="checkbox_4">Hotel</label>
+													</fieldset>
 												</div>
 											</div>
 										</div>
@@ -105,12 +109,16 @@
 											<div class="form-group">
 												<div class="controls">
 													<fieldset>
-														<input type="checkbox" id="checkbox_4" name="packages" value="1">
-														<label for="checkbox_4">Packages</label>
+														<input type="checkbox" id="checkbox_5" name="packages" value="1">
+														<label for="checkbox_5">Packages</label>
 													</fieldset>
 													<fieldset>
-														<input type="checkbox" id="checkbox_5" name="booking" value="1">
-														<label for="checkbox_5">Booking</label>
+														<input type="checkbox" id="checkbox_6" name="booking" value="1">
+														<label for="checkbox_6">Booking</label>
+													</fieldset>
+													<fieldset>
+														<input type="checkbox" id="checkbox_7" name="owner" value="1">
+														<label for="checkbox_7">Owner</label>
 													</fieldset>
 												</div>
 											</div>

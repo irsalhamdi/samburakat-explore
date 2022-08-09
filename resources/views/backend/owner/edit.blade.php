@@ -1,6 +1,5 @@
 @extends('admin.admin-master')
 @section('admin')
-
 	<div class="container-full">
 		<section class="content">
 		    <div class="row">
@@ -51,5 +50,4 @@
             </div>
 		</section>
 	</div>
-
 @endsection

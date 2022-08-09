@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Hotel;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class PackagesController extends Controller
 {
@@ -16,12 +18,34 @@ class PackagesController extends Controller
 
     public function create()
     {
-        return view('backend.packages.add');
+        $hotels = Hotel::orderBy('name', 'ASC')->get();
+        return view('backend.packages.add', compact('hotels'));
     }
 
     public function store(Request $request)
-    {   
-        Package::create($request->all());
+    {      
+
+        $image = $request->file('image');
+        $name = $request->name . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(870,370)->save('upload/package/' . $name);
+        $url = 'upload/package/' . $name;
+
+        Package::insert([
+            'name' => $request->name,
+            'thumbnail' => $url,
+            'description' => $request->description,
+            'day' => $request->day,
+            'night' => $request->night,
+            'price' => $request->price,
+            'hotel_id' => $request->hotel_id,
+        ]);
+
+        $notification = [
+            'message' => 'Package Created Succesfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('destination.all')->with($notification);
 
         $notification = array(
 			'message' => 'Package Created Successfully',
@@ -34,31 +58,75 @@ class PackagesController extends Controller
     public function edit($id)
     {
         $package = Package::findOrFail($id);
-        return view('backend.packages.edit', compact('package'));
+        $hotels = Hotel::orderBy('name', 'ASC')->get();
+        return view('backend.packages.edit', compact('package', 'hotels'));
     }
 
     public function update(Request $request, $id)
     {
-        $package  = Package::where('id', $id)->first();
-        $package->update($request->all()); 
+        $id = $request->id;
+        $old_image = $request->old_image;
+        
+        if($request->file('image')){
 
-        $notification = array(
-			'message' => 'Package Update Successfully',
-			'alert-type' => 'info'
-		);
+            unlink($old_image);
+            $image = $request->file('image');
+            $name = $request->name . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(870,370)->save('upload/package/' . $name);
+            $url = 'upload/package/' . $name;
 
-        return redirect()->route('packages.all')->with($notification);
+            Package::findOrFail($id)->update([
+                'name' => $request->name,
+                'thumbnail' => $url,
+                'description' => $request->description,
+                'day' => $request->day,
+                'night' => $request->night,
+                'price' => $request->price,
+                'hotel_id' => $request->hotel_id,
+            ]);
+
+            $notification = [
+                'message' => 'Package Updated Succesfully',
+                'alert-type' => 'success'
+            ];
+
+            return redirect()->route('packages.all')->with($notification);            
+
+        }else{
+
+            Package::findOrFail($id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'day' => $request->day,
+                'night' => $request->night,
+                'price' => $request->price,
+                'hotel_id' => $request->hotel_id,
+            ]);
+
+            $notification = [
+                'message' => 'Package Updated Succesfully',
+                'alert-type' => 'success'
+            ];
+
+            return redirect()->route('packages.all')->with($notification);
+        }
     }
 
     public function delete($id)
     {
-        Package::findOrFail($id)->delete();
+    	$data = Package::findOrFail($id);
+    	$img = $data->thumbnail;
+    	unlink($img);
+    	Package::findOrFail($id)->delete();
 
-        $notification = [
-            'message' => 'Package Deleted Succesfully',
-            'alert-type' => 'success'
-        ];
+    	$notification = array(
+			'message' => 'Package Deleted Successfully',
+			'alert-type' => 'info'
+		);
 
-        return redirect()->back()->with($notification);
+		return redirect()->back()->with($notification);
+    
     }
 }
+
+
