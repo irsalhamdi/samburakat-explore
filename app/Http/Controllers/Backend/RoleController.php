@@ -42,6 +42,7 @@ class RoleController extends Controller
             'hotel' => $request->hotel,
             'packages' => $request->packages,
             'booking' => $request->booking,
+            'testimoni' => $request->testimoni,
             'type' => 2,
             'profile_photo_path' => $save_url,
             'created_at' => Carbon::now(),
@@ -80,8 +81,10 @@ class RoleController extends Controller
                 'role' => $request->role,
                 'destination' => $request->destination,
                 'transportation' => $request->transportation,
+                'hotel' => $request->hotel,
                 'packages' => $request->packages,
                 'booking' => $request->booking,
+                'testimoni' => $request->testimoni,
                 'type' => 2,
                 'profile_photo_path' => $save_url,
                 'updated_at' => Carbon::now(),
@@ -124,10 +127,10 @@ class RoleController extends Controller
 
         Admin::findOrFail($id)->delete();
 
-         $notification = array(
+        $notification = array(
            'message' => 'Admin Deleted Successfully',
            'alert-type' => 'info'
-       );
+        );
 
        return redirect()->back()->with($notification);
     }

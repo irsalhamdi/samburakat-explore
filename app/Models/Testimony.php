@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testimony extends Model
 {
+    protected $fillable = ['user_id', 'description', 'status'];
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

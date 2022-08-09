@@ -13,7 +13,9 @@ use App\Http\Controllers\Backend\HotelOwnerController;
 use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Backend\PackagesController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\TestimoniController;
 use App\Http\Controllers\Backend\TransportationController;
+use App\Http\Controllers\Backend\TransportationPackageController;
 use App\Http\Controllers\Frontend\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -76,6 +78,12 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('transportation/edit/{id}', [TransportationController::class, 'edit'])->name('transportation.edit');
     Route::post('transportation/update/{id}', [TransportationController::class, 'update'])->name('transportation.update');
     Route::get('transportation/delete/{id}', [TransportationController::class, 'destroy'])->name('transportation.delete');
+    Route::get('transportation-package/all', [TransportationPackageController::class, 'index'])->name('transportation-package.all');
+    Route::get('transportation-package/create', [TransportationPackageController::class, 'create'])->name('transportation-package.create');
+    Route::post('transportation-package/store', [TransportationPackageController::class, 'store'])->name('transportation-package.store');
+    Route::get('transportation-package/edit/{id}', [TransportationPackageController::class, 'edit'])->name('transportation-package.edit');
+    Route::post('transportation-package/update/{id}', [TransportationPackageController::class, 'update'])->name('transportation-package.update');
+    Route::get('transportation-package/delete/{id}', [TransportationPackageController::class, 'destroy'])->name('transportation-package.delete');
     Route::get('hotel/all', [HotelController::class, 'index'])->name('hotel.all');
     Route::get('hotel/create', [HotelController::class, 'create'])->name('hotel.create');
     Route::post('hotel/store', [HotelController::class, 'store'])->name('hotel.store');
@@ -99,6 +107,9 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::get('booking/pending', [BookingController::class, 'pending'])->name('booking.pending');
     Route::get('booking/success', [BookingController::class, 'success'])->name('booking.success');
     Route::get('booking/verify/{id}', [BookingController::class, 'verify'])->name('booking.verify');
+    Route::get('testimoni/all',[TestimoniController::class, 'index'])->name('testimoni.all');
+    Route::get('testimoni/activate/{id}', [TestimoniController::class, 'activate'])->name('testimoni.update.activate');
+    Route::get('testimoni/inactivate/{id}', [TestimoniController::class, 'inactivate'])->name('testimoni.update.inactivate');
 });  
 
 Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);

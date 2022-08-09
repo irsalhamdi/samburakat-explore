@@ -120,6 +120,10 @@
 														<input type="checkbox" id="checkbox_7" name="owner" value="1">
 														<label for="checkbox_7">Owner</label>
 													</fieldset>
+													<fieldset>
+														<input type="checkbox" id="checkbox_8" name="testimoni" value="1">
+														<label for="checkbox_8">Testimoni</label>
+													</fieldset>
 												</div>
 											</div>
 										</div>

@@ -10,4 +10,14 @@ class PackageTransportation extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function transportation()
+    {
+        return $this->belongsTo(Transportation::class, 'transportation_id', 'id');
+    }
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class, 'package_id', 'id');
+    }
 }

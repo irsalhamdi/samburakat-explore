@@ -10,6 +10,7 @@
   $hotel = (auth()->guard('admin')->user()->hotel == 1);
   $packages = (auth()->guard('admin')->user()->packages == 1);
   $booking = (auth()->guard('admin')->user()->booking == 1);
+  $testimoni = (auth()->guard('admin')->user()->booking == 1);
 @endphp
 <aside class="main-sidebar">
   <section class="sidebar">	
@@ -87,7 +88,7 @@
         @endif
 
         @if ($transportation == true)
-          <li class="treeview {{ ($prefix == '/transportation') ? 'active' : '' }}">
+          <li class="treeview {{ ($prefix == '/transportation' || $prefix == '/transportation-package') ? 'active' : '' }}">
             <a href="#">
               <i data-feather="message-circle"></i>
               <span>Transportation</span>
@@ -97,6 +98,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="{{ ($route == 'transportation.all') ? 'active' : '' }}"><a href="{{ route('transportation.all') }}"><i class="ti-more"></i>Transportation</a></li>
+              <li class="{{ ($route == 'transportation-package.all') ? 'active' : '' }}"><a href="{{ route('transportation-package.all') }}"><i class="ti-more"></i>Package Transportation</a></li>
             </ul>
           </li>  
         @else 
@@ -134,6 +136,16 @@
             </ul>
           </li>   
         @else    
+        @endif
+        
+        @if ($testimoni == true)
+        <li class="{{ ($route == 'testimoni.all') ? 'active' : '' }}">
+          <a href="{{ url('testimoni/all') }}">
+            <i data-feather="message-circle"></i>
+            <span>Testimoni</span>
+          </a>
+        </li>  
+        @else 
         @endif
 
       </ul>

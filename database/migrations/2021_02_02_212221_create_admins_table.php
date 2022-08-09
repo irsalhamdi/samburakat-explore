@@ -28,6 +28,7 @@ class CreateAdminsTable extends Migration
             $table->string('transportation')->nullable()->default('0');
             $table->string('packages')->nullable()->default('0');
             $table->string('booking')->nullable()->default('0');
+            $table->string('testimoni')->nullable()->default('0');
             $table->string('type')->nullable()->default('0');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
