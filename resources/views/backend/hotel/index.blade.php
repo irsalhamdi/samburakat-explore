@@ -9,7 +9,7 @@
               <h4 class="box-title">Hotel List</h4>
               <span class="badge badge-pill badge-danger"> {{ count($hotels) }} </span>
               <a href="{{ route('hotel.create') }}" class="btn btn-sm btn-primary" style="float: right;">
-                Add New Hotel
+                Add
               </a>
             </div>
             <div class="box-body">

@@ -6,10 +6,10 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h4 class="box-title">Packages</h4>
+                <h4 class="box-title">Packages List</h4>
                 <span class="badge badge-pill badge-danger"> {{ count($packages) }} </span>
                 <a href="{{ route('packages.create') }}" class="btn btn-primary btn-sm" style="float: right;">
-                  Add New Package
+                  Add
                 </a>
               </div>
               <div class="box-body">

@@ -9,7 +9,7 @@
                 <h4 class="box-title">Owner List</h4>
                 <span class="badge badge-pill badge-danger"> {{ count($owners) }} </span>
                 <a href="{{ route('owner.create') }}" class="btn btn-primary btn-sm" style="float: right;">
-                  Add New Owner
+                  Add
                 </a>
               </div>
               <div class="box-body">

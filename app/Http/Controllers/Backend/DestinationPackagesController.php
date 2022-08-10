@@ -12,7 +12,7 @@ class DestinationPackagesController extends Controller
 {
     public function index()
     {   
-        $destinationpackages = DestinationPackages::with('destination', 'package')->get();
+        $destinationpackages = DestinationPackages::with('destination')->get();
         return view('backend.destination-packages.index', compact('destinationpackages'));
     }
 

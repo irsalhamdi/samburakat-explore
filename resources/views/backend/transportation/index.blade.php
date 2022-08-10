@@ -9,7 +9,7 @@
                 <h4 class="box-title">Transportation List</h4>
                 <span class="badge badge-pill badge-danger"> {{ count($transportations) }} </span>
                 <a href="{{ route('transportation.create') }}" class="btn btn-primary btn-sm" style="float: right;">
-                  Add New Transportation
+                  Add
                 </a>
               </div>
               <div class="box-body">

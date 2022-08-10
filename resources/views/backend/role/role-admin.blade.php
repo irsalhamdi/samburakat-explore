@@ -9,7 +9,7 @@
                 <h3 class="box-title">Admins List</h3>
                 <span class="badge badge-pill badge-danger"> {{ count($admins) }} </span>
                 <a href="{{ route('role-admin.create') }}" class="btn btn-primary btn-sm" style="float: right;">
-                  Add New Admin
+                  Add
                 </a>
               </div>
               <div class="box-body">

@@ -9,7 +9,7 @@
                 <h4 class="box-title">Destination Packages List</h4>
                 <span class="badge badge-pill badge-danger"> {{ count($destinationpackages) }} </span>
                 <a href="{{ route('destination-packages.create') }}" class="btn btn-primary btn-sm" style="float: right;">
-                  Add New Destination Packages
+                  Add 
                 </a>
               </div>
               <div class="box-body">
@@ -26,7 +26,7 @@
                         @foreach ($destinationpackages as $destinationpackage)
                             <tr>
                                 <td>{{ $destinationpackage->destination->name }}</td>
-                                <td>{{ $destinationpackage->package->name}}</td>
+                                <td>{{ $destinationpackage->package_id}}</td>
                                 <td>
                                     <a href="{{ route('destination-packages.edit', $destinationpackage->id) }}" class="btn btn-sm btn-info">Edit</a>
                                     <a href="{{ route('destination-packages.delete', $destinationpackage->id) }}" class="btn  btn-sm btn-danger">Delete</a>

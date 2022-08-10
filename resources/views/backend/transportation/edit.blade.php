@@ -12,6 +12,8 @@
                             <div class="table-responsive">
                                 <form method="post" action="{{ route('transportation.update',$transportation->id) }}">
                                     @csrf 	
+                                    <input type="hidden" name="id" value="{{ $transportation->id }}">	
+                                    <input type="hidden" name="old_image" value="{{ $transportation->image }}">
                                     <div class="form-group">
                                         <h5>Owner</h5>
                                         <div class="controls">
@@ -33,6 +35,11 @@
                                             <input type="text"  name="name" value="{{ $transportation->name }}" class="form-control" required> 
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <h5>Image</h5>
+                                        <input type="file" name="image" class="form-control" onChange="mainThamUrl(this)">
+                                        <img src="" id="mainThmb">
+                                    </div>
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
                                     </div>
@@ -44,4 +51,15 @@
             </div>
 		</section>
 	</div>
+    <script type="text/javascript">
+        function mainThamUrl(input){
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e){
+                    $('#mainThmb').attr('src', e.target.result).width(80).height(80);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }    
+    </script>  
 @endsection

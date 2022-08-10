@@ -32,6 +32,13 @@
                                         <input type="name" name="name" class="form-control" required>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <h5>Image<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="file" name="image" class="form-control" required="" id="image">
+                                    </div>
+                                </div>
+                                <img id="showImage" src="{{ url('upload/default.jpg') }}" style="width: 100px; height: 100px;" class="mb-3">
                                 <div class="text-xs-right">
                                     <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Submit">
                                 </div>
@@ -42,4 +49,15 @@
             </div>
         </section>
     </div>
+    <script type="text/javascript">
+		$(document).ready(function(){
+			$('#image').change(function(e){
+				var reader = new FileReader();
+				reader.onload = function(e){
+				$('#showImage').attr('src',e.target.result);	
+				}
+				reader.readAsDataURL(e.target.files['0']);
+			});
+		});
+	</script>
 @endsection
