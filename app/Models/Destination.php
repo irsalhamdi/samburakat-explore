@@ -18,7 +18,7 @@ class Destination extends Model
     }
 
     public function village(){
-        return $this->belongsTo(Village::class, 'village_id', 'id');
+        return $this->belongsTo(Village::class, 'village_id', 'id')->with('district');
     }
 
     public function galleries(){

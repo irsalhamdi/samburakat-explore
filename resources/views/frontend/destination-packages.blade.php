@@ -2,28 +2,28 @@
 @section('content')
 <main id="main">
   <section class="intro-single">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-lg-8">
-            <div class="title-single-box">
-              <h1 class="title-single">Nikmati paket wisata terbaik kami</h1>
-              <span class="color-text-a">Pilih paket wisatamu</span>
-            </div>
-          </div>
-          <div class="col-md-12 col-lg-4">
-            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="{{ route('home') }}">Home</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Paket wisata
-                </li>
-              </ol>
-            </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Nikmati paket wisata terbaik kami</h1>
+            <span class="color-text-a">Pilih paket wisatamu</span>
           </div>
         </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Paket wisata
+              </li>
+            </ol>
+          </nav>
+        </div>
       </div>
+    </div>
   </section>
 
   <section class="property-grid grid">
@@ -33,21 +33,22 @@
         <div class="col-md-4">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="/upload/package/thumbnail/{{ $item->thumbnail }}" alt="" class="img-a img-fluid">
+              <img src="{{ $item->thumbnail }}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="paket-single.html">{{ $item->name }}
-                      <br />{{ $item->day }} Hari {{ $item->night }} Malam</a>
+                    <a href="/destinations-packages/{{ $item->id }}">{{ $item->name }}
+                      <br />{{ $item->day }} Hari {{ $item->night }} Malam
+                    </a>
                   </h2>
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
                     <span class="price-a">Rp {{ $item->price }}</span>
                   </div>
-                  <a href="/destination-packages/{{ $item->id }}" class="link-a">Lihat selengkapnya
+                  <a href="/destinations-packages/{{ $item->id }}" class="link-a">Lihat selengkapnya
                     <span class="bi bi-chevron-right"></span>
                   </a>
                 </div>

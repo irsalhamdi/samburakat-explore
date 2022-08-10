@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call(IndoRegionSeeder::class);
 
         $this->call(DestinationTypeSeeder::class);
-        $this->call(DestinationSeeder::class);
-        $this->call(OwnerSeeder::class);
-        $this->call(HotelSeeder::class);
-        $this->call(PackageSeeder::class);
-        $this->call(DestinationPackagesSeeder::class);
+        // $this->call(DestinationSeeder::class);
+        // $this->call(OwnerSeeder::class);
+        // $this->call(HotelSeeder::class);
+        // $this->call(PackageSeeder::class);
+        // $this->call(DestinationPackagesSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(SeoSeeder::class);
     }

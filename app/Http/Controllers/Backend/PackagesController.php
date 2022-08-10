@@ -45,7 +45,7 @@ class PackagesController extends Controller
             'alert-type' => 'success'
         ];
 
-        return redirect()->route('destination.all')->with($notification);
+        return redirect()->route('packages.all')->with($notification);
 
         $notification = array(
 			'message' => 'Package Created Successfully',

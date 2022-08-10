@@ -22,7 +22,7 @@ use App\Http\Controllers\Frontend\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('destinations', [HomeController::class, 'destination'])->name('destinations');
 Route::get('destinations/{id}', [HomeController::class, 'destinationDetail'])->name('destinations-detail');
-Route::get('destinations-packages', [HomeController::class, 'destinationPackages'])->name('destination-packages');
+Route::get('destinations-packages', [HomeController::class, 'destinationPackages'])->name('destinations-packages');
 Route::get('destinations-packages/{id}', [HomeController::class, 'destinationPackagesDetail'])->name('destination-packages-detail');
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){

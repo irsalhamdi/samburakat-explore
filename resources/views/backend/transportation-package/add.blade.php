@@ -9,7 +9,7 @@
                           <h3 class="box-title">Add Package Transportation</h3>
                         </div>
                         <div class="box-body">
-                            <form method="POST" action="{{ route('transportation-package.create') }}">
+                            <form method="POST" action="{{ route('transportation-package.store') }}">
                                 @csrf
                                 <div class="form-group">
                                     <h5>Transportation<span class="text-danger">*</span></h5>

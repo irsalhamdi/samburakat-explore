@@ -37,8 +37,7 @@
             <div class="swiper-wrapper">
               @foreach ($package->destinations as $item)
               <div class="carousel-item-b swiper-slide w-100">
-                {{-- <img src="/upload/destination/image/{{ $item->image }}" class="w-100 img-fluid" alt="{{ $item->image }}"> --}}
-                {{ $item->image }}
+                <img src="/{{ $item->destination->image }}" class="w-100 img-fluid" alt="{{ $item->destination->image }}">
               </div>
               @endforeach
             </div>
@@ -109,11 +108,10 @@
                 <div class="row">
                   @foreach ($package->destinations as $item)
                   <div class="col-md-6">
-                    <a href="wisata-single.html">
-                      <img src="/upload/destination/image/{{ $item->image }}" class="w-100 rounded"
-                        style="height: 15rem; margin-right: 1rem;" alt="Penginapan">
+                    <a href="/destination/{{ $item->id }}">
+                      <img src="/{{ $item->destination->image }}" class="w-100 rounded" style="height: 15rem; margin-right: 1rem;" alt="{{ $item->name }}">
                       <p class="description color-text-a mt-2">
-                        {{ $item->name }}
+                        {{ $item->destination->name }}
                       </p>
                     </a>
                   </div>
@@ -127,8 +125,12 @@
                   </div>
                 </div>
               </div>
-              <div class="amenities-list color-text-a ">
-                <img src="/upload/package/lodging/{{ $package->lodging }}" class="w-50 rounded float-left" alt="Penginapan">
+              <div class="row">
+                @foreach ($package->hotel->galleries as $item)
+                <div class="col-md-6">
+                  <img src="/{{ $item->image}}" class="w-100 rounded" style="height: 15rem; margin-right: 1rem;" alt="{{ $item->image}}">
+                </div>
+                @endforeach
               </div>
               <div class="row section-t3">
                 <div class="col-sm-12">
@@ -140,8 +142,7 @@
               <div class="row">
                 @foreach ($package->transportations as $item)
                 <div class="col-md-6">
-                  <img src="upload/package/transport/{{ $item->image}}" class="w-100 rounded"
-                    style="height: 15rem; margin-right: 1rem;" alt="Penginapan">
+                  <img src="/{{ $item->transportation->image}}" class="w-100 rounded" style="height: 15rem; margin-right: 1rem;" alt="Penginapan">
                 </div>
                 @endforeach
               </div>

@@ -19,7 +19,7 @@ class TransportationPackageController extends Controller
     public function create()
     {
         $transportations = Transportation::orderBy('name', 'ASC')->get();
-        $packages = Package::orderBy('name', 'ASC');
+        $packages = Package::orderBy('name', 'ASC')->get();
         return view('backend.transportation-package.add', compact('transportations', 'packages'));
     }
 

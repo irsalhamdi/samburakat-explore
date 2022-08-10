@@ -13,11 +13,15 @@ class Package extends Model
 
     public function destinations()
     {
-        return $this->hasMany(DestinationPackages::class);
+        return $this->hasMany(DestinationPackages::class)->with('destination');
     }
 
     public function transportations()
     {
-        return $this->hasMany(PackageTransportation::class);
+        return $this->hasMany(PackageTransportation::class)->with('transportation');
+    }
+
+    public function hotel(){
+        return $this->belongsTo(Hotel::class, 'hotel_id', 'id')->with('galleries');
     }
 }

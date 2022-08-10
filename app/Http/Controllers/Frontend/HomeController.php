@@ -10,13 +10,15 @@ use App\Models\DestinationPackages;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Regency;
+use App\Models\Transportation;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $destinations = Destination::with(['destinationtype', 'village'])->latest()->get();
-        return view('frontend.index', compact('destinations'));
+        $destinations = Destination::with(['destinationtype', 'village'])->take(4)->get();
+        $packages = Package::with(['destinations', 'transportations'])->latest()->get();
+        return view('frontend.index', compact('destinations', 'packages'));
     }
 
     public function destination()
@@ -28,11 +30,10 @@ class HomeController extends Controller
     public function destinationDetail($id)
     {
         $destination = Destination::with(['galleries'])->where('id', $id)->first();
-        $village = Village::where('id', $destination->village_id)->first();
-        $district = District::where('id', $village->district_id)->first();
-        $regency = Regency::where('id', $district->regency_id)->first();
-        $province = Province::where('id', $regency->province_id)->first();
-        return view('frontend.destination-detail', compact('destination', 'village', 'district', 'regency', 'province'));
+        $desa = Village::with('district')->where('id', $destination->village_id)->first();
+        $transportations = Transportation::latest()->get();
+
+        return view('frontend.destination-detail', compact('destination', 'desa', 'transportations'));
     }
 
     public function destinationPackages()
@@ -43,8 +44,10 @@ class HomeController extends Controller
 
     public function destinationPackagesDetail($id)
     {
-        $package = DestinationPackages::with(['destinations', 'transportations'])->where('id', $id)->get();
-        // $name_package = Package::where('id', $id)->first();
+        $package = Package::with(['destinations', 'transportations', 'hotel'])->where('id', $id)->first();
+        // return response()->json([
+        //     'package' => $package,
+        // ]);
         return view('frontend.destination-packages-detail', compact('package'));
     }
 

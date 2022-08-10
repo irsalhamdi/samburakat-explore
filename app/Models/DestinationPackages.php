@@ -15,4 +15,8 @@ class DestinationPackages extends Model
     public function destination(){
         return $this->belongsTo(Destination::class, 'destination_id', 'id');
     }
+
+    public function package(){
+        return $this->belongsTo(Packages::class, 'package_id', 'id')->with('transportations');
+    }
 }

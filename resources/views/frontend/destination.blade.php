@@ -14,7 +14,7 @@
           <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="{{ route('home') }}">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Wisata
@@ -33,7 +33,7 @@
         <div class="col-md-4">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="/upload/destination/image/{{ $item->image }}" alt="" class="img-b img-fluid">
+              <img src="{{ $item->image }}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="card-title-b">
                   <h2 class="title-2">
-                    <a href="/destination/{{ $item->id }}">{{ $item->name }}</a>
+                    <a href="/destinations/{{ $item->id }}">{{ $item->name }}</a>
                   </h2>
                 </div>
               </div>
