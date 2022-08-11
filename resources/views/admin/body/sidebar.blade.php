@@ -88,23 +88,6 @@
         @else 
         @endif
 
-        @if ($transportation == true)
-          <li class="treeview {{ ($prefix == '/transportation' || $prefix == '/transportation-package') ? 'active' : '' }}">
-            <a href="#">
-              <i data-feather="message-circle"></i>
-              <span>Transportation</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-right pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li class="{{ ($route == 'transportation.all') ? 'active' : '' }}"><a href="{{ route('transportation.all') }}"><i class="ti-more"></i>Transportation</a></li>
-              <li class="{{ ($route == 'transportation-package.all') ? 'active' : '' }}"><a href="{{ route('transportation-package.all') }}"><i class="ti-more"></i>Package Transportation</a></li>
-            </ul>
-          </li>  
-        @else 
-        @endif
-
         @if ($packages == true)
           <li class="treeview {{ ($prefix == '/packages' || $prefix == '/destination-packages') ? 'active' : '' }}">
             <a href="#">
@@ -120,6 +103,23 @@
             </ul>
           </li>   
         @else
+        @endif
+
+        @if ($transportation == true)
+          <li class="treeview {{ ($prefix == '/transportation' || $prefix == '/transportation-package') ? 'active' : '' }}">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Transportation</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'transportation.all') ? 'active' : '' }}"><a href="{{ route('transportation.all') }}"><i class="ti-more"></i>Transportation</a></li>
+              <li class="{{ ($route == 'transportation-package.all') ? 'active' : '' }}"><a href="{{ route('transportation-package.all') }}"><i class="ti-more"></i>Package Transportation</a></li>
+            </ul>
+          </li>  
+        @else 
         @endif
         
         @if ($booking == true)

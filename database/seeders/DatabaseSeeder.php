@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Admin::factory()->create();
         $this->call(IndoRegionSeeder::class);
 
-        $this->call(DestinationTypeSeeder::class);
+        // $this->call(DestinationTypeSeeder::class);
         // $this->call(DestinationSeeder::class);
         // $this->call(OwnerSeeder::class);
         // $this->call(HotelSeeder::class);

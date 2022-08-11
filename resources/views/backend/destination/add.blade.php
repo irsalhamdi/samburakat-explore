@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <h5>Location<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="location" class="form-control" required>
+                                <textarea name="location" id="" cols="30" rows="10" class="form-control" required></textarea>
                             </div>
                         </div>
                         <div class="text-xs-right">

@@ -14,10 +14,10 @@
           <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="{{ route('home') }}">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="paket-grid.html">Paket wisata</a>
+                <a href="{{ route('destinations-packages') }}l">Paket wisata</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 {{ $package->name }}
@@ -108,7 +108,7 @@
                 <div class="row">
                   @foreach ($package->destinations as $item)
                   <div class="col-md-6">
-                    <a href="/destination/{{ $item->id }}">
+                    <a href="/destinations/{{ $item->id }}">
                       <img src="/{{ $item->destination->image }}" class="w-100 rounded" style="height: 15rem; margin-right: 1rem;" alt="{{ $item->name }}">
                       <p class="description color-text-a mt-2">
                         {{ $item->destination->name }}

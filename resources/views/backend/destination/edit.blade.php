@@ -72,7 +72,9 @@
                         <div class="form-group">
                             <h5>Location<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="location" class="form-control" required>
+                                <textarea name="location" class="form-control" id="" cols="30" rows="10" required>
+                                    {{ $data->location }}
+                                </textarea>
                             </div>
                         </div>
                         <div class="text-xs-right">
@@ -83,44 +85,46 @@
           </div>
         </div>
       </section>
-      <section class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box bt-3 border-info">
-                    <div class="box-header">
-                        <h4 class="box-title">Destination Gallery <strong>Update</strong></h4>
-                    </div>
-                    <form method="POST" action="{{ route('destination-gallery.update') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row row-sm">
-                            @foreach($galleries as $img)
-                                <div class="col-md-3">
-                                    <div class="card mt-3">
-                                        <img src="{{ asset($img->image) }}" class="card-img-top" style="height: 130px; width: 280px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                <a href="{{ route('destination-gallery-delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
-                                            </h5>
-                                            <p class="card-text"> 
-                                                <div class="form-group">
-                                                    <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
-                                                    <input class="form-control" type="file" name="multi_img[{{ $img->id }}]">
-                                                </div> 
-                                            </p>
-                                        </div> 
-                                    </div> 		
-                                </div>
-                            @endforeach
-                        </div>			
-                        <div class="text-xs-right">
-                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+      @if (count($galleries) != '')
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box bt-3 border-info">
+                        <div class="box-header">
+                            <h4 class="box-title">Destination Gallery <strong>Update</strong></h4>
                         </div>
-                        <br><br>
-                    </form>		   
+                        <form method="POST" action="{{ route('destination-gallery.update') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row row-sm">
+                                @foreach($galleries as $img)
+                                    <div class="col-md-3">
+                                        <div class="card mt-3">
+                                            <img src="{{ asset($img->image) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <a href="{{ route('destination-gallery-delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                                </h5>
+                                                <p class="card-text"> 
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                                        <input class="form-control" type="file" name="multi_img[{{ $img->id }}]">
+                                                    </div> 
+                                                </p>
+                                            </div> 
+                                        </div> 		
+                                    </div>
+                                @endforeach
+                            </div>			
+                            <div class="text-xs-right">
+                                <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+                            </div>
+                            <br><br>
+                        </form>		   
+                    </div>
                 </div>
             </div>
-        </div>
-      </section>
+        </section>
+      @endif
       <section class="content">
         <div class="row">
             <div class="col-md-12">
