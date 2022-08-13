@@ -17,7 +17,8 @@
                               <th>Name</th>
                               <th>Email</th>
                               <th>Profile Image</th>
-                              <th>Action</th>
+                              <th>Phone Number</th>
+                              <td>Adress</td>
                           </tr>
                       </thead>
                       <tbody>
@@ -27,10 +28,8 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                   <img src="{{ $user->profile_photo_url }}">
-                                <td>
-                                    <a href="" class="btn btn-info">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                </td>
+                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->address }}</td>
                             </tr>
                         @endforeach
                       </tbody>

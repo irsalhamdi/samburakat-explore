@@ -47,9 +47,6 @@ class HomeController extends Controller
     public function destinationPackagesDetail($id)
     {
         $package = Package::with(['destinations', 'transportations', 'hotel'])->where('id', $id)->first();
-        // return response()->json([
-        //     'package' => $package,
-        // ]);
         return view('frontend.destination-packages-detail', compact('package'));
     }
 
@@ -61,6 +58,7 @@ class HomeController extends Controller
                 'user_id' => Auth::user()->id,
                 'destination_id' => $request->destination_id,
                 'transportation_id' => $request->transportation_id,
+                'total_price' => $request->price,
                 'code' => $code,
                 'date' => $request->date,
             ]);
@@ -70,7 +68,8 @@ class HomeController extends Controller
             $id = Booking::create([
                 'user_id' => Auth::user()->id,
                 'package_id' => $request->package_id,
-                'transportation_id' => $request->transportation_id,
+                'transportation_id' => 1,
+                'total_price' => $request->price,
                 'code' => $code,
                 'date' => $request->date,
             ]);
@@ -80,8 +79,10 @@ class HomeController extends Controller
 
     public function proccess($id)
     {   
-        $booking = Booking::where('id', $id)->get();
-
+        $booking = Booking::where('id', $id)->first();
+        $code = $booking->code;
+        $total_price = $booking->total_price;
+        
         Config::$serverKey = config('services.midtrans.serverKey');
         Config::$isProduction = config('services.midtrans.isProduction');
         Config::$isSanitized = config('services.midtrans.isSanitized');
@@ -89,15 +90,15 @@ class HomeController extends Controller
 
         $midtrans = [
             'transaction_details' => [
-                'order_id' => $booking->code,
-                'gross_amount' => (int) $booking->total_price,
+                'order_id' => $code,
+                'gross_amount' => (int) $total_price,
             ],
             'customer_details' => [
                 'first_name' => Auth::user()->name,
                 'email' => Auth::user()->email,
             ],
             'enabled_payments' => [
-                'gopay', 'permata_va'
+                'gopay', 'permata_va', 'bank_transfer',
             ],
             'vtweb' => [],
         ];
@@ -108,7 +109,6 @@ class HomeController extends Controller
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-
     }
 
     public function callback()
