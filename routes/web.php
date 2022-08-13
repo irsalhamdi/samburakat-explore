@@ -19,6 +19,9 @@ use App\Http\Controllers\Backend\TransportationController;
 use App\Http\Controllers\Backend\TransportationPackageController;
 use App\Http\Controllers\Frontend\HomeController;
 
+Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);
+Route::get('/get-district/ajax/{regency_id}', [AjaxController::class, 'GetDisctrict']);
+Route::get('/get-village/ajax/{district_id}', [AjaxController::class, 'GetVillage']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('destinations', [HomeController::class, 'destination'])->name('destinations');
 Route::get('destinations/{id}', [HomeController::class, 'destinationDetail'])->name('destinations-detail');
@@ -117,6 +120,8 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::post('setting/seo/update', [SettingController::class, 'SeoUpdate'])->name('update.seo.setting');
 });  
 
-Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);
-Route::get('/get-district/ajax/{regency_id}', [AjaxController::class, 'GetDisctrict']);
-Route::get('/get-village/ajax/{district_id}', [AjaxController::class, 'GetVillage']);
+Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function(){
+    Route::post('booking', [HomeController::class, 'booking'])->name('booking');
+    Route::get('checkout/{id}', [HomeController::class, 'proccess'])->name('checkout');
+    Route::post('checkout/callback', [HomeController::class, 'callback'])->name('midtrans-callback');
+});

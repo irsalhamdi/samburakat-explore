@@ -51,27 +51,31 @@
               <div class="row pt-5">
                 <div class="col-md-12">
                   <div class="card">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                        <label class="pb-2" for="Type">Transportation</label>
-                        <select class="form-control form-select form-control-a" id="Type">
-                          @foreach ($transportations as $item)
-                          <option>{{ $item->name }}</option>
-                          @endforeach
-                        </select>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="form-group">
-                          <label class="pb-2" for="Type">Waktu</label>
-                          <input type="date" class="form-control form-control-md form-control-a" placeholder="Jumlah">
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="col-md-12">
-                          <button type="submit" class="btn btn-b">Booking</button>
-                        </div>
-                      </li>
-                    </ul>
+                    <form method="POST" action="{{ route('booking') }}">
+                      @csrf
+                      <input type="hidden" name="destination_id" value="{{ $destination->id }}" required>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                          <label class="pb-2" for="Type">Transportation</label>
+                          <select class="form-control form-select form-control-a" name="transportation_id" id="Type" required>
+                            @foreach ($transportations as $item)
+                              <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                          </select>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="form-group">
+                            <label class="pb-2" for="Type">Waktu</label>
+                            <input type="date" name="date" class="form-control form-control-md form-control-a" required>
+                          </div>
+                        </li>
+                        <li class="list-group-item">
+                          <div class="col-md-12">
+                            <button type="submit" class="btn btn-b">Booking</button>
+                          </div>
+                        </li>
+                      </ul>
+                    </form>
                   </div>
                 </div>
               </div>
