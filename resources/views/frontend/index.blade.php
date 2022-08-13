@@ -112,7 +112,7 @@
               <h2 class="title-a">Paket Wisata</h2>
             </div>
             <div class="title-link">
-              <a href="destination-packages">Semua paket
+              <a href="destinations-packages">Semua paket
                 <span class="bi bi-chevron-right"></span>
               </a>
             </div>
@@ -183,7 +183,7 @@
               <h2 class="title-a">Wisata</h2>
             </div>
             <div class="title-link">
-              <a href="/destination">Semua wisata
+              <a href="/destinations">Semua wisata
                 <span class="bi bi-chevron-right"></span>
               </a>
             </div>
@@ -202,11 +202,11 @@
               <div class="card-overlay">
                 <div class="card-header-b">
                   <div class="card-category-b">
-                    <a href="/destination/{{ $item->id }}" class="category-b">{{ $item->destinationtype->name }}</a>
+                    <a href="/destinations/{{ $item->id }}" class="category-b">{{ $item->destinationtype->name }}</a>
                   </div>
                   <div class="card-title-b">
                     <h2 class="title-2">
-                      <a href="/destination/{{ $item->id }}">{{ $item->name }}</a>
+                      <a href="/destinations/{{ $item->id }}">{{ $item->name }}</a>
                     </h2>
                   </div>
                 </div>

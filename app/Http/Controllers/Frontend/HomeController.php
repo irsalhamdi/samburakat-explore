@@ -54,25 +54,29 @@ class HomeController extends Controller
     {
         if($request->destination_id){
             $code = 'STORE-' . mt_rand(000000, 999999);
+            
             $id = Booking::insertGetId([
-                'user_id' => Auth::user()->id,
-                'destination_id' => $request->destination_id,
-                'transportation_id' => $request->transportation_id,
-                'total_price' => $request->price,
-                'code' => $code,
-                'date' => $request->date,
+                    'user_id' => Auth::user()->id,
+                    'destination_id' => $request->destination_id,
+                    'transportation_id' => $request->transportation_id,
+                    'total_price' => $request->price,
+                    'code' => $code,
+                    'date' => $request->date,
             ]);
+
             return redirect()->route('checkout',$id);
         }else{
             $code = 'STORE-' . mt_rand(000000, 999999);
+
             $id = Booking::create([
-                'user_id' => Auth::user()->id,
-                'package_id' => $request->package_id,
-                'transportation_id' => 1,
-                'total_price' => $request->price,
-                'code' => $code,
-                'date' => $request->date,
+                    'user_id' => Auth::user()->id,
+                    'package_id' => $request->package_id,
+                    'transportation_id' => 1,
+                    'total_price' => $request->price,
+                    'code' => $code,
+                    'date' => $request->date,
             ]);
+
             return redirect()->route('checkout',$id);
         }
     }
@@ -82,12 +86,12 @@ class HomeController extends Controller
         $booking = Booking::where('id', $id)->first();
         $code = $booking->code;
         $total_price = $booking->total_price;
-        
+            
         Config::$serverKey = config('services.midtrans.serverKey');
         Config::$isProduction = config('services.midtrans.isProduction');
         Config::$isSanitized = config('services.midtrans.isSanitized');
         Config::$is3ds = config('services.midtrans.is3ds');
-
+    
         $midtrans = [
             'transaction_details' => [
                 'order_id' => $code,
