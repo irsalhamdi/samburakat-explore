@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header with-border">
-                          <h3 class="box-title">Add Hotel</h3>
+                          <h3 class="box-title">Edit Hotel</h3>
                         </div>
                         <div class="box-body">
                             <form method="POST" action="{{ route('hotel.store') }}" enctype="multipart/form-data">
@@ -47,7 +47,7 @@
                 <div class="col-md-12">
                     <div class="box bt-3 border-info">
                         <div class="box-header">
-                            <h4 class="box-title">Hotel Gallery <strong>Update</strong></h4>
+                            <h4 class="box-title">Hotel Gallery <strong>Edit</strong></h4>
                         </div>
                         <form method="POST" action="{{ route('hotel-gallery.update') }}" enctype="multipart/form-data">
                             @csrf

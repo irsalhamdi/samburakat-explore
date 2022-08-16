@@ -6,7 +6,7 @@
         <div class="col-12">
           <div class="box">
             <div class="box-header with-border">
-              <h4 class="box-title">Hotel List</h4>
+              <h4 class="box-title">Hotel</h4>
               <span class="badge badge-pill badge-danger"> {{ count($hotels) }} </span>
               <a href="{{ route('hotel.create') }}" class="btn btn-sm btn-primary" style="float: right;">
                 Add

@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header with-border">
-                          <h3 class="box-title">Add Owner</h3>
+                          <h3 class="box-title">Create New Owner</h3>
                         </div>
                         <div class="box-body">
                             <form method="POST" action="{{ route('owner.store') }}" enctype="multipart/form-data">

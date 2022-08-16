@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -57,4 +57,89 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+</x-guest-layout> --}}
+
+@extends('frontend.body.frontend-master')
+@section('content') 
+    <main id="main">
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <h4 class="checkout-subtitle">Create a new account</h4>
+                        <p class="text title-tag-line">Create your new account.</p>
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label class="info-title" for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter Your Full Name" class="form-control unicase-form-control text-input" required>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror 
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="info-title" for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="Enter Your Active Email" class="form-control unicase-form-control text-input" required>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                 @enderror
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="info-title" for="phone">Phone</label>
+                                <input type="number" id="phone" name="phone" placeholder="Enter Your Phone Number" class="form-control unicase-form-control text-input" required>
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="info-title" for="phone">Address</label>
+                                <input type="text" id="phone" name="phone" placeholder="Enter Your Address" class="form-control unicase-form-control text-input" required>
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="info-title" for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Password" class="form-control unicase-form-control text-input" required>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="info-title" for="password_confirmation">Confirm Password</label>
+                                <input type="password" id="password_confirmation" placeholder="Password Confirmation" name="password_confirmation" class="form-control unicase-form-control text-input" required>
+                                @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn-upper btn btn-success checkout-page-button">
+                                Sign Up
+                            </button>
+                        </form>
+                        <div class="mt-1 text-center">
+                            <p class="text title-tag-line">
+                                Already have an account ? 
+                                <a href="{{ route('login') }}">
+                                    Login
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+@endsection

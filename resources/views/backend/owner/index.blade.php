@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h4 class="box-title">Owner List</h4>
+                <h4 class="box-title">Owner</h4>
                 <span class="badge badge-pill badge-danger"> {{ count($owners) }} </span>
                 <a href="{{ route('owner.create') }}" class="btn btn-primary btn-sm" style="float: right;">
                   Add

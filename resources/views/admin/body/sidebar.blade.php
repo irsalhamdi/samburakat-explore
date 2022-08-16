@@ -37,7 +37,7 @@
         @if ($role == true)
           <li class="treeview {{ ($prefix == '/role-admin' || $prefix == '/role-users') ? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+              <i data-feather="users"></i>
               <span>Role</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -54,7 +54,7 @@
         @if ($destination == true)
           <li class="treeview {{ ($prefix == '/destination-type' || $prefix == '/destination') ? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+              <i data-feather="map"></i>
               <span>Destination</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -71,7 +71,7 @@
         @if ($owner == true)
           <li class="{{ ($route == 'owner.all') ? 'active' : '' }}">
             <a href="{{ url('owner/all') }}">
-              <i data-feather="message-circle"></i>
+              <i data-feather="user-check"></i>
               <span>Owner</span>
             </a>
           </li>  
@@ -81,7 +81,7 @@
         @if ($hotel == true)
         <li class="{{ ($route == 'hotel.all') ? 'active' : '' }}">
           <a href="{{ url('hotel/all') }}">
-            <i data-feather="message-circle"></i>
+            <i data-feather="home"></i>
             <span>Hotel</span>
           </a>
         </li>  
@@ -91,7 +91,7 @@
         @if ($packages == true)
           <li class="treeview {{ ($prefix == '/packages' || $prefix == '/destination-packages') ? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+              <i data-feather="package"></i>
               <span>Packages</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -108,7 +108,7 @@
         @if ($transportation == true)
           <li class="treeview {{ ($prefix == '/transportation' || $prefix == '/transportation-package') ? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+              <i data-feather="terminal"></i>
               <span>Transportation</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -125,7 +125,7 @@
         @if ($booking == true)
           <li class="treeview {{ ($prefix == '/booking') ? 'active' : '' }}">
             <a href="#">
-              <i data-feather="message-circle"></i>
+              <i data-feather="book"></i>
               <span>Booking</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
@@ -152,7 +152,7 @@
         @if($setting == true)
         <li class="treeview {{ ($prefix == '/setting') ? 'active' : '' }}">
           <a href="{{ route('site') }}">
-            <i data-feather="message-circle"></i> <span>Settings</span>
+            <i data-feather="settings"></i> <span>Settings</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>

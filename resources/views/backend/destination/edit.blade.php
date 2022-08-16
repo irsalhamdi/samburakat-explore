@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Update Destination</h3>
+                  <h3 class="box-title">Edit Destination</h3>
                 </div>
                 <div class="box-body">
                     <form method="POST" action="{{ route('destination.update', $data->id) }}" enctype="multipart/form-data">

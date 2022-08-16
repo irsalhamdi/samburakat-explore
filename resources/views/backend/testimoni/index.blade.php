@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h4 class="box-title">Testimonies List</h4>
+                <h4 class="box-title">Testimonies</h4>
                 <span class="badge badge-pill badge-danger"> {{ count($testimonies) }} </span>
               </div>
               <div class="box-body">

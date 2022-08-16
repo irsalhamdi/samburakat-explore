@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h4 class="box-title">Transportation List</h4>
+                <h4 class="box-title">Transportation</h4>
                 <span class="badge badge-pill badge-danger"> {{ count($transportations) }} </span>
                 <a href="{{ route('transportation.create') }}" class="btn btn-primary btn-sm" style="float: right;">
                   Add

@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header with-border">
-                          <h3 class="box-title">Add Transportation</h3>
+                          <h3 class="box-title">Create New Transportation</h3>
                         </div>
                         <div class="box-body">
                             <form method="POST" action="{{ route('transportation.store') }}" enctype="multipart/form-data">

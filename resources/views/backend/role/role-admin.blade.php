@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Admins List</h3>
+                <h3 class="box-title">Admins</h3>
                 <span class="badge badge-pill badge-danger"> {{ count($admins) }} </span>
                 <a href="{{ route('role-admin.create') }}" class="btn btn-primary btn-sm" style="float: right;">
                   Add
