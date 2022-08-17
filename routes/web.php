@@ -18,6 +18,8 @@ use App\Http\Controllers\Backend\TestimoniController;
 use App\Http\Controllers\Backend\TransportationController;
 use App\Http\Controllers\Backend\TransportationPackageController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Frontend\UserController;
 
 Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);
 Route::get('/get-district/ajax/{regency_id}', [AjaxController::class, 'GetDisctrict']);
@@ -123,11 +125,11 @@ Route::middleware(['auth:admin'])->group(function(){
 });  
 
 Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function(){
-    Route::post('booking', [HomeController::class, 'booking'])->name('booking');
-    Route::get('checkout/{id}', [HomeController::class, 'proccess'])->name('checkout');
-    Route::post('checkout/callback', [HomeController::class, 'callback'])->name('midtrans-callback');
-    Route::get('profile/{id}', [HomeController::class, 'profile'])->name('profile');
-    Route::get('transactions/{id}', [HomeController::class, 'transaction'])->name('transaction');
-    Route::get('transactions-detail/{id}', [HomeController::class, 'transactionDetail'])->name('transaction-detail');
-    Route::post('transaction/payment-proof/{id}', [HomeController::class, 'proof'])->name('payment-proof');
+    Route::post('booking', [PaymentController::class, 'booking'])->name('booking');
+    Route::get('checkout/{id}', [PaymentController::class, 'proccess'])->name('checkout');
+    Route::post('checkout/callback', [PaymentController::class, 'callback'])->name('midtrans-callback');
+    Route::get('profile/{id}', [UserController::class, 'profile'])->name('profile');
+    Route::get('transactions/{id}', [UserController::class, 'transaction'])->name('transaction');
+    Route::get('transactions-detail/{id}', [UserController::class, 'transactionDetail'])->name('transaction-detail');
+    Route::post('transaction/payment-proof/{id}', [UserController::class, 'proof'])->name('payment-proof');
 });
