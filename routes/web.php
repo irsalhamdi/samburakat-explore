@@ -36,7 +36,7 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 });
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('frontend.dashboard.dashboard-master');
 })->name('dashboard');
 
 

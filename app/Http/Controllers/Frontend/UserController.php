@@ -13,19 +13,19 @@ class UserController extends Controller
     public function profile($id)
     {
         $user = User::FindOrfail($id);
-        return view('profile', compact('user'));
+        return view('frontend.dashboard.profile', compact('user'));
     }
 
     public function transaction($id)
     {
        $transactions =  Booking::with('user', 'destination')->where('user_id', $id)->get();
-       return view('transaction', compact('transactions'));
+       return view('frontend.dashboard.transaction', compact('transactions'));
     }
 
     public function transactionDetail($id)
     {   
         $transaction = Booking::with('user', 'destination', 'transportation')->where('id', $id)->first();
-        return view('transaction-detail', compact('transaction'));
+        return view('frontend.dashboard.transaction-detail', compact('transaction'));
     }
 
     public function proof(Request $request, $id)

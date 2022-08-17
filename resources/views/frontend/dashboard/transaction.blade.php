@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('frontend.dashboard.dashboard-master')
 @section('title')
     Samburakat Explore | Transactions
 @endsection
