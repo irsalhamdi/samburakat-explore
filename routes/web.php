@@ -40,7 +40,9 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
 
 Route::middleware(['auth:admin'])->group(function(){
 
-    Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {return view('admin.index');})->name('dashboard')->middleware('auth:admin');
+    Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+        return view('admin.index');
+    })->name('dashboard')->middleware('auth:admin');
     
     Route::get('admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
     Route::get('admin/profile', [AdminProfileController::class, 'index'])->name('admin.profile');
@@ -124,4 +126,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::post('booking', [HomeController::class, 'booking'])->name('booking');
     Route::get('checkout/{id}', [HomeController::class, 'proccess'])->name('checkout');
     Route::post('checkout/callback', [HomeController::class, 'callback'])->name('midtrans-callback');
+    Route::get('profile/{id}', [HomeController::class, 'profile'])->name('profile');
+    Route::get('transactions/{id}', [HomeController::class, 'transaction'])->name('transaction');
+    Route::get('transactions-detail/{id}', [HomeController::class, 'transactionDetail'])->name('transaction-detail');
+    Route::post('transaction/payment-proof/{id}', [HomeController::class, 'proof'])->name('payment-proof');
 });

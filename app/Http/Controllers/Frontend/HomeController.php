@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\Frontend;
 
 use Exception;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Midtrans\Snap;
+use App\Models\User;
+use Midtrans\Config;
+use App\Models\Booking;
 use App\Models\Package;
 use App\Models\Village;
-use App\Models\Destination;
-use App\Models\Transportation;
-use App\Models\Booking;
-use Midtrans\Snap;
-use Midtrans\Config;
 use Midtrans\Notification;
+use App\Models\Destination;
+use Illuminate\Http\Request;
+use App\Models\Transportation;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+
 class HomeController extends Controller
 {
     public function index()
@@ -163,4 +166,36 @@ class HomeController extends Controller
         $booking->save();
     }
 
+    public function transaction($id)
+    {
+       $transactions =  Booking::with('user', 'destination')->where('user_id', $id)->get();
+       return view('transaction', compact('transactions'));
+    }
+
+    public function profile($id)
+    {
+        $user = User::FindOrfail($id);
+        return view('profile', compact('user'));
+    }
+
+    public function transactionDetail($id)
+    {   
+        $transaction = Booking::with('user', 'destination', 'transportation')->where('id', $id)->first();
+        return view('transaction-detail', compact('transaction'));
+    }
+
+    public function proof(Request $request, $id)
+    {
+        $image = $request->file('image');
+        $name = $request->name . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(917, 1000)->save('upload/payment-proof/' . $name);
+        $url = 'upload/payment-proof/' . $name;
+
+        Booking::findOrfail($id)->update([
+            'payment_proof' => 'paid',
+            'image' => $url,
+        ]);
+
+        return redirect()->route('transaction-detail',$id);
+    }
 }

@@ -3,7 +3,7 @@
     @php
         $destinations = App\Models\Destination::latest()->get();
         $packages = App\Models\Package::latest()->get();
-        $bookings = App\Models\Booking::latest()->get();
+        $bookings = App\Models\Booking::with('user', 'destination', 'transportation')->latest()->get();
         $revenue = App\Models\Booking::sum('total_price');
         $users = App\Models\User::latest()->get();
     @endphp
@@ -92,58 +92,76 @@
                                     <thead>
                                         <tr class="text-uppercase bg-lightest">
                                             <th style="min-width: 250px"><span class="text-white">Name</span></th>
-                                            <th style="min-width: 150px"><span class="text-fade">Phone</span></th>
+                                            <th style="min-width: 150px"><span class="text-fade">Payment</span></th>
+                                            <th style="min-width: 100px"><span class="text-fade">Address</span></th>
                                             <th style="min-width: 100px"><span class="text-fade">Destination</span></th>
-                                            <th style="min-width: 100px"><span class="text-fade">Package</span></th>
-                                            <th style="min-width: 130px"><span class="text-fade">Revenue</span></th>
+                                            <th style="min-width: 130px"><span class="text-fade">Payment Proof</span></th>
                                             <th style="min-width: 120px"><span class="text-fade">Transportation</span></th>
+                                            <th style="min-width: 120px"><span class="text-fade">Action</span></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>										
-                                            <td class="pl-0 py-8">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0 mr-20">
-                                                        <div class="bg-img h-50 w-50" style="background-image: url({{ asset('backend/images/gallery/creative/img-1.jpg)') }}"></div>
+                                        @foreach ($bookings as $booking)
+                                            <tr>										
+                                                <td class="pl-0 py-8">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-shrink-0 mr-20">
+                                                            <div class="bg-img h-50 w-50">
+                                                                <img src="{{ (!empty($booking->user->profile_photo_path)) ? asset($booking->user->profile_photo_path) : url('upload/default.jpg')}}" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#" class="text-white font-weight-600 hover-primary mb-1 font-size-16">{{ $booking->user->name }}</a>
+                                                            <span class="text-fade d-block">{{ $booking->user->phone }}</span>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <a href="#" class="text-white font-weight-600 hover-primary mb-1 font-size-16">Vivamus consectetur</a>
-                                                        <span class="text-fade d-block">Pharetra, Nulla , Nec, Aliquet</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span class="text-fade font-weight-600 d-block font-size-16">
-                                                    Paid
-                                                </span>
-                                                <span class="text-white font-weight-600 d-block font-size-16">
-                                                    $45,800k
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span class="text-fade font-weight-600 d-block font-size-16">
-                                                    Paid
-                                                </span>
-                                                <span class="text-white font-weight-600 d-block font-size-16">
-                                                    $45k
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span class="text-fade font-weight-600 d-block font-size-16">
-                                                    Sophia
-                                                </span>
-                                                <span class="text-white font-weight-600 d-block font-size-16">
-                                                    Pharetra
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-primary-light badge-lg">Approved</span>
-                                            </td>
-                                            <td class="text-right">
-                                                <a href="#" class="waves-effect waves-light btn btn-info btn-circle mx-5"><span class="mdi mdi-bookmark-plus"></span></a>
-                                                <a href="#" class="waves-effect waves-light btn btn-info btn-circle mx-5"><span class="mdi mdi-arrow-right"></span></a>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                                <td>
+                                                    <span class="text-fade font-weight-600 d-block font-size-16">
+                                                        {{ $booking->payment_proof }}
+                                                    </span>
+                                                    <span class="text-white font-weight-600 d-block font-size-16">
+                                                        {{ $booking->total_price }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-fade font-weight-600 d-block font-size-16">
+                                                        {{ $booking->user->address }}
+                                                    </span>
+                                                    <span class="text-white font-weight-600 d-block font-size-16">
+                                                        {{ $booking->user->address }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-fade font-weight-600 d-block font-size-16">
+                                                        {{ $booking->destination->name }}
+                                                    </span>
+                                                    <span class="text-white font-weight-600 d-block font-size-16">
+                                                        {{ $booking->destination->guide }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    @if ($booking->payment_proof == 'unpaid')
+                                                        <span class="badge badge-primary-light badge-lg">Not Available</span>
+                                                    @else
+                                                        <img src="{{ (!empty($booking->image)) ? asset($booking->image) : url('upload/default.jpg')}}" width="50">
+                                                    @endif
+                                                </td>
+                                                <td class="text-right">
+                                                    <a href="#" class="waves-effect waves-light mx-5">
+                                                        {{ $booking->transportation->name }}    
+                                                    </a>
+                                                    <img src="{{ (!empty($booking->transportation->image)) ? asset($booking->transportation->image) : url('upload/default.jpg')}}" width="50">
+                                                </td>
+                                                <td>
+                                                    @if ($booking->payment_proof == 'unpaid')
+                                                        <a href="" class="badge badge-danger-light badge-lg">Approve</a>
+                                                    @else
+                                                        <button class="badge badge-success-light badge-lg">Success</button>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
