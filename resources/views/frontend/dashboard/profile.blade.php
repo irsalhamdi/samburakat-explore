@@ -14,7 +14,7 @@
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form id="locations" action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('profile.update',$user->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card">
                                 <div class="card-body">
@@ -22,31 +22,40 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name">Your Name</label>
-                                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+                                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email">Your Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}"/>
+                                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required/>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="address_one">Address</label>
-                                                <input type="text" class="form-control" id="address"  name="address" value="{{ $user->address }}"/>
+                                                <input type="text" class="form-control" id="address"  name="address" value="{{ $user->address }}" required/>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="phone">Phone</label>
-                                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->phone }}"/>
+                                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->phone }}" required/>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="account_nuber">Account Number</label>
-                                                <input type="number" class="form-control" id="account_nuber" name="account_nuber" value="{{ $user->account_number }}"/>
+                                                <label for="bank">Bank</label>
+                                                <select name="bank" id="" class="form-control" required>
+                                                    <option value="">BRI</option>
+                                                    <option value="">BNI</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="account_number">Account Number</label>
+                                                <input type="number" class="form-control" id="account_number" name="account_number" value="{{ $user->account_number }}" required/>
                                             </div>
                                         </div>
                                     </div>

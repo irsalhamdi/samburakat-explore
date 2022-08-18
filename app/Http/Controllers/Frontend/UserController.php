@@ -16,6 +16,12 @@ class UserController extends Controller
         return view('frontend.dashboard.profile', compact('user'));
     }
 
+    public function update(Request $request ,$id)
+    {  
+        User::findOrFail($id)->update($request->all());
+        return redirect()->route('profile',$id);
+    }
+
     public function transaction($id)
     {
        $transactions =  Booking::with('user', 'destination')->where('user_id', $id)->get();

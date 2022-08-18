@@ -22,11 +22,6 @@
                           </a>
                         </li>
                         <li class="nav-item" role="presentation">
-                          <a class="nav-link" id="pills-hotel-tab" data-toggle="pill" href="#pills-hotel" role="tab" aria-controls="pills-hotel" aria-selected="false">
-                           Hotel
-                          </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
                           <a class="nav-link" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-selected="false">
                            Payment
                           </a>
@@ -80,21 +75,9 @@
                             </div>
                           </a>
                         </div>
-                        <div class="tab-pane fade" id="pills-hotel" role="tabpanel" aria-labelledby="pills-hotel-tab">
-                            <a href="" class="card card-list d-block">
-                                <div class="card-body">
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                      <img src="/{{ $transaction->transportation->image }}" width="350" height="150" class="mb-3"/> 
-                                    </div>
-                                    <div class="col-md-6">
-                                    </div>
-                                  </div>
-                                </div>
-                            </a>
-                        </div>
                         <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
                             <a href="" class="card card-list d-block">
+                              @if ($transaction->payment_proof == 'unpaid')
                                 <div class="card-body">
                                   <div class="row">
                                     <div class="col-md-6">
@@ -126,6 +109,18 @@
                                     </div>
                                   </div>
                                 </div>
+                              @else
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                        <h2 class="text-center"> Transaction Processed</h2>
+                                        <p class="text-center">
+                                          Please wait confirmation email from us !
+                                        </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              @endif
                             </a>
                         </div>
                       </div>

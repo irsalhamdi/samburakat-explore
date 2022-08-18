@@ -129,6 +129,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('checkout/{id}', [PaymentController::class, 'proccess'])->name('checkout');
     Route::post('checkout/callback', [PaymentController::class, 'callback'])->name('midtrans-callback');
     Route::get('profile/{id}', [UserController::class, 'profile'])->name('profile');
+    Route::post('profile-update/{id}', [UserController::class, 'update'])->name('profile.update');
     Route::get('transactions/{id}', [UserController::class, 'transaction'])->name('transaction');
     Route::get('transactions-detail/{id}', [UserController::class, 'transactionDetail'])->name('transaction-detail');
     Route::post('transaction/payment-proof/{id}', [UserController::class, 'proof'])->name('payment-proof');
