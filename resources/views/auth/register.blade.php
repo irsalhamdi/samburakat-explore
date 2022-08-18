@@ -98,8 +98,8 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label class="info-title" for="phone">Address</label>
-                                <input type="text" id="phone" name="phone" placeholder="Enter Your Address" class="form-control unicase-form-control text-input" required>
+                                <label class="info-title" for="address">Address</label>
+                                <input type="text" id="phone" name="address" placeholder="Enter Your Address" class="form-control unicase-form-control text-input" required>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

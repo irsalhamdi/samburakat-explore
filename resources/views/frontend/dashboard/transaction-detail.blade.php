@@ -12,159 +12,93 @@
                 </p>
             </div>
             <div class="dashboard-content">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Name
-                                </p>
-                                <p class="">
-                                    {{ $transaction->user->name }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Phone
-                                </p>
-                                <p class="">
-                                    {{ $transaction->user->phone }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Address
-                                </p>
-                                <p class="">
-                                    {{ $transaction->user->address }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Account Number
-                                </p>
-                                <p class="">
-                                    {{ $transaction->user->account_number }}
-                                </p>
-                            </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="col-12 mt-2">
+                      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link active" id="pills-destination-tab" data-toggle="pill"  href="#pills-destination" role="tab" aria-controls="pills-destination" aria-selected="true">
+                            Destination
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" id="pills-hotel-tab" data-toggle="pill" href="#pills-hotel" role="tab" aria-controls="pills-hotel" aria-selected="false">
+                           Hotel
+                          </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-selected="false">
+                           Payment
+                          </a>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active"  id="pills-destination"  role="tabpanel" aria-labelledby="pills-destination-tab" >
+                              <a href="" class="card card-list d-block">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <img src="/{{ $transaction->destination->image }}" width="350" height="150" class="mb-3"/> 
+                                        @php
+                                            $galleries = App\Models\Gallery::where('destination_id', $transaction->id)->get();
+                                        @endphp
+                                        @foreach ($galleries as $gallery)
+                                            <img src="{{ asset($gallery->image) }}" width="350" height="150" class="mb-3"/>
+                                        @endforeach
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="dashboard-subtitle">
+                                             {{ $transaction->destination->destinationtype->name }} / {{ $transaction->destination->village->name }} / {{ $transaction->destination->name }}
+                                        </p>
+                                        <p style="text-align: justify">
+                                            {{ $transaction->destination->description   }}
+                                        </p>
+                                        <button class="btn btn-sm btn-success">
+                                            <i class="fas fa-delete"></i>
+                                            {{ $transaction->destination->guide }}
+                                        </button>
+                                        <button class="btn btn-sm btn-danger ml-3">
+                                            {{ $transaction->destination->price }}
+                                        </button>
+                                        {{-- <a class="btn btn-sm btn-primary ml-3" href="{{ $transaction->destination->location }}">
+                                            Location
+                                        </a> --}}
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Destination Type
-                                </p>
-                                <p class="">
-                                    {{ $transaction->destination->destinationtype->name }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Village
-                                </p>
-                                <p class="">
-                                    {{ $transaction->destination->village->name }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Address
-                                </p>
-                                <p class="">
-                                    <a href="{{ $transaction->destination->location }}">Location</a>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Price
-                                </p>
-                                <p class="">
-                                    {{ $transaction->destination->price }}
-                                </p>
-                            </div>
+                        <div class="tab-pane fade" id="pills-hotel" role="tabpanel" aria-labelledby="pills-hotel-tab">
+                            <a href="" class="card card-list d-block">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <img src="/{{ $transaction->transportation->image }}" width="350" height="150" class="mb-3"/> 
+                                    </div>
+                                    <div class="col-md-6">
+                                    </div>
+                                  </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Destination 
-                                </p>
-                                <p class="">
-                                    {{ $transaction->destination->name }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Image
-                                </p>
-                                <img src="{{ asset($transaction->destination->image) }}" width="50">
-                                    @php
-                                        $galleries = App\Models\Gallery::where('destination_id', $transaction->destination->id)->get();
-                                    @endphp
-                                    @foreach ($galleries as $gallery)
-                                        <img src="{{ asset($gallery->image) }}" width="50"">
-                                    @endforeach
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle">
-                                    Description
-                                </p>
-                                <p class="">
-                                    {{ $transaction->destination->description }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle">
-                                    Guide
-                                </p>
-                                <p class="">
-                                    {{ $transaction->destination->guide }}
-                                </p>
-                            </div>
+                        <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
+                            <a href="" class="card card-list d-block">
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <img src="/{{ $transaction->transportation->image }}" width="350" height="150" class="mb-3"/> 
+                                    </div>
+                                    <div class="col-md-6">
+                                    </div>
+                                  </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Transportation 
-                                </p>
-                                <p class="">
-                                    {{ $transaction->transportation->name }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle ">
-                                    Image
-                                </p>
-                                <img src="{{ asset($transaction->transportation->image) }}" width="50">
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle">
-                                    Price
-                                </p>
-                                <p class="">
-                                    {{ $transaction->destination->price }}
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="dashboard-subtitle">
-                                    Status
-                                </p>
-                                @if ($transaction->payment_proof == 'unpaid')
-                                    <form action="{{ route('payment-proof',$transaction->id) }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input type="file" class="form-control" id="image" name="image">
-                                            <button type="submit" class="btn btn-sm btn-success mt-2 text-right">Send</button>
-                                        </div>
-                                    </form>
-                                @else
-                                <button class="btn btn-success btn-sm">
-                                    Paid
-                                </p>
-                                @endif
-                            </div>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
+              </div>
         </div>
     </div>
 @endsection
