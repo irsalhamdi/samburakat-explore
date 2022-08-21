@@ -16,14 +16,14 @@ class BookingController extends Controller
     {
         $bookings = Booking::with('user', 'destination', 'package', 'transportation')
             ->where('payment_proof', 'unpaid')
-            ->orWhere('payment_proof', 'paid')
             ->latest()->get();
         return view('backend.booking.pending', compact('bookings',));
     }
     
     public function success()
     {   
-        $bookings = Booking::with('user', 'destination', 'package', 'transportation')->where('payment_proof', 'confirmed')->latest()->get();
+        $bookings = Booking::with('user', 'destination', 'package', 'transportation')
+            ->where('payment_proof', 'paid')->latest()->get();
         return view('backend.booking.success', compact('bookings'));
     }
 

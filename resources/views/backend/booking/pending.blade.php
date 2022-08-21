@@ -17,7 +17,6 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Packages</th>
                                         <th>Destination</th>
                                         <th>Transportation</th>
                                         <th>Date</th>
@@ -29,7 +28,10 @@
                                 @foreach ($bookings as $booking)
                                     <tr>
                                         <td>{{ $booking->user->name}}</td>
-                                        <td>{{ $booking->package->name }}</td>
+                                        @if ($booking->package_id !== null)
+                                            <td>{{ $booking->package->name }}</td>
+                                        @else
+                                        @endif
                                         <td>{{ $booking->destination->name }}</td>
                                         <td>{{ $booking->transportation->name }}</td>
                                         <td>{{ $booking->date }}</td>
