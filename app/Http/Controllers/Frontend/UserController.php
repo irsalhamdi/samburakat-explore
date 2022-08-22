@@ -6,25 +6,27 @@ use App\Models\User;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
-    public function profile($id)
+    public function profile()
     {
-        $user = User::FindOrfail($id);
+        $user = Auth::user();
         return view('frontend.dashboard.profile', compact('user'));
     }
 
-    public function update(Request $request ,$id)
+    public function update(Request $request)
     {  
-        User::findOrFail($id)->update($request->all());
-        return redirect()->route('profile',$id);
+        $user = Auth::User();
+        $user->update($request->all());
+        return redirect()->route('profile');
     }
 
-    public function transaction($id)
+    public function transaction()
     {
-       $transactions =  Booking::with('user', 'destination')->where('user_id', $id)->get();
+       $transactions =  Booking::with('user', 'destination')->where('user_id', Auth::user()->id)->get();
        return view('frontend.dashboard.transaction', compact('transactions'));
     }
 

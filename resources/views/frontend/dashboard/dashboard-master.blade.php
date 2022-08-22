@@ -25,10 +25,13 @@
             </a>
           </div>
           <div class="list-group list-group-flush">
-            <a href="{{ route('profile',Auth::user()->id) }}" class="list-group-item list-group-item-action {{ (request()->is('user/profile*')) ? 'active' : '' }} ">
+            <a href="/dashboard" class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ? 'active' : ''}}">
+              Dashboard
+            </a>
+            <a href="{{ route('profile') }}" class="list-group-item list-group-item-action {{ (request()->is('user/profile*')) ? 'active' : '' }} ">
               Profile
             </a>
-            <a href="{{ route('transaction',Auth::user()->id) }}" class="list-group-item list-group-item-action {{ (request()->is('user/transactions*')) ? 'active' : '' }} ">
+            <a href="{{ route('transaction') }}" class="list-group-item list-group-item-action {{ (request()->is('user/transactions*')) ? 'active' : '' }} ">
               Transactions
             </a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"class="list-group-item list-group-item-action">
