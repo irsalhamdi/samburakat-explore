@@ -65,7 +65,7 @@
 
           <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img class="rounded-circle" src="{{ (!empty($admin->profile_photo_path)) ? asset($admin->profile_photo_path) : url('upload/default.jpg') || (!empty($admin->profile_photo_path)) ? url('upload/admin-profile/'.$admin->profile_photo_path) : url('upload/default.jpg') }}">
+				<img class="rounded-circle" src="{{ (!empty($admin->profile_photo_path)) ? asset($admin->profile_photo_path) : url('upload/default.jpg') }}">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
