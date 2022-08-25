@@ -113,7 +113,7 @@ a:hover {
 
 @media (max-width: 767px) {
   .text-brand {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -561,6 +561,11 @@ a:hover {
   transition: 0.5s ease;
 }
 
+.btn.btn-small {
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+}
+
 .btn.btn-a,
 .btn.btn-b {
   border-radius: 0;
@@ -579,12 +584,12 @@ a:hover {
   color: #000000;
 }
 
-.btn.btn-b {
+.btn.btn-b, .btn.btn-small {
   background-color: #2eca6a;
   color: #000000;
 }
 
-.btn.btn-b:hover {
+.btn.btn-b:hover, .btn.btn-small:hover {
   background-color: #000000;
   color: #ffffff;
 }

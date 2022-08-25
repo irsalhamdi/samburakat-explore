@@ -88,7 +88,7 @@
       <span></span>
       <span></span>
     </button>
-    <a class="navbar-brand text-brand" href="{{ route('home') }}">Samburakat<span class="color-b">Explore</span></a>
+    <a class="navbar-brand text-brand" href="{{ route('home') }}">Berau<span class="color-b">Explore</span></a>
 
     <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
       <ul class="navbar-nav">
@@ -108,10 +108,21 @@
       </ul>
     </div>
 
-    <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse"
+    {{-- <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse"
       data-bs-target="#navbarTogglerDemo01">
       <i class="bi bi-search"></i>
-    </button>
+    </button> --}}
+    @guest
+    <div class="">
+      <a class="px-3" href="/login">Login</a>
+      <a class="btn btn-small" href="/register">Register</a>
+    </div>
+    @else
+    <div class="">
+      <a class="btn btn-small" href="/dashboard">Dashboard</a>
+    </div>
+    @endguest
+
 
   </div>
 </nav>

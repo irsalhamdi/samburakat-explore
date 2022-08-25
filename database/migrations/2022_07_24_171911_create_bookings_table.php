@@ -19,6 +19,8 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('package_id')->nullable();
             $table->unsignedBigInteger('destination_id')->nullable();
             $table->unsignedBigInteger('transportation_id')->nullable();
+            $table->unsignedBigInteger('package_transportation_id')->nullable();
+            $table->unsignedBigInteger('hotel_id')->nullable();
             $table->dateTime('date');
             $table->string('payment_proof')->default('unpaid');
             $table->string('image')->nullable();
@@ -28,6 +30,7 @@ class CreateBookingsTable extends Migration
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
             $table->foreign('transportation_id')->references('id')->on('transportations')->onDelete('cascade');
+            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }

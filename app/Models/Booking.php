@@ -27,7 +27,17 @@ class Booking extends Model
 
     public function transportation()
     {
-        return $this->belongsTo(transportation::class, 'transportation_id', 'id');
+        return $this->belongsTo(Transportation::class, 'transportation_id', 'id');
+    }
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class, 'hotel_id', 'id');
+    }
+
+    public function transportation_package()
+    {
+        return $this->belongsTo(PackageTransportation::class, 'package_transportation_id', 'id');
     }
 
 }
