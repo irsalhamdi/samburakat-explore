@@ -17,7 +17,7 @@
                 <a href="{{ route('home') }}">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="{{ route('destinations-packages') }}l">Paket wisata</a>
+                <a href="{{ route('destinations-packages') }}">Paket wisata</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 {{ $package->name }}
@@ -66,7 +66,9 @@
                     <form method="POST" action="{{ route('booking') }}">
                       @csrf
                       <input type="hidden" name="package_id" value="{{ $package->id }}" required>
-                      <input type="hidden" name="transportation_id" value="">
+                      <input type="hidden" name="package_transportation_id" value="">
+                      <input type="hidden" name="hotel_id" value="{{ $package->hotel_id }}">
+                      <input type="hidden" name="total_price" value="{{ $package->price }}">
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item">
                             <div class="form-group">

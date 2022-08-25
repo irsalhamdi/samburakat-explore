@@ -28,12 +28,14 @@ class PaymentController extends Controller
 
             return redirect()->route('checkout',$id);
         }else{
+            dd($request->all());
             $code = 'STORE-' . mt_rand(000000, 999999);
 
             $id = Booking::create([
                     'user_id' => Auth::user()->id,
                     'package_id' => $request->package_id,
-                    'transportation_id' => 1,
+                    'package_transportation_id' => 1,
+                    'hotel_id' => '',
                     'total_price' => $request->price,
                     'code' => $code,
                     'date' => $request->date,
