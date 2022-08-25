@@ -66,8 +66,6 @@
                     <form method="POST" action="{{ route('booking') }}">
                       @csrf
                       <input type="hidden" name="package_id" value="{{ $package->id }}" required>
-                      <input type="hidden" name="package_transportation_id" value="">
-                      <input type="hidden" name="hotel_id" value="{{ $package->hotel_id }}">
                       <input type="hidden" name="total_price" value="{{ $package->price }}">
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item">

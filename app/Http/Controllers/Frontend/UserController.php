@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Package;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
@@ -26,8 +27,9 @@ class UserController extends Controller
 
     public function transaction()
     {
-       $transactions =  Booking::with('user', 'destination')->where('user_id', Auth::user()->id)->get();
-       return view('frontend.dashboard.transaction', compact('transactions'));
+       $transactions =  Booking::with('user', 'destination') ->where('user_id', Auth::user()->id)->whereNotNull('destination_id')->get();
+       $bookings = Booking::with('user', 'package')->where('user_id', Auth::user()->id)->whereNotNull('package_id')->get();
+       return view('frontend.dashboard.transaction', compact('transactions', 'bookings'));
     }
 
     public function transactionDetail($id)

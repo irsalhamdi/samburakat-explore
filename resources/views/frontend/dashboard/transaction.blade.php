@@ -62,24 +62,32 @@
                   @endforeach
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                  @foreach ($transactions as $transaction)
-                      <a href=" class="card card-list d-block">
+                  @foreach ($bookings as $booking)
+                      <a href="{{ route('transaction-detail',$booking->id) }}" class="card card-list d-block">
                         <div class="card-body">
                           <div class="row">
                             <div class="col-md-1">
-                              <img src="" class="w-50"/>
+                              <img src="/{{ $booking->package->thumbnail }}" class="w-50"/>
                             </div>
                             <div class="col-md-4">
-                              {{ $transaction->name }}
+                              {{ $booking->package->name }}
                             </div>
                             <div class="col-md-3">
-                              {{ $transaction->store_name }}
+                              {{ $booking->total_price }}
                             </div>
                             <div class="col-md-3">
-                              {{ $transaction->created_at }}
+                              {{ $booking->date }}
                             </div>
                             <div class="col-md-1 d-none d-md-block">
-                              <img src="/images/dashboard-arrow-right.svg" alt=""/>
+                              @if ($booking->payment_proof == 'unpaid')
+                                <button class="btn btn-sm btn-danger">
+                                  {{ $booking->payment_proof }}
+                                </button>    
+                              @else
+                                <button class="btn btn-sm btn-success">
+                                  {{ $booking->payment_proof }}
+                                </button>
+                              @endif
                             </div>
                           </div>
                         </div>
