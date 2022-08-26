@@ -34,8 +34,9 @@ class UserController extends Controller
 
     public function transactionDetail($id)
     {   
-        $transaction = Booking::with('user', 'destination', 'transportation')->where('id', $id)->first();
-        return view('frontend.dashboard.transaction-detail', compact('transaction'));
+        $transaction = Booking::with('user', 'destination', 'transportation')->where('id', $id)->whereNotNull('destination_id')->first();
+        $booking = Booking::with('user', 'package', 'transportation')->where('id', $id)->whereNotNull('package_id')->first();
+        return view('frontend.dashboard.transaction-detail', compact('transaction', 'booking'));
     }
 
     public function proof(Request $request, $id)

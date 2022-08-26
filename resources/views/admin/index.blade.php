@@ -3,7 +3,7 @@
     @php
         $destinations = App\Models\Destination::latest()->get();
         $packages = App\Models\Package::latest()->get();
-        $bookings = App\Models\Booking::with('user', 'destination', 'transportation')->latest()->get();
+        $bookings = App\Models\Booking::with('user', 'destination', 'transportation')->whereNotNull('destination_id')->get();
         $revenue = App\Models\Booking::sum('total_price');
         $users = App\Models\User::latest()->get();
     @endphp
