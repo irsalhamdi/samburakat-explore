@@ -59,7 +59,7 @@
                                   <button class="btn btn-sm btn-danger ml-3">
                                     {{ $transaction->destination->price }}
                                   </button>
-                                  <a href="{{ $transaction->destination->location }}" target="_blank" rel="noopener noreferrer">{{ $destination->name }}</a>
+                                  {{-- <a href="{{ $transaction->destination->location }}" target="_blank" rel="noopener noreferrer">{{ $destination->name }}</a> --}}
                                 </div>
                               </div>
                               <div class="row">

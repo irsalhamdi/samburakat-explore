@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function transaction()
     {
-       $transactions =  Booking::with('user', 'destination') ->where('user_id', Auth::user()->id)->whereNotNull('destination_id')->get();
+       $transactions =  Booking::with('user', 'destination')->where('user_id', Auth::user()->id)->whereNotNull('destination_id')->get();
        $bookings = Booking::with('user', 'package')->where('user_id', Auth::user()->id)->whereNotNull('package_id')->get();
        return view('frontend.dashboard.transaction', compact('transactions', 'bookings'));
     }

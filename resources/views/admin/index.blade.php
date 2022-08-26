@@ -3,7 +3,7 @@
     @php
         $destinations = App\Models\Destination::latest()->get();
         $packages = App\Models\Package::latest()->get();
-        $bookings = App\Models\Booking::with('user', 'destination', 'transportation')->whereNotNull('destination_id')->get();
+        $bookings = App\Models\Booking::with('user', 'destination', 'transportation')->get();
         $revenue = App\Models\Booking::sum('total_price');
         $users = App\Models\User::latest()->get();
     @endphp
@@ -93,10 +93,8 @@
                                         <tr class="text-uppercase bg-lightest">
                                             <th style="min-width: 250px"><span class="text-white">Name</span></th>
                                             <th style="min-width: 150px"><span class="text-fade">Payment</span></th>
-                                            <th style="min-width: 100px"><span class="text-fade">Address</span></th>
                                             <th style="min-width: 100px"><span class="text-fade">Destination</span></th>
                                             <th style="min-width: 130px"><span class="text-fade">Payment Proof</span></th>
-                                            <th style="min-width: 120px"><span class="text-fade">Transportation</span></th>
                                             <th style="min-width: 120px"><span class="text-fade">Action</span></th>
                                         </tr>
                                     </thead>
@@ -126,18 +124,11 @@
                                                 </td>
                                                 <td>
                                                     <span class="text-fade font-weight-600 d-block font-size-16">
-                                                        {{ $booking->user->address }}
-                                                    </span>
-                                                    <span class="text-white font-weight-600 d-block font-size-16">
-                                                        {{ $booking->user->address }}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span class="text-fade font-weight-600 d-block font-size-16">
-                                                        {{ $booking->destination->name }}
-                                                    </span>
-                                                    <span class="text-white font-weight-600 d-block font-size-16">
-                                                        {{ $booking->destination->guide }}
+                                                        @if ($booking->destination_id !== null)
+                                                            {{ $booking->destination->name }}
+                                                        @else
+                                                        {{ $booking->package->name }}
+                                                        @endif
                                                     </span>
                                                 </td>
                                                 <td>
@@ -146,12 +137,6 @@
                                                     @else
                                                         <img src="{{ (!empty($booking->image)) ? asset($booking->image) : url('upload/default.jpg')}}" width="50">
                                                     @endif
-                                                </td>
-                                                <td class="text-right">
-                                                    <a href="#" class="waves-effect waves-light mx-5">
-                                                        {{ $booking->transportation->name }}    
-                                                    </a>
-                                                    <img src="{{ (!empty($booking->transportation->image)) ? asset($booking->transportation->image) : url('upload/default.jpg')}}" width="50">
                                                 </td>
                                                 <td>
                                                     @if ($booking->payment_proof == 'unpaid')
