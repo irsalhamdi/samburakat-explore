@@ -131,7 +131,7 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::post('setting/seo/update', [SettingController::class, 'SeoUpdate'])->name('update.seo.setting');
 });  
 
-Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth', 'verify'], 'namespace' => 'User'], function(){
+Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth', 'verified'], 'namespace' => 'User'], function(){
     Route::post('booking', [PaymentController::class, 'booking'])->name('booking');
     Route::get('checkout/{id}', [PaymentController::class, 'proccess'])->name('checkout');
     Route::post('checkout/callback', [PaymentController::class, 'callback'])->name('midtrans-callback');
