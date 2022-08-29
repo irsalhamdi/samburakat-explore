@@ -120,6 +120,12 @@
     @else
     <div class="">
       <a class="btn btn-small" href="/dashboard">Dashboard</a>
+      <a class="px-1" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          Logout
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+      </form>
     </div>
     @endguest
 

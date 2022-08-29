@@ -3,7 +3,7 @@
   <div class="intro intro-carousel swiper position-relative">
     <div class="swiper-wrapper">
       @foreach ($destinations as $item)
-        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(frontend/assets/images/Pantai-Biduk-Biduk.jpg)">
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('/{{ $item->image }}')">
           <div class="overlay overlay-a"></div>
           <div class="intro-content display-table">
             <div class="table-cell">
@@ -139,7 +139,7 @@
                     </div>
                     <div class="card-body-a">
                       <div class="price-box d-flex">
-                        <span class="price-a">{{ $item->price }}</span>
+                        <span class="price-a">Rp {{ $item->price }}</span>
                       </div>
                       <a href="/destinations-packages/{{ $item->id }}" class="link-a">Lihat selengkapnya
                         <span class="bi bi-chevron-right"></span>

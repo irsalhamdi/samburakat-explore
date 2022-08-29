@@ -34,7 +34,7 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <img src="/{{ $destination->image }}" alt="" class="img-fluid mb-5 w-100"
+          <img src="/{{ $destination->image }}" alt="{{ $destination->image }}" class="img-fluid mb-5 w-100"
             style="object-fit: cover !important;">
           <div class="row justify-content-between">
             <div class="col-md-5 col-lg-4">
@@ -110,11 +110,11 @@
       </div>
       <div class="row g-0">
         @foreach ($destination->galleries as $gallery)
-        <div class="col-lg-3 col-md-4">
+        <div class="col-lg-3 col-md-4 pr-2">
           <div class="gallery-item">
-            <a href="{{ $gallery->image }}" class="gallery-lightbox">
+            <div class="gallery-lightbox">
               <img src="/{{ $gallery->image }}" alt="" class="img-fluid">
-            </a>
+            </div>
           </div>
         </div>
         @endforeach
@@ -133,7 +133,8 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <a href="{{ $destination->location }}" target="_blank" rel="noopener noreferrer">{{ $destination->name }}</a>
+          Klik tombol untuk melihat lokasi <br>
+          <a href="{{ $destination->location }}" class="btn btn-success" target="_blank" rel="noopener noreferrer">{{ $destination->name }}</a>
         </div>
       </div>
     </div>

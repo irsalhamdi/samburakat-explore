@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function destination()
     {
-        $destinations = Destination::with(['destinationtype', 'village'])->latest()->get();
+        $destinations = Destination::with(['destinationtype', 'village'])->paginate(6);
         return view('frontend.destination', compact('destinations'));
     }
 
@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     public function destinationPackages()
     {
-        $packages = Package::with(['destinations'])->latest()->get();
+        $packages = Package::with(['destinations'])->paginate(6);
         return view('frontend.destination-packages', compact('packages'));
     }
 

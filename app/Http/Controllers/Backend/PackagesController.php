@@ -27,7 +27,7 @@ class PackagesController extends Controller
 
         $image = $request->file('image');
         $name = $request->name . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(870,370)->save('upload/package/' . $name);
+        Image::make($image)->resize(917,1000)->save('upload/package/' . $name);
         $url = 'upload/package/' . $name;
 
         Package::insert([
@@ -72,7 +72,7 @@ class PackagesController extends Controller
             unlink($old_image);
             $image = $request->file('image');
             $name = $request->name . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(870,370)->save('upload/package/' . $name);
+            Image::make($image)->resize(917,1000)->save('upload/package/' . $name);
             $url = 'upload/package/' . $name;
 
             Package::findOrFail($id)->update([

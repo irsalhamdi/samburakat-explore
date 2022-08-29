@@ -89,7 +89,7 @@
         <section class="content">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="box bt-3 border-info">
+                    <div class="box bt-3 border-info px-3">
                         <div class="box-header">
                             <h4 class="box-title">Destination Gallery <strong>Update</strong></h4>
                         </div>
@@ -128,7 +128,7 @@
       <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="box bt-3 border-info">
+                <div class="box bt-3 border-info px-3">
                     <div class="box-header">
                         <h4 class="box-title">Destination Image <strong>Update</strong></h4>
                     </div>
