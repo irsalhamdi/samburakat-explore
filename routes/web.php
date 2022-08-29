@@ -1,34 +1,41 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AjaxController;
-use App\Http\Controllers\Backend\AdminProfileController;
-use App\Http\Controllers\Backend\BookingController;
-use App\Http\Controllers\Backend\DestinationController;
-use App\Http\Controllers\Backend\DestinationPackagesController;
-use App\Http\Controllers\Backend\DestinationTypeController;
-use App\Http\Controllers\Backend\HotelController;
-use App\Http\Controllers\Backend\HotelOwnerController;
-use App\Http\Controllers\Backend\OwnerController;
-use App\Http\Controllers\Backend\PackagesController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\RoleController;
-use App\Http\Controllers\Backend\SettingController;
-use App\Http\Controllers\Backend\TestimoniController;
-use App\Http\Controllers\Backend\TransportationController;
-use App\Http\Controllers\Backend\TransportationPackageController;
+use App\Http\Controllers\Backend\HotelController;
+use App\Http\Controllers\Backend\OwnerController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Backend\BookingController;
+use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\PackagesController;
+use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Backend\TestimoniController;
+use App\Http\Controllers\Backend\DestinationController;
+use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\TransportationController;
+use App\Http\Controllers\Backend\DestinationTypeController;
+use App\Http\Controllers\Backend\DestinationPackagesController;
+use App\Http\Controllers\Backend\TransportationPackageController;
 
 Route::get('/get-regency/ajax/{province_id}', [AjaxController::class, 'GetRegency']);
 Route::get('/get-district/ajax/{regency_id}', [AjaxController::class, 'GetDisctrict']);
 Route::get('/get-village/ajax/{district_id}', [AjaxController::class, 'GetVillage']);
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('homepage');
 Route::get('destinations', [HomeController::class, 'destination'])->name('destinations');
 Route::get('destinations/{id}', [HomeController::class, 'destinationDetail'])->name('destinations-detail');
 Route::get('destinations-packages', [HomeController::class, 'destinationPackages'])->name('destinations-packages');
 Route::get('destinations-packages/{id}', [HomeController::class, 'destinationPackagesDetail'])->name('destination-packages-detail');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::get('/login', [AdminController::class, 'loginForm']);
@@ -124,7 +131,7 @@ Route::middleware(['auth:admin'])->group(function(){
     Route::post('setting/seo/update', [SettingController::class, 'SeoUpdate'])->name('update.seo.setting');
 });  
 
-Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function(){
+Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth', 'verify'], 'namespace' => 'User'], function(){
     Route::post('booking', [PaymentController::class, 'booking'])->name('booking');
     Route::get('checkout/{id}', [PaymentController::class, 'proccess'])->name('checkout');
     Route::post('checkout/callback', [PaymentController::class, 'callback'])->name('midtrans-callback');
