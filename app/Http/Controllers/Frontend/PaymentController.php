@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use Exception;
 use Midtrans\Config;
 use App\Models\Booking;
+use App\Mail\BookingMail;
 use Midtrans\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -26,6 +28,19 @@ class PaymentController extends Controller
                     'date' => $request->date,
             ]);
 
+            $booking = Booking::with('user', 'destination', 'transportation')->findOrfail($id);
+
+            $data = [
+                'username' => $booking->user->name,
+                'destination' => $booking->destination->name,
+                'transportation' => $booking->transportation->name,
+                'total_price' => $booking->total_price,
+                'code' => $booking->code,
+                'date' => $booking->date,
+            ];
+
+            Mail::to($booking->user->email)->send(new BookingMail($data));
+
             return redirect()->route('checkout',$id);
         }else{
             $code = 'STORE-' . mt_rand(000000, 999999);
@@ -37,6 +52,19 @@ class PaymentController extends Controller
                     'code' => $code,
                     'date' => $request->date,
             ]);
+
+            $booking = Booking::with('user', 'package', 'transportation')->findOrfail($id);
+
+            $data = [
+                'username' => $booking->user->name,
+                'package' => $booking->package->name,
+                'hotel' => $booking->package->hotel->name,
+                'total_price' => $booking->total_price,
+                'code' => $booking->code,
+                'date' => $booking->date,
+            ];
+
+            Mail::to($booking->user->email)->send(new BookingMail($data));
 
             return redirect()->route('checkout',$id);
         }
