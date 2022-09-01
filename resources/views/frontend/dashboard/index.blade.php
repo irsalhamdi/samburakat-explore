@@ -1,4 +1,7 @@
 @extends('frontend.dashboard.dashboard-master')
+@section('title')
+    Samburakat Explore | Dashboard
+@endsection
 @section('content')
     @php
         $transaction = App\Models\Booking::where('user_id', Auth::user()->id)->get();

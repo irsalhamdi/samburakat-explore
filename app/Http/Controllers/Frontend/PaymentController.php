@@ -75,7 +75,7 @@ class PaymentController extends Controller
         $booking = Booking::where('id', $id)->first();
         $code = $booking->code;
         $total_price = $booking->total_price;
-            
+
         Config::$serverKey = config('services.midtrans.serverKey');
         Config::$isProduction = config('services.midtrans.isProduction');
         Config::$isSanitized = config('services.midtrans.isSanitized');
@@ -89,9 +89,10 @@ class PaymentController extends Controller
             'customer_details' => [
                 'first_name' => Auth::user()->name,
                 'email' => Auth::user()->email,
+                'phone' => Auth::user()->phone,
             ],
             'enabled_payments' => [
-                'gopay', 'permata_va', 'bank_transfer',
+                'gopay', 'bank_transfer',
             ],
             'vtweb' => [],
         ];

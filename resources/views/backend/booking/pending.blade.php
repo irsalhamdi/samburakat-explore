@@ -31,9 +31,13 @@
                                         @if ($booking->package_id !== null)
                                             <td>{{ $booking->package->name }}</td>
                                         @else
+                                            <td>{{ $booking->destination->name }}</td>
                                         @endif
-                                        <td>{{ $booking->destination->name }}</td>
-                                        <td>{{ $booking->transportation->name }}</td>
+                                        @if ($booking->package_id !== null)
+                                            <td></td>
+                                        @else
+                                            <td>{{ $booking->transportation->name }}</td>
+                                        @endif
                                         <td>{{ $booking->date }}</td>
                                         <td>
                                             @if ($booking->payment_proof === 'unpaid')

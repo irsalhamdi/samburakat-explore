@@ -20,7 +20,7 @@ class HotelController extends Controller
     public function create()
     {
         $owners = Owner::orderBy('name', 'ASC')
-            ->where('type', '1')->orWhere('type', '3')->get();
+            ->where('type', '2')->orWhere('type', '3')->get();
         return view('backend.hotel.add', compact('owners'));
     }
 

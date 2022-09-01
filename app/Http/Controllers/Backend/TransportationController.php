@@ -17,7 +17,8 @@ class TransportationController extends Controller
     }
 
     public function create(){
-        $owners = Owner::all();
+        $owners = Owner::orderBy('name', 'ASC')
+            ->where('type', '1')->orWhere('type', '3')->get();
         return view('backend.transportation.add', compact('owners'));
     }
 

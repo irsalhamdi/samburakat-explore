@@ -39,6 +39,31 @@
                                             <input type="number"  name="phone_number" value="{{ $owner->phone_number }}" class="form-control" required> 
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <h5>Ownership<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <select name="type" required class="form-control">
+                                                <option value="{{ $owner->type }}" {{ $owner->type == $owner->type ? 'selected' : '' }}>
+                                                    @if ($owner->type === '1')
+                                                        Transportation
+                                                    @elseif ($owner->type === '2')
+                                                        Hotels
+                                                    @elseif ($owner->type === '3')
+                                                        Transportaion & Hotels
+                                                    @endif
+                                                </option>
+                                                <option value="1" >
+                                                    Transportation
+                                                </option>
+                                                <option value="2" >
+                                                    Hotels
+                                                </option>
+                                                <option value="3" >
+                                                    Transportation & Hotels
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
                                     </div>

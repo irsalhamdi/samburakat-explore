@@ -32,12 +32,12 @@
                                 <td>
                                   @if ( $owner->type === '1' )
                                     <button class="btn btn-sm btn-secondary">
-                                      Hotel
+                                      Transportation
                                     </button>
                                   @endif
                                   @if ( $owner->type === '2' )
                                     <button class="btn btn-sm btn-dark">
-                                      Transportation
+                                      Hotel
                                     </button>
                                   @endif
                                   @if ( $owner->type === '3' )
