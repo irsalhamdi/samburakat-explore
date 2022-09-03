@@ -23,7 +23,12 @@
                                     <div class="form-group">
                                         <h5>Destination Type Image <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="file" name="image" class="form-control" >
+                                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+                                            @error('image')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="text-xs-right">

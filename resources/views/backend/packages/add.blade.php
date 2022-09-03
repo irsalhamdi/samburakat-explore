@@ -14,12 +14,17 @@
                                 <div class="form-group">
                                     <h5>Name<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="name" name="name" class="form-control" required>
+                                        <input type="name" name="name" value="{{ old('name') }}" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5>Thumbnail</h5>
-                                    <input type="file" name="image" class="form-control" required onChange="mainThamUrl(this)">
+                                    <input type="file" name="image" class="form-control @error('image') is-invalid  @enderror" required onChange="mainThamUrl(this)">
+                                    @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <img src="" id="mainThmb">
                                 </div>
                                 <div class="form-group">
@@ -32,19 +37,19 @@
                                 <div class="form-group">
                                     <h5>Day<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="number" name="day" class="form-control" required>
+                                        <input type="number" value="{{ old('day') }}" name="day" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5>Night<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="number" name="night" class="form-control" required>
+                                        <input type="number" value="{{ old('night') }}" name="night" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5>Price<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="numbere" name="price" class="form-control" required>
+                                        <input type="numbere" value="{{ old('price') }}" name="price" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -23,6 +23,8 @@ class TransportationController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate(['image' => 'required|mimes:png,jpg,jpeg']);
+
         $image = $request->file('image');
         $name = $request->name . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(870,370)->save('upload/transportation/' . $name);
@@ -49,6 +51,8 @@ class TransportationController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate(['image' => 'required|mimes:png,jpg,jpeg']);
+        
         $id = $request->id;
         $old_image = $request->old_image;
         if($request->file('image')){

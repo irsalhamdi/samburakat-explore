@@ -18,6 +18,7 @@
                       <thead>
                           <tr>
                               <th>Name</th>
+                              <th>Image</th>
                               <th>Action</th>
                           </tr>
                       </thead>
@@ -25,6 +26,9 @@
                         @foreach ($packages as $package)
                             <tr>
                                 <td>{{ $package->name}}</td>
+                                <td>
+                                  <img src="{{ asset($package->thumbnail) }}" style="width: 120px; height: 40px;">
+                                </td>
                                 <td>
                                     <a href="{{ route('packages.edit', $package->id) }}" class="btn btn-sm btn-info">Edit</a>
                                     <a href="{{ route('packages.delete', $package->id) }}" class="btn btn-sm btn-danger">Delete</a>

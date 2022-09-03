@@ -22,6 +22,8 @@ class DestinationTypeController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(['image' => 'required|mimes:png,jpg,jpeg']);
+
         $image = $request->file('image');
         $name = $request->name . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(870,370)->save('upload/destination-type/' . $name);
@@ -50,6 +52,8 @@ class DestinationTypeController extends Controller
     {
         $id = $request->id;
         $old_image = $request->old_image;
+
+        $request->validate(['image' => 'required|mimes:png,jpg,jpeg']);
 
         if($request->file('image')){
 

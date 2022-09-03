@@ -29,13 +29,18 @@
                                 <div class="form-group">
                                     <h5>Name<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="name" name="name" class="form-control" required>
+                                        <input type="name" name="name" value="{{ old('name') }}" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5>Image<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="file" name="image" class="form-control" required="" id="image">
+                                        <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" required="" id="image">
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <img id="showImage" src="{{ url('upload/default.jpg') }}" style="width: 100px; height: 100px;" class="mb-3">

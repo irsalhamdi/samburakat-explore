@@ -37,7 +37,12 @@
                                     </div>
                                     <div class="form-group">
                                         <h5>Image</h5>
-                                        <input type="file" name="image" class="form-control" onChange="mainThamUrl(this)">
+                                        <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" onChange="mainThamUrl(this)">
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <img src="" id="mainThmb">
                                     </div>
                                     <div class="text-xs-right">

@@ -41,6 +41,8 @@ class UserController extends Controller
 
     public function proof(Request $request, $id)
     {
+        $request->validate(['image' => 'required|mimes:png,jpg,jpeg']);
+        
         $image = $request->file('image');
         $name = $request->name . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(917, 1000)->save('upload/payment-proof/' . $name);

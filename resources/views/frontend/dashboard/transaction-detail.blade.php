@@ -24,7 +24,7 @@
                   </li>
                   <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-selected="false">
-                    Payment
+                      Payment
                     </a>
                   </li>
                 </ul>
@@ -96,7 +96,12 @@
                                   <div class="form-group mt-3">
                                     <h5>Image</h5>
                                     <div class="controls">
-                                        <input type="file" name="image" class="form-control" required="" id="image">
+                                        <input type="file" name="image" class="form-contro @error('image') is-invalid @enderror" required="" id="image">
+                                        @error('image')
+                                          <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                          </span>
+                                        @enderror
                                     </div>
                                   </div>
                                   <img id="showImage" src="{{ url('upload/default.jpg') }}" style="width: 100px; height: 100px;" class="mb-3">
@@ -141,7 +146,7 @@
                   </li>
                   <li class="nav-item" role="presentation">
                     <a class="nav-link" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-selected="false">
-                    Payment
+                      Payment
                     </a>
                   </li>
                 </ul>
@@ -188,10 +193,10 @@
                             @endphp
                             {{-- {{ $packages->destinations[0] }}  --}}
                             @foreach ($packages->destinations as $gallery)
-                            <div class="d-flex">
-                              {{ $gallery->destination->name }}
-                            </div>
-                            <img src="/{{ $gallery->destination->image }}" style="width: 18rem;" class="mr-2 mb-2 img-thumbnail"/>
+                              <div class="d-flex">
+                                {{ $gallery->destination->name }}
+                              </div>
+                              <img src="/{{ $gallery->destination->image }}" style="width: 18rem;" class="mr-2 mb-2 img-thumbnail"/>
                             @endforeach
                           </div>
                         </div>
@@ -215,9 +220,9 @@
                             {{ $packages->hotel->name }}
                             <div class="row">
                               @foreach ($packages->hotel->galleries as $item)
-                              <div class="col-md-4">
-                                <img src="/{{ $item->image }}" class="w-100 rounded mb-2" style="height: 15rem;"/>
-                              </div>
+                                <div class="col-md-4">
+                                  <img src="/{{ $item->image }}" class="w-100 rounded mb-2" style="height: 15rem;"/>
+                                </div>
                               @endforeach
                             </div>
                           </div>
@@ -246,7 +251,12 @@
                                   <div class="form-group mt-3">
                                     <h5>Image</h5>
                                     <div class="controls">
-                                        <input type="file" name="image" class="form-control" required="" id="image">
+                                        <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" required="" id="image">
+                                        @error('image')
+                                          <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                          </span>
+                                        @enderror
                                     </div>
                                   </div>
                                   <img id="showImage" src="{{ url('upload/default.jpg') }}" style="width: 100px; height: 100px;" class="mb-3">

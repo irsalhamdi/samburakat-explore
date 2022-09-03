@@ -29,6 +29,11 @@ class DestinationController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'thumbnail' => 'required|mimes:png,jpg,jpeg',
+            'image' => 'required|mimes:png,jpg,jpeg',
+        ]);
+
         $image = $request->file('thumbnail');
         $name = $request->name . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(917, 1000)->save('upload/destination/image/' . $name);
@@ -78,6 +83,11 @@ class DestinationController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'thumbnail' => 'required|mimes:png,jpg,jpeg',
+            'image' => 'required|mimes:png,jpg,jpeg',
+        ]);
+
         $id = $request->id;
         $old_image = $request->old_image;
 
@@ -100,7 +110,7 @@ class DestinationController extends Controller
                 'location' => $request->location,
             ]);
 
-             $notification = [
+            $notification = [
                 'message' => 'Destination Updated Succesfully',
                 'alert-type' => 'info'
             ];

@@ -15,7 +15,7 @@
                             <h5>Destination Type</h5>
                             <div class="controls">
                                 <select name="destination_type_id" required class="form-control">
-                                    <option value="" selected="" disabled="">
+                                    <option value="{{ old('destination_type_id') }}" selected="" disabled="">
                                         Select Type
                                     </option>
                                     @foreach ($destinationtypes as $destinationtype)
@@ -44,36 +44,45 @@
                         <div class="form-group">
                             <h5>Name<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="name" class="form-control" required>
+                                <input type="text" name="name" value="{{ old('name') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <h5>Thumbnail</h5>
-                            <input type="file" name="thumbnail" class="form-control" required onChange="mainThamUrl(this)">
+                            <input type="file" name="thumbnail" class="form-control @error('thumbnail') is-invalid @enderror" required onChange="mainThamUrl(this)">
+                            @error('thumbnail')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                             @enderror
                             <img src="" id="mainThmb">
                         </div>
                         <div class="form-group">
                             <h5>Image</h5>
-                            <input type="file" id="multiImg" name="image[]" class="form-control" required multiple>
+                            <input type="file" id="multiImg" name="image[]" class="form-control @error('image') is-invalid @enderror" required multiple>
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <div id="preview_img"></div>
                         </div>
                         <div class="form-group">
                             <h5>Description<span class="text-danger">*</span></h5> 
                             <div class="controls">
-                                <textarea id="editor1" name="description" rows="10" cols="80" required>
-                                 </textarea>
+                                <textarea id="editor1" name="description" rows="10" cols="80" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <h5>Guide<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="guide" class="form-control" required>
+                                <input type="text" name="guide" value="{{ old('guide') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <h5>Price<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="number" name="price" class="form-control" required>
+                                <input type="number" name="price" value="{{ old('price') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">

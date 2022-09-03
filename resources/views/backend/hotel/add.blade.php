@@ -29,12 +29,17 @@
                                 <div class="form-group">
                                     <h5>Name<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="name" name="name" class="form-control" required>
+                                        <input type="name" name="name" value="{{ old('name') }}" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5>Image</h5>
-                                    <input type="file" id="multiImg" name="image[]" class="form-control" required multiple>
+                                    <input type="file" id="multiImg" name="image[]" class="form-control @error('image') is-invalid @enderror" required multiple>
+                                    @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <div id="preview_img"></div>
                                 </div>
                                 <div class="text-xs-right">
