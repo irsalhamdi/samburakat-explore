@@ -54,7 +54,7 @@
                         </div>
                         {{-- <a href="{{ $transaction->destination->location }}" target="_blank" rel="noopener noreferrer">{{ $destination->name }}</a> --}}
                         <p class="dashboard-subtitle mt-3">
-                          Destination
+                          Destination galleries
                         </p>
                         @php
                             $galleries = App\Models\Gallery::where('destination_id', $transaction->id)->get();
@@ -146,61 +146,83 @@
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                   <div class="tab-pane fade show active"  id="pills-destination"  role="tabpanel" aria-labelledby="pills-destination-tab" >
-                    <a href="" class="card card-list d-block">
+                    <div class="card card-list d-block">
                       <div class="card-body">
                         <div class="row">
-                          <div class="col-md-6">
-                            <p class="dashboard-subtitle">
-                              Destination
-                            </p>
-                            <img src="/{{ $booking->package->thumbnail }}" width="350" height="150" class="mb-3"/> 
-                            @php
-                                $items = App\Models\DestinationPackages::where('package_id', $booking->package->id)->get();
-                            @endphp
-                            @foreach ($items as $item)
-                              <img src="/{{ $item->destination->image }}" width="350" height="150" class="mb-3"/> 
-                            @endforeach
+                          <div class="col-md-4">
+                            <img src="/{{ $booking->package->thumbnail }}" style="width: 20rem;" class="mb-3 img-thumbnail"/> 
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-8">
                             <p class="dashboard-subtitle">
                               {{ $booking->package->name }}
                             </p>
                             <p style="text-align: justify">
-                              {{ $booking->package->description }}
+                              {!! $booking->package->description !!}
+                              Day : {{ $booking->package->day }} <br>
+                              Night : {{ $booking->package->night }}
                             </p>
-                              @foreach ($items as $item)
-                                {{ $item->destination->name }}
-                                <button class="btn btn-sm btn-success">
-                                  <i class="fas fa-delete"></i>  
-                                  {{ $item->destination->guide }}
-                                </button>
-                                {{-- <a href="{{ $item->destination->location }}" target="_blank" rel="noopener noreferrer">{{ $item->destination->name }}</a> --}}
-                              @endforeach
+                            @php
+                              $items = App\Models\DestinationPackages::where('package_id', $booking->package->id)->get();
+                            @endphp
+                            @foreach ($items as $item)
+                              {{ $item->destination->name }}
+                              <button class="btn btn-sm btn-success">
+                                <i class="fas fa-delete"></i>
+                                {{ $item->destination->guide }}
+                              </button>
+                              {{-- <a href="{{ $item->destination->location }}" target="_blank" rel="noopener noreferrer">{{ $item->destination->name }}</a> --}}
+                            @endforeach
                             <button class="btn btn-sm btn-danger ml-3">
-                              {{ $booking->package->price }}
+                              Rp {{  $booking->package->price }}
                             </button>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <p class="dashboard-subtitle">
-                              Transportation
+                        <div class="row mb-3">
+                          <div class="col-md-12">
+                            <p class="dashboard-subtitle mt-3">
+                              Destination
                             </p>
                             @php
-                                $packages = App\Models\Package::where('id', $booking->package->id)->first();
+                              $packages = App\Models\Package::where('id', $booking->package->id)->first();
                             @endphp
-                            @foreach ($packages->transportations as $item)
-                              <img src="/{{ $item->transportation->image }}" width="350" height="150" class="mb-3"/>                                       
-                            @endforeach
-                          </div>
-                          <div class="col-md-6">
-                            @foreach ($packages->hotel->galleries as $item)
-                              <img src="/{{ $item->image }}" width="350" height="150" class="mb-3"/>                                       
+                            {{-- {{ $packages->destinations[0] }}  --}}
+                            @foreach ($packages->destinations as $gallery)
+                            <div class="d-flex">
+                              {{ $gallery->destination->name }}
+                            </div>
+                            <img src="/{{ $gallery->destination->image }}" style="width: 18rem;" class="mr-2 mb-2 img-thumbnail"/>
                             @endforeach
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <p class="dashboard-subtitle">
+                              Transportation
+                            </p>
+                            @foreach ($packages->transportations as $item)
+                              {{ $item->transportation->name }}
+                              <img src="/{{ $item->transportation->image }}" class="w-100 rounded" style="height: 15rem; margin-right: 1rem;"/>                                       
+                            @endforeach
+                          </div>
+                          <div class="col-md-6"></div>
+                        </div>
+                        <div class="row mt-4">
+                          <div class="col-md-12">
+                            <p class="dashboard-subtitle">
+                              Hotels
+                            </p>
+                            {{ $packages->hotel->name }}
+                            <div class="row">
+                              @foreach ($packages->hotel->galleries as $item)
+                              <div class="col-md-4">
+                                <img src="/{{ $item->image }}" class="w-100 rounded mb-2" style="height: 15rem;"/>
+                              </div>
+                              @endforeach
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </a>
+                    </div>
                   </div>
                   <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
                       <a href="" class="card card-list d-block">

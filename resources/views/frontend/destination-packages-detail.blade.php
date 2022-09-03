@@ -127,7 +127,7 @@
               <div class="row">
                 @foreach ($package->hotel->galleries as $item)
                 <div class="col-md-6">
-                  <img src="/{{ $item->image}}" class="w-100 rounded" style="height: 15rem; margin-right: 1rem;" alt="{{ $item->image}}">
+                  <img src="/{{ $item->image}}" class="w-100 rounded mb-2 mr-2" style="height: 15rem;" alt="{{ $item->image}}">
                 </div>
                 @endforeach
               </div>

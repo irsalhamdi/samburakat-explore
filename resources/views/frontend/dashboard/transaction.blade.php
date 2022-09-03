@@ -43,7 +43,7 @@
                             Rp {{ $transaction->destination->price }}
                           </div>
                           <div class="col-md-3">
-                            {!! date('d/M/y', strtotime($transaction->date)) !!}
+                            {!! date('d/M/Y', strtotime($transaction->date)) !!}
                           </div>
                           <div class="col-md-1 d-none d-md-block">
                             @if ($transaction->payment_proof == 'unpaid')
@@ -73,10 +73,10 @@
                             {{ $booking->package->name }}
                           </div>
                           <div class="col-md-3">
-                            {{ $booking->total_price }}
+                            Rp {{ $booking->total_price }}
                           </div>
                           <div class="col-md-3">
-                            {{ $booking->date }}
+                            {!! date('d/M/Y', strtotime($booking->date)) !!}
                           </div>
                           <div class="col-md-1 d-none d-md-block">
                             @if ($booking->payment_proof == 'unpaid')
