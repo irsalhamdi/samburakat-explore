@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class BookingMail extends Mailable
+class BookingPackageMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class BookingMail extends Mailable
     public function build()
     {
         $booking = $this->data;
-        return $this->from('samburakatexplore@gmail.com')->view('mail.booking-destination',compact('booking'))->subject('Email From Samburakat Explore');
+        return $this->from('samburakatexplore@gmail.com')->view('mail.booking-package',compact('booking'))->subject('Email From Samburakat Explore');
     }
 }

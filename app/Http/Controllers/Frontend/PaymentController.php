@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Mail\BookingMail;
 use Midtrans\Notification;
 use Illuminate\Http\Request;
+use App\Mail\BookingPackageMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -45,7 +46,7 @@ class PaymentController extends Controller
         }else{
             $code = 'STORE-' . mt_rand(000000, 999999);
 
-            $id = Booking::create([
+            $id = Booking::insertGetId([
                     'user_id' => Auth::user()->id,
                     'package_id' => $request->package_id,
                     'total_price' => $request->total_price,
@@ -54,7 +55,7 @@ class PaymentController extends Controller
             ]);
 
             $booking = Booking::with('user', 'package', 'transportation')->findOrfail($id);
-
+            
             $data = [
                 'username' => $booking->user->name,
                 'package' => $booking->package->name,
@@ -64,7 +65,7 @@ class PaymentController extends Controller
                 'date' => $booking->date,
             ];
 
-            Mail::to($booking->user->email)->send(new BookingMail($data));
+            Mail::to($booking->user->email)->send(new BookingPackageMail($data));
 
             return redirect()->route('checkout',$id);
         }

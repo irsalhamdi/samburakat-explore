@@ -18,10 +18,8 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Destination</th>
-                                        <th>Transportation</th>
                                         <th>Date</th>
                                         <th>Payment</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,23 +31,12 @@
                                         @else
                                             <td>{{ $booking->destination->name }}</td>
                                         @endif
-                                        @if ($booking->package_id !== null)
-                                            <td></td>
-                                        @else
-                                            <td>{{ $booking->transportation->name }}</td>
-                                        @endif
                                         <td>{{ $booking->date }}</td>
                                         <td>
                                             @if ($booking->payment_proof === 'unpaid')
                                                 <span class="btn btn-sm btn-danger">Unpaid</span>
                                             @else
                                                 <img src="{{ asset($booking->image) }}" style="width: 120px; height: 40px;">
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('booking.verify',$booking->id) }}" class="btn btn-sm btn-info">Detail</a>
-                                            @if ($booking->payment_proof === 'paid')
-                                                <a href="{{ route('booking.verify',$booking->id) }}" class="btn btn-sm btn-success">Verify</a>
                                             @endif
                                         </td>
                                     </tr>

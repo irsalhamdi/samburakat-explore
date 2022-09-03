@@ -18,7 +18,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Destination</th>
-                                        <th>Transportation</th>
+                                        <th>Payment Proof</th>
                                         <th>Date</th>
                                         <th>Payment</th>
                                     </tr>
@@ -30,9 +30,11 @@
                                         @if ($booking->package_id !== null)
                                             <td>{{ $booking->package->name }}</td>
                                         @else
+                                            <td>{{ $booking->destination->name }}</td>
                                         @endif
-                                        <td>{{ $booking->destination->name }}</td>
-                                        <td>{{ $booking->transportation->name }}</td>
+                                        <td> 
+                                            <img src="{{ asset($booking->image) }}" style="width: 120px; height: 40px;"> 
+                                        </td>
                                         <td>{{ $booking->date }}</td>
                                         <td>
                                             <button class="btn btn-sm btn-success">Paid</button>

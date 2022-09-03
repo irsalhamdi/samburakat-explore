@@ -92,6 +92,7 @@
                               <div class="col-md-6">
                                 <form action="{{ route('payment-proof',$transaction->id) }}" method="POST" enctype="multipart/form-data">
                                   @csrf
+                                  <input type="hidden" name="name" value="{{ $transaction->id }}">
                                   <div class="form-group mt-3">
                                     <h5>Image</h5>
                                     <div class="controls">
