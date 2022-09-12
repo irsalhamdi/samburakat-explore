@@ -240,7 +240,7 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-6">
                     <div class="testimonial-img">
-                      <img src="frontend/assets/img/testimonial-1.jpg" alt="" class="img-fluid">
+                      <img src="frontend/assets/img/farras.png" alt="" class="img-fluid">
                     </div>
                   </div>
                   <div class="col-sm-12 col-md-6">
@@ -249,14 +249,12 @@
                     </div>
                     <div class="testimonials-content">
                       <p class="testimonial-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                        debitis hic ber quibusdam
-                        voluptatibus officia expedita corpori.
+                        {{ $testimoni->description }}
                       </p>
                     </div>
                     <div class="testimonial-author-box">
-                      <img src="frontend/assets/img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
-                      <h5 class="testimonial-author">Albert & Erika</h5>
+                      <img src="frontend/assets/img/farras.png" alt="" class="testimonial-avatar">
+                      <h5 class="testimonial-author">{{ $testimoni->user->name }}</h5>
                     </div>
                   </div>
                 </div>

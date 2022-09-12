@@ -7,6 +7,7 @@ use App\Models\Village;
 use App\Models\Destination;
 use App\Models\Transportation;
 use App\Http\Controllers\Controller;
+use App\Models\Testimony;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,8 @@ class HomeController extends Controller
     {
         $destinations = Destination::with(['destinationtype', 'village'])->take(4)->get();
         $packages = Package::with(['destinations', 'transportations'])->latest()->get();
-        return view('frontend.index', compact('destinations', 'packages'));
+        $testimoni = Testimony::with('user')->find(1);
+        return view('frontend.index', compact('destinations', 'packages', 'testimoni'));
     }
 
     public function destination()
